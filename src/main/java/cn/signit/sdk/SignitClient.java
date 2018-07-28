@@ -37,6 +37,7 @@ import cn.signit.sdk.pojo.OauthData;
 import cn.signit.sdk.pojo.SignatureRequest;
 import cn.signit.sdk.pojo.SignatureResponse;
 import cn.signit.sdk.pojo.WebhookData;
+import cn.signit.sdk.type.TokenType;
 import cn.signit.sdk.util.FastjsonDecoder;
 import cn.signit.sdk.util.RequestParam;
 import cn.signit.sdk.util.Validator;
@@ -63,12 +64,7 @@ public class SignitClient {
         this(auth, new HttpClient());
     }
 
-    public SignitClient(String appid) {
-        this(new Authentication(appid), new HttpClient());
-        auth.setAppId(appid);
-    }
-
-    public SignitClient(Authentication auth, HttpClient httpClient) {
+    private SignitClient(Authentication auth, HttpClient httpClient) {
         BASE_URL = RequestParam.DEFAULT_BASE_API_URL;
         OAUTH_TOKEN_URL = RequestParam.DEFAULT_OAUTH_TOKEN_URL;
         this.auth = auth;
@@ -89,7 +85,7 @@ public class SignitClient {
         if (request == null) {
             return null;
         }
-        if (!auth.hasAccessTokenType() || !auth.hasAppId() || !auth.hasDeveloperId() || !auth.hasSecretKey()) {
+        if (!auth.hasAccessTokenType() || !auth.hasAppId() || !auth.hasSecretKey()) {
             throw new SignitException("请完善开发者信息");
         }
         httpClient.withAuth(auth).withPostObject(request);
@@ -122,13 +118,14 @@ public class SignitClient {
     }
 
     // 可用单独授权，或者可单独调用只获取token
-    public OauthData getOauthData(String apiKey, String secretKey, String grantType, boolean autoSetRequestToken)
+    public OauthData getOauthData(String apiKey, String secretKey, TokenType grantType, boolean autoSetRequestToken)
             throws SignitException {
-        if (apiKey == null || secretKey == null || grantType == null) {
+        if (apiKey == null || secretKey == null) {
             throw new SignitException("请完善开发者账户数据");
         }
         String response = httpClient.withAuth(auth).withGetParam(RequestParam.CLIENT_ID, apiKey)
-                .withGetParam(RequestParam.CLIENT_SECRET, secretKey).withGetParam(RequestParam.GRANT_TYPE, grantType)
+                .withGetParam(RequestParam.CLIENT_SECRET, secretKey)
+                .withGetParam(RequestParam.GRANT_TYPE, TokenType.CLIENT_CREDENTIALS.name().toLowerCase())
                 .get(OAUTH_TOKEN_URL).getLastResponse();
         JSONObject data = JSON.parseObject(Validator.notNull(response, "请求token数据失败"));
         if (data != null && autoSetRequestToken) {

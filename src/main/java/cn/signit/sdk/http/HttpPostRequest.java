@@ -170,7 +170,6 @@ public class HttpPostRequest extends AbstractHttpRequest {
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Accept", "application/json");
         conn.setRequestProperty(RequestParam.APP_ID, auth.getAppId());
-        conn.setRequestProperty(RequestParam.DEVELOPER_ID, auth.getDeveloperId());
         try {
             OutputStream output = conn.getOutputStream();
             try {

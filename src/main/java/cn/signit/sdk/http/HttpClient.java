@@ -137,6 +137,9 @@ public class HttpClient {
             if (json.containsKey("error")) {
                 throw new SignitException(json.getString("error"));
             }
+            if (json.containsKey("errorWsid")) {
+                throw new SignitException(response);
+            }
             o = FastjsonDecoder.decodeAsBean(response, clazz);
         } catch (JSONException e) {
             throw new SignitException(e);

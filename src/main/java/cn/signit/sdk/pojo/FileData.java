@@ -30,29 +30,26 @@ public class FileData {
     public FileData() {
     }
 
-    public FileData(String base64) {
-        this.base64 = base64;
-    }
-
-    public FileData(String url, String base64) {
+    public FileData(String url) {
         this.url = url;
-        this.base64 = base64;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public FileData setUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public String getBase64() {
         return base64;
     }
 
-    public void setBase64(String base64) {
+    public FileData setBase64(String base64) {
         this.base64 = base64;
+        return this;
     }
 
 }

@@ -112,7 +112,7 @@ public class Signer {
     public static class Position {
         private KeywordPosition keywordPosition;
         private RectanglePosition rectanglePosition;
-        private String fieldsName;
+        private String fieldName;
 
         public static PositionBuilder builder() {
             return new PositionBuilder();
@@ -121,7 +121,7 @@ public class Signer {
         public static class PositionBuilder {
             private KeywordPosition keywordPosition;
             private RectanglePosition rectanglePosition;
-            private String fieldsName;
+            private String fieldName;
 
             public PositionBuilder withKeywordPosition(KeywordPosition keywordPosition) {
                 this.keywordPosition = keywordPosition;
@@ -133,13 +133,13 @@ public class Signer {
                 return this;
             }
 
-            public PositionBuilder withFieldsName(String fieldsName) {
-                this.fieldsName = fieldsName;
+            public PositionBuilder withFieldName(String fieldsName) {
+                this.fieldName = fieldsName;
                 return this;
             }
 
             public Position build() {
-                return new Position(keywordPosition, rectanglePosition, fieldsName);
+                return new Position(keywordPosition, rectanglePosition, fieldName);
             }
         }
 
@@ -147,10 +147,10 @@ public class Signer {
 
         }
 
-        public Position(KeywordPosition keywordPosition, RectanglePosition rectanglePosition, String fieldsName) {
+        public Position(KeywordPosition keywordPosition, RectanglePosition rectanglePosition, String fieldName) {
             this.keywordPosition = keywordPosition;
             this.rectanglePosition = rectanglePosition;
-            this.fieldsName = fieldsName;
+            this.fieldName = fieldName;
         }
 
         public KeywordPosition getKeywordPosition() {
@@ -169,12 +169,12 @@ public class Signer {
             this.rectanglePosition = rectanglePosition;
         }
 
-        public String getFieldsName() {
-            return fieldsName;
+        public String getFieldName() {
+            return fieldName;
         }
 
-        public void setFieldsName(String fieldsName) {
-            this.fieldsName = fieldsName;
+        public void setFieldName(String fieldsName) {
+            this.fieldName = fieldsName;
         }
 
         public static class KeywordPosition {

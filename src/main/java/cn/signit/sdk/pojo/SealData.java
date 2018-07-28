@@ -59,8 +59,10 @@ public class SealData extends FileData {
     }
 
     public SealData(String name, String url, String base64) {
-        super(url, base64);
+        super(url);
+        super.setBase64(base64);
         this.name = name;
+
     }
 
     public String getName() {

@@ -31,28 +31,27 @@ import java.net.HttpURLConnection;
 import javax.xml.bind.DatatypeConverter;
 
 import cn.signit.sdk.SignitException;
+import cn.signit.sdk.type.TokenType;
 
 public class Authentication {
 
     private String appId = new String();
-    private String developerId = new String();
     private String secretKey = new String();
     private String accessToken = new String();
-    private String accessTokenType = new String();
+    private TokenType accessTokenType;
 
     public Authentication() {
 
     }
 
-    public Authentication(String apiKey) {
-        this.appId = apiKey;
+    public Authentication(String apiKey, String secretKey) {
+        this(apiKey, secretKey, TokenType.CLIENT_CREDENTIALS);
     }
 
-    public Authentication(String apiKey, String secretKey, String authenticationType, String developerId) {
+    public Authentication(String apiKey, String secretKey, TokenType authenticationType) {
         this.appId = notNull(apiKey, "appId不可为空");
         this.secretKey = notNull(secretKey, "secretKey不可为空");
         this.accessTokenType = notNull(authenticationType, "tokentype不可为空");
-        this.developerId = notNull(developerId, "developerId不可为空");
     }
 
     public Authentication(Authentication clone) throws SignitException {
@@ -64,9 +63,6 @@ public class Authentication {
         }
         if (clone.hasSecretKey()) {
             setSecretKey(clone.getSecretKey());
-        }
-        if (clone.hasDeveloperId()) {
-            setDeveloperId(clone.getDeveloperId());
         }
     }
 
@@ -104,29 +100,16 @@ public class Authentication {
         this.accessToken = accessToken;
     }
 
-    public String getAccessTokenType() {
+    public TokenType getAccessTokenType() {
         return accessTokenType;
     }
 
-    public void setAccessTokenType(String accessTokenType) {
+    public void setAccessTokenType(TokenType accessTokenType) {
         this.accessTokenType = accessTokenType;
     }
 
     public boolean hasAccessTokenType() {
         return !("".equals(accessTokenType) || "".equals(accessTokenType));
-    }
-    
-    public String getDeveloperId() {
-        return new String(developerId);
-    }
-
-    public Authentication setDeveloperId(String developerId) {
-        this.developerId = developerId;
-        return this;
-    }
-
-    public boolean hasDeveloperId() {
-        return !("".equals(developerId));
     }
 
     public boolean hasAccessToken() {
