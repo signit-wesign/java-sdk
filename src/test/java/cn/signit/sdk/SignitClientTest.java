@@ -26,33 +26,50 @@ import cn.signit.sdk.type.AcceptDataType;
 import cn.signit.sdk.type.Direction;
 
 public class SignitClientTest {
-//    @Test
+    @Test
     public void quickSign() throws FileNotFoundException, IOException {
         Authentication auth = new Authentication();
-        auth.setAppId("appid").setSecretKey("secretKey");
-        SignitClient client = new SignitClient(auth);
+        auth.setAppId("164ea4a9c800242ac130007de41")
+                .setSecretKey("sk216a33d789f165aa26d01526023d903a");
+        SignitClient client = new SignitClient(auth, "http://10.10.9.222:2576");
         FileData fileData = new FileData();
-        fileData.setUrl("https://www.jibbering.com/2002/4/test.txt");
-        SealData sealData = SealData.builder().withUrl("http://img.go007.com/2016/03/12/2776ec64f0014006_1.jpg").withName("myseal").build();
-        Data data = Data.build().withSealData(sealData).build();
-        KeywordPosition keywordPosition = KeywordPosition.builder().withKeyword("page").withRelativeWidthRatio(1.0f)
-                .withRelativeHeightRatio(1.0f).withRelativeOffsetRatio(0.2f).withDirection(Direction.RIGHT)
-                .withScale(1.0f).withPages("all").build();
-        Position position = Position.builder().withKeywordPosition(keywordPosition).build();
-        SignerInfo signerInfo = SignerInfo.builder().withContact("12345678@qq.com").withName("张三")
-                .withOrgnizationName("宇宙超级无敌有限公司").withIdCardNo("61112190005012136").withLocation("北京市朝阳区")
-                .withReason("公司合作").build();
-        Signer signer1 = Signer.builder().withData(data).withPosition(position).withSequence(1)
-                .withSignerInfo(signerInfo).build();
+        fileData.setUrl("https://zhangbo1416694870.github.io/filesystem/quicksign.txt");
+        SealData sealData = SealData.builder()
+                .withUrl("https://zhangbo1416694870.github.io/filesystem/zhangbo.png")
+                .withName("mySignature")
+                .build();
+        Data data = Data.build()
+                .withSealData(sealData)
+                .build();
+        Position position = Position.builder()
+                .withKeywordPosition(
+                        new KeywordPosition(null, 1.0f, null, 1.0f, Direction.RIGHT, null, 1.0f, "签字", 1.5f, "all"))
+                .build();
+        SignerInfo signerInfo = SignerInfo.builder()
+                .withContact("12345678@qq.com")
+                .withName("张三")
+                .withOrgnizationName("宇宙超级无敌有限公司")
+                .withIdCardNo("61112197603012136")
+                .withLocation("北京市朝阳区")
+                .withReason("公司合作")
+                .build();
+        Signer signer1 = Signer.builder()
+                .withData(data)
+                .withPosition(position)
+                .withSequence(1)
+                .withSignerInfo(signerInfo)
+                .build();
         List<Signer> signDetails = new ArrayList<Signer>();
         signDetails.add(signer1);
-        SignatureRequest request = SignatureRequest.builder().withAcceptDataType(AcceptDataType.URL)
-                .withFileData(fileData).withSignDetails(signDetails).build();
+        SignatureRequest request = SignatureRequest.builder()
+                .withAcceptDataType(AcceptDataType.URL)
+                .withFileData(fileData)
+                .withSignDetails(signDetails)
+                .build();
         System.out.println(JSON.toJSONString(request, SerializerFeature.PrettyFormat));
         try {
             SignatureResponse response = client.sendSignatureRequest(request);
-            System.out.println(response.getCode());
-            assertTrue("100550001".equals(response.getCode()));
+            System.out.println(response.isSuccess());
         } catch (SignitException e) {
             e.printStackTrace();
         } catch (IOException e) {
