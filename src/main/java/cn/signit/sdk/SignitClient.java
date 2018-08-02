@@ -75,10 +75,12 @@ public class SignitClient {
     }
 
     private void setUrl(String environmentUrl) {
-        BASE_URL = new StringBuilder().append(environmentUrl)
+        String tempUrl = environmentUrl == null || environmentUrl.trim()
+                .equals("") ? RequestParam.DEFAULT_ENVIRONMENT_URL : environmentUrl;
+        BASE_URL = new StringBuilder().append(tempUrl)
                 .append(RequestParam.DEFAULT_BASE_API_URL)
                 .toString();
-        OAUTH_TOKEN_URL = new StringBuilder().append(environmentUrl)
+        OAUTH_TOKEN_URL = new StringBuilder().append(tempUrl)
                 .append(RequestParam.DEFAULT_OAUTH_TOKEN_URL)
                 .toString();
     }
