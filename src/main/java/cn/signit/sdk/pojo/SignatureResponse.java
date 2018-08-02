@@ -30,6 +30,14 @@ public class SignatureResponse {
     private String customTag;
     private String invokeNo;
 
+    public Boolean isSuccess() {
+        if (code != null && code.equals("100550001")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public String getCode() {
         return code;
     }

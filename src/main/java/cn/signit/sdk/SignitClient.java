@@ -61,14 +61,31 @@ public class SignitClient {
     private String OAUTH_TOKEN_URL;
 
     public SignitClient(Authentication auth) {
-        this(auth, new HttpClient());
+        this(auth, new HttpClient(), RequestParam.DEFAULT_ENVIRONMENT_URL);
     }
 
-    private SignitClient(Authentication auth, HttpClient httpClient) {
-        BASE_URL = RequestParam.DEFAULT_BASE_API_URL;
-        OAUTH_TOKEN_URL = RequestParam.DEFAULT_OAUTH_TOKEN_URL;
+    public SignitClient(Authentication auth, String url) {
+        this(auth, new HttpClient(), url);
+    }
+
+    private SignitClient(Authentication auth, HttpClient httpClient, String url) {
+        setUrl(url);
         this.auth = auth;
         this.httpClient = httpClient;
+    }
+
+    private void setUrl(String environmentUrl) {
+        BASE_URL = new StringBuilder().append(environmentUrl)
+                .append(RequestParam.DEFAULT_BASE_API_URL)
+                .toString();
+        OAUTH_TOKEN_URL = new StringBuilder().append(environmentUrl)
+                .append(RequestParam.DEFAULT_OAUTH_TOKEN_URL)
+                .toString();
+    }
+
+    public SignitClient setEnvironmentUrl(String url) {
+        setUrl(url);
+        return this;
     }
 
     public SignitClient setOauthUrl(String url) {
@@ -88,7 +105,8 @@ public class SignitClient {
         if (!auth.hasAccessTokenType() || !auth.hasAppId() || !auth.hasSecretKey()) {
             throw new SignitException("请完善开发者信息");
         }
-        httpClient.withAuth(auth).withPostObject(request);
+        httpClient.withAuth(auth)
+                .withPostObject(request);
         getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
         return retrySendRequest();
     }
@@ -98,7 +116,9 @@ public class SignitClient {
             throw new SignitException("请核实开发者账户数据是否无误");
         }
         try {
-            return httpClient.withAuth(auth).post(BASE_URL).AsObject(SignatureResponse.class);
+            return httpClient.withAuth(auth)
+                    .post(BASE_URL)
+                    .AsObject(SignatureResponse.class);
         } catch (SignitException e) {
             if ("invalid_token".equals(e.getMessage())) {
                 // 重新授权
@@ -123,10 +143,13 @@ public class SignitClient {
         if (apiKey == null || secretKey == null) {
             throw new SignitException("请完善开发者账户数据");
         }
-        String response = httpClient.withAuth(auth).withGetParam(RequestParam.CLIENT_ID, apiKey)
+        String response = httpClient.withAuth(auth)
+                .withGetParam(RequestParam.CLIENT_ID, apiKey)
                 .withGetParam(RequestParam.CLIENT_SECRET, secretKey)
-                .withGetParam(RequestParam.GRANT_TYPE, TokenType.CLIENT_CREDENTIALS.name().toLowerCase())
-                .get(OAUTH_TOKEN_URL).getLastResponse();
+                .withGetParam(RequestParam.GRANT_TYPE, TokenType.CLIENT_CREDENTIALS.name()
+                        .toLowerCase())
+                .get(OAUTH_TOKEN_URL)
+                .getLastResponse();
         JSONObject data = JSON.parseObject(Validator.notNull(response, "请求token数据失败"));
         if (data != null && autoSetRequestToken) {
             auth.setAccessToken(Validator.notNull(data.getString("access_token"), "token获取失败"));
@@ -135,12 +158,16 @@ public class SignitClient {
     }
 
     public WebhookData parseWebhookData(String webhook) {
-        if (webhook == null || webhook.trim().length() <= 0) {
+        if (webhook == null || webhook.trim()
+                .length() <= 0) {
             return null;
         }
-        webhook = LEFT_QUOTATION.matcher(webhook).replaceAll("{");
-        webhook = RIGHT_QUOTATION.matcher(webhook).replaceAll("}");
-        webhook = BACKLASH_QUOTATION.matcher(webhook).replaceAll("\"");
+        webhook = LEFT_QUOTATION.matcher(webhook)
+                .replaceAll("{");
+        webhook = RIGHT_QUOTATION.matcher(webhook)
+                .replaceAll("}");
+        webhook = BACKLASH_QUOTATION.matcher(webhook)
+                .replaceAll("\"");
         return FastjsonDecoder.decodeAsBean(webhook, WebhookData.class);
     }
 }
