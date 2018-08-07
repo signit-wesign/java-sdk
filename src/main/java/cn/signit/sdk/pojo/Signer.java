@@ -371,7 +371,7 @@ public class Signer {
             private Float ulx;
             private Float uly;
             private Float scale;
-            private String pages;
+            private Integer page;
 
             public static RectanglePositionBuilder builder() {
                 return new RectanglePositionBuilder();
@@ -380,13 +380,13 @@ public class Signer {
             public RectanglePosition() {
             }
 
-            public RectanglePosition(Float lrx, Float lry, Float ulx, Float uly, Float scale, String pages) {
+            public RectanglePosition(Float lrx, Float lry, Float ulx, Float uly, Float scale, Integer page) {
                 this.lrx = lrx;
                 this.lry = lry;
                 this.ulx = ulx;
                 this.uly = uly;
                 this.scale = scale;
-                this.pages = pages;
+                this.page = page;
             }
 
             static class RectanglePositionBuilder {
@@ -395,7 +395,7 @@ public class Signer {
                 private Float ulx;
                 private Float uly;
                 private Float scale;
-                private String pages;
+                private Integer page;
 
                 public RectanglePositionBuilder() {
                 }
@@ -425,13 +425,13 @@ public class Signer {
                     return this;
                 }
 
-                public RectanglePositionBuilder withLrx(String pages) {
-                    this.pages = pages;
+                public RectanglePositionBuilder withLrx(Integer page) {
+                    this.page = page;
                     return this;
                 }
 
                 public RectanglePosition build() {
-                    return new RectanglePosition(lrx, lry, ulx, uly, scale, pages);
+                    return new RectanglePosition(lrx, lry, ulx, uly, scale, page);
                 }
             }
 
@@ -475,12 +475,12 @@ public class Signer {
                 this.scale = scale;
             }
 
-            public String getPages() {
-                return pages;
+            public Integer getPage() {
+                return page;
             }
 
-            public void setPages(String pages) {
-                this.pages = pages;
+            public void setPage(Integer page) {
+                this.page = page;
             }
 
         }
