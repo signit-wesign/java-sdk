@@ -302,8 +302,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式为<code>false</code>.<br>
      * 如果不为<code>false</code> 则抛出 异常,
+
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -324,8 +326,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式为<code>true</code>.<br>
      * 如果不为<code>true</code> 则抛出 异常
+
      *
      * @param expression
      *            待校验的表达式
@@ -341,8 +345,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式为<code>true</code>.<br>
      * 如果不为<code>true</code> 则抛出 异常
+
      *
      * @param expression
      *            待校验的表达式
@@ -360,8 +366,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式为<code>true</code>.<br>
      * 如果不为<code>true</code> 则抛出 异常,
+
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -382,8 +390,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式不为<code>true</code>.<br>
      * 如果为<code>true</code> 则抛出 异常
+
      *
      * @param expression
      *            待校验的表达式
@@ -399,8 +409,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式不为<code>true</code>.<br>
      * 如果为<code>true</code> 则抛出 异常
+
      *
      * @param expression
      *            待校验的表达式
@@ -418,8 +430,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言表达式不为<code>true</code>.<br>
      * 如果为<code>true</code> 则抛出 异常,
+
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -440,8 +454,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言对象为<code>null</code>.<br>
      * 如果不为<code>null</code> 则抛出 异常
+
      *
      * @param reference
      *            待校验的对象
@@ -459,8 +475,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言对象为<code>null</code>.<br>
      * 如果不为<code>null</code> 则抛出 异常
+
      *
      * @param reference
      *            待校验的对象
@@ -480,8 +498,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言对象为<code>null</code>.<br>
      * 如果不为<code>null</code> 则抛出 异常,
+
      * 且允许自定义错误描述信息模板.
      *
      * @param reference
@@ -505,7 +525,9 @@ public final class Validator {
 
     /**
      * 校验并断言任意对象不是<code>null</code>. 如果是<code>null</code>,
+
      * 则抛出 异常
+
      *
      * @param reference
      *            待校验的对象
@@ -526,7 +548,9 @@ public final class Validator {
 
     /**
      * 校验并断言任意对象不是<code>null</code>. 如果是<code>null</code>,
+
      * 则抛出 异常, 且允许自定义错误描述信息.
+
      *
      * @param reference
      *            待校验的对象
@@ -549,7 +573,9 @@ public final class Validator {
 
     /**
      * 校验并断言任意对象不是<code>null</code>. 如果是<code>null</code>,
+
      * 则抛出 异常, 且允许自定义错误描述信息模板.
+
      *
      * @param reference
      *            待校验的对象
@@ -574,7 +600,9 @@ public final class Validator {
 
     /**
      * 校验并断言任意集合（如:List/Set）不是空. 如果是空,
+
      * 则抛出 异常
+
      *
      * @param collection
      *            待校验的集合（如:List/Set）
@@ -593,7 +621,9 @@ public final class Validator {
 
     /**
      * 校验并断言任意集合（如:List/Set）不是空. 如果是空,
+
      * 则抛出 异常, 且允许自定义错误描述信息.
+
      *
      * @param collection
      *            待校验的集合（如:List/Set）
@@ -614,7 +644,9 @@ public final class Validator {
 
     /**
      * 校验并断言任意集合（如:List/Set）不是空. 如果是空,
+
      * 则抛出 异常, 且允许自定义错误描述信息.
+
      *
      * @param collection
      *            待校验的集合（如:List/Set）
@@ -637,7 +669,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言任意Map不是空. 如果是空, 则抛出 异常
+
      *
      * @param map
      *            待校验的Map
@@ -655,7 +689,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言任意Map不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param map
@@ -676,7 +712,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言任意Map不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param map
@@ -699,7 +737,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言任意对象数组不是空. 如果是空, 则抛出 异常
+
      *
      * @param arr
      *            待校验的对象数组
@@ -719,7 +759,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言任意对象数组不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -743,7 +785,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言任意对象数组不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -768,7 +812,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言字节型数组不是空. 如果是空, 则抛出 异常
+
      *
      * @param arr
      *            待校验的字节型数组
@@ -786,7 +832,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言字节型数组不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -808,7 +856,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言字节型数组不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -831,7 +881,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言整数型数组不是空. 如果是空, 则抛出 异常
+
      *
      * @param arr
      *            待校验的整数型数组
@@ -849,7 +901,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言整数型数组不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -871,7 +925,9 @@ public final class Validator {
     }
 
     /**
+
      * 校验并断言整数型数组不是空. 如果是空, 则抛出 异常,
+
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -1079,7 +1135,9 @@ public final class Validator {
      *
      * @param arr
      *            任意对象数组
+
      * @param <T> 泛型调用
+
      * @return <code>true</code> 是空对象数组; <code>false</code> 不是空对象数组
      * @author zhd
      * @since 1.0.0
@@ -1348,8 +1406,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为通用身份证( <code>ID Card</code> )格式.<br>
      * <br>
+
      * 注: 此检查不够严格，只要包含至少6位的字母与数字组合均可通过.
      *
      * @param reference
@@ -1366,8 +1426,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为通用身份证( <code>ID Card</code> )格式.<br>
      * <br>
+
      * 注: 此检查不够严格，只要包含至少6位的字母与数字组合均可通过.
      *
      * @param reference
@@ -1392,8 +1454,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为中国（含港澳台）身份证( <code>ID Card</code> )格式.<br>
      * <br>
+
      * 注: 此检查较为严格，但只保证中国（含港澳台）身份证( <code>ID Card</code>
      * )格式符合身份证编码规则，不能确定身份证本身是否有效.
      *
@@ -1415,8 +1479,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为中国（含港澳台）身份证( <code>ID Card</code> )格式.<br>
      * <br>
+
      * 注: 此检查较为严格，但只保证中国（含港澳台）身份证( <code>ID Card</code>
      * )格式符合身份证编码规则，不能确定身份证本身是否有效.
      *
@@ -1442,6 +1508,7 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为密码格式.<br>
      * 使用默认规则： 
      *
@@ -1449,6 +1516,7 @@ public final class Validator {
      *            待校验的对象
      * @return <code>true</code> 是密码格式;
      *         <code>false</code> 不是密码格式
+
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1459,15 +1527,19 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为密码格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
      * @param minLen
      *            自定义允许的最小长度(包含).
+
      * @return <code>true</code> 是密码格式;
      *         <code>false</code> 不是密码格式
+
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1478,8 +1550,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为密码格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1487,8 +1561,10 @@ public final class Validator {
      *            自定义允许的最小长度(包含).
      * @param maxLen
      *            自定义允许的最大长度(包含).
+
      * @return <code>true</code> 是密码格式;
      *         <code>false</code> 不是密码格式
+
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1500,14 +1576,18 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为密码格式.
+
      *
      * @param reference
      *            待校验的对象
      * @param regex
      *            自定义正则表达式对<code>reference</code>进行校验.若为<code>null</code>,则使用默认正则表达式.
+
      * @return <code>true</code> 是密码格式;
      *         <code>false</code> 不是密码格式
+
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1540,8 +1620,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>URL</code> )地址格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1581,8 +1663,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>MD5</code> )16进制表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1606,8 +1690,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>SHA1</code> )16进制表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1623,8 +1709,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>SHA1</code> )16进制表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1648,8 +1736,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>WSID</code> )表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1665,8 +1755,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>WSID</code> )表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1690,8 +1782,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>BASE64</code> )表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1707,8 +1801,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>BASE64</code> )表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1732,8 +1828,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>HEX</code> )16进制表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
@@ -1749,8 +1847,10 @@ public final class Validator {
     }
 
     /**
+
      * 校验任意对象是否为( <code>HEX</code> )16进制表示的格式.<br>
      * 使用默认规则： 
+
      *
      * @param reference
      *            待校验的对象
