@@ -305,11 +305,9 @@ public class HmacSignatureBuilder {
     /**
      * 设置需要加入运算的服务器授权给客户端的私密密钥.（与<code>apiKey</code>配套，但不公开）.
      *
-<<<<<<< HEAD
+
      * @param apiSecret
-=======
-     * @param apiSecretBytes
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      *            服务器授权给客户端的私密密钥.（与<code>apiKey</code>配套，但不公开）
      * @return 当前HMAC建造器对象
      * @author zhd
@@ -323,11 +321,9 @@ public class HmacSignatureBuilder {
     /**
      * 设置需要加入运算的请求数据.
      *
-<<<<<<< HEAD
+
      * @param payload
-=======
-     * @param payloadBytes
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      *            请求数据
      * @return 当前HMAC建造器对象
      * @author zhd
@@ -339,11 +335,9 @@ public class HmacSignatureBuilder {
     }
 
     /**
-<<<<<<< HEAD
+
      * 完成HMAC认证消息的构建,并获得签名摘要值.
-=======
-     * 完成HMAC认证消息的构建,并获得签名摘要值.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @return HMAC原始签名摘要值的内存数据字节.若构建失败，则返回<code>null</code>
@@ -433,11 +427,9 @@ public class HmacSignatureBuilder {
     }
 
     /**
-<<<<<<< HEAD
+
      * 完成HMAC认证消息的构建,并获得16进制编码表示的签名摘要值.<br>
-=======
-     * 完成HMAC认证消息的构建,并获得16进制编码表示的签名摘要值.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      * 
      * @return HMAC的16进制编码表示的签名摘要值字符串.若构建失败，则返回<code>null</code>
@@ -466,11 +458,9 @@ public class HmacSignatureBuilder {
     }
 
     /**
-<<<<<<< HEAD
+
      * 完成HMAC认证消息的构建,并获得base64编码表示的签名摘要值.<br>
-=======
-     * 完成HMAC认证消息的构建,并获得base64编码表示的签名摘要值.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      * 
      * @return HMAC的base64编码表示的签名摘要值字符串.若构建失败，则返回<code>null</code>
@@ -500,11 +490,9 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证成功.<br>
-<<<<<<< HEAD
+
      * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
-=======
-     * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -520,11 +508,9 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证成功.<br>
-<<<<<<< HEAD
+
      * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
-=======
-     * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -584,11 +570,9 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证失败.<br>
-<<<<<<< HEAD
+
      * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
-=======
-     * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -604,11 +588,9 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证失败.<br>
-<<<<<<< HEAD
+
      * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
-=======
-     * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -667,11 +649,9 @@ public class HmacSignatureBuilder {
     }
 
     /**
-<<<<<<< HEAD
+
      * 判断期望摘要是否与已构建的摘要相等.<br>
-=======
-     * 判断期望摘要是否与已构建的摘要相等.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认基于构建模式: <code>BuilderMode.FULL</code> 的方式判断
      *
      * @param expectedSignature
@@ -703,11 +683,9 @@ public class HmacSignatureBuilder {
     }
 
     /**
-<<<<<<< HEAD
+
      * 判断期望摘要是否与已构建的摘要相等.<br>
-=======
-     * 判断期望摘要是否与已构建的摘要相等.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认基于构建模式: <code>BuilderMode.FULL</code> 的方式判断
      *
      * @param expectedSignatureHex
@@ -744,11 +722,9 @@ public class HmacSignatureBuilder {
     }
 
     /**
-<<<<<<< HEAD
+
      * 判断期望摘要是否与已构建的摘要相等.<br>
-=======
-     * 判断期望摘要是否与已构建的摘要相等.<br/>
->>>>>>> 087b8dd918d74930dcd7c402b3994f6712ccfd58
+
      * 默认基于构建模式: <code>BuilderMode.FULL</code> 的方式判断
      *
      * @param expectedSignatureBase64
