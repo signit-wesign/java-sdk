@@ -24,14 +24,6 @@ package cn.signit.sdk;
  * SOFTWARE.
  */
 
-/**
- * 
- * 此SDK的通用异常类,便于使用者单独识别捕获.
- * </p>
- *
- * @author Ning
- * @since 1.0.0
- */
 public class SignitException extends Exception {
 
     private static final long serialVersionUID = 5938953401116767L;

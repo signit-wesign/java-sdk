@@ -4,13 +4,6 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
-/**
-* 基于Fastjson的反序列化工具
-* @ClassName FastjsonDecoder
-* @author ZhangHongdong
-* @date 2016年9月6日-下午5:47:17
-* @version 0.0.2
-*/
 public final class FastjsonDecoder {
 	
 	/**
@@ -28,6 +21,7 @@ public final class FastjsonDecoder {
 	* 反序列化JSON字符串到指定的java bean对象
 	*@param jsonStr JSON字符串
 	*@param objectClass java bean对象字节码对象
+	*@param <T> 泛型参数
 	*@return java bean对象
 	*@since 0.0.2
 	*@author Zhanghongdong

@@ -28,12 +28,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * 校验方法调用时相关参数是否正确.
- *
- * @author zhd
- * @since 1.0.0
- */
 public final class Validator {
 
     private Validator() {
@@ -57,14 +51,14 @@ public final class Validator {
         public static final String EMAIL = "^[a-zA-Z0-9_\\.\\-\\+]+@[a-zA-Z0-9_\\.\\-\\+]+\\.[a-zA-Z]{2,5}$";
 
         /**
-         * 手机正则表达式. <br/>
-         * <br/>
-         * 规则说明：<br/>
-         * 中国大陆：开头1 3-8号段，后边跟9位数字<br/>
-         * 台湾：09开头后面跟8位数字<br/>
-         * 香港：9或6开头后面跟7位数字<br/>
-         * 澳门：66或68开头后面跟5位数字<br/>
-         * 注意：以上表达式只验证港澳台及大陆手机号码，不包含座机小灵通及区号等验证<br/>
+         * 手机正则表达式. <br>
+         * <br>
+         * 规则说明：<br>
+         * 中国大陆：开头1 3-8号段，后边跟9位数字<br>
+         * 台湾：09开头后面跟8位数字<br>
+         * 香港：9或6开头后面跟7位数字<br>
+         * 澳门：66或68开头后面跟5位数字<br>
+         * 注意：以上表达式只验证港澳台及大陆手机号码，不包含座机小灵通及区号等验证<br>
          * 
          * @since 1.0.0
          */
@@ -72,7 +66,7 @@ public final class Validator {
                 + "|^[0][9]\\d{8}$|^[6]([8|6])\\d{5}$";
 
         /**
-         * 整数正则表达式. <br/>
+         * 整数正则表达式. <br>
          * 包括正整数和负整数以及0.
          *
          * @since 1.0.0
@@ -126,9 +120,9 @@ public final class Validator {
                 + "(1\\d)||(2\\d)||(3[0-1]))\\d{3}([0-9]||X)$";
 
         /**
-         * 中国香港身份证正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * 中国香港身份证正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 一个英文+6个数字+(一个校验码，0~9或A)
          *
          * @since 1.0.0
@@ -136,9 +130,9 @@ public final class Validator {
         public static final String CHINA_HK_ID_CARD = "^[A-Z]{1,2}[0-9]{6}([0-9A])$";
 
         /**
-         * 中国澳门身份证正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * 中国澳门身份证正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 第一位1、5、7，后面6个数字，最后带括号的一位校验码0~9
          *
          * @since 1.0.0
@@ -146,9 +140,9 @@ public final class Validator {
         public static final String CHINA_MO_ID_CARD = "^[157][0-9]{6}([0-9])$";
 
         /**
-         * 中国台湾身份证正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * 中国台湾身份证正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 1个英文+9个数字
          *
          * @since 1.0.0
@@ -156,9 +150,9 @@ public final class Validator {
         public static final String CHINA_TW_ID_CARD = "^[A-Z][0-9]{9}$";
 
         /**
-         * 中国台湾身份证正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * 中国台湾身份证正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 6～50位，且由字母、数字、特殊可打印字符，且不含空格的任意2种的组合
          *
          * @since 1.0.0
@@ -168,9 +162,9 @@ public final class Validator {
         public static final String PASSWORD = PASSWORD_BASE + "{6,50}$";
 
         /**
-         * URL正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * URL正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 支持http/https/ftp/ftps/sftp/file/gopher/news/nntp/telnet方式的URL
          *
          * @since 1.0.0
@@ -178,9 +172,9 @@ public final class Validator {
         public static final String URL = "^(?:https?|ftp?|sftp|file|gopher|news|nntp|telnet):///?[^\\s/$.?#].[^\\s]*$";
 
         /**
-         * MD5正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * MD5正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 支持十六进制编码大/小写32个字符方式的MD5
          *
          * @since 1.0.0
@@ -188,9 +182,9 @@ public final class Validator {
         public static final String MD5 = "^[a-fA-F0-9]{32}$";
 
         /**
-         * SHA1正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * SHA1正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 支持十六进制编码大/小写40个字符方式的SHA1
          *
          * @since 1.0.0
@@ -198,9 +192,9 @@ public final class Validator {
         public static final String SHA1 = "^[a-fA-F0-9]{40}$";
 
         /**
-         * WSID正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * WSID正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * WSID_大写字母4个字符_十六进制编码大/小写32个字符
          *
          * @since 1.0.0
@@ -208,9 +202,9 @@ public final class Validator {
         public static final String WSID = "^WSID_[A-Z]{4}_[a-fA-F0-9]{32}$";
 
         /**
-         * BASE64编码正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * BASE64编码正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * <a href=
          * 'https://stackoverflow.com/questions/8571501/how-to-check-whether-the-string-is-base64-encoded-or-not'>https://stackoverflow.com/questions/8571501/how-to-check-whether-the-string-is-base64-encoded-or-not</a>
          *
@@ -219,9 +213,9 @@ public final class Validator {
         public static final String BASE64 = "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$";
 
         /**
-         * 16进制编码正则表达式.<br/>
-         * <br/>
-         * 规则说明：<br/>
+         * 16进制编码正则表达式.<br>
+         * <br>
+         * 规则说明：<br>
          * 0 1 2 3 4 5 6 7 8 9 a/A b/B c/C d/D e/E f/F
          * 
          * @since 1.0.0
@@ -231,8 +225,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式不为<code>false</code>.<br/>
-     * 如果为<code>false</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式不为<code>false</code>.<br>
+     * 如果为<code>false</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -248,8 +242,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式不为<code>false</code>.<br/>
-     * 如果为<code>false</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式不为<code>false</code>.<br>
+     * 如果为<code>false</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -267,8 +261,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式不为<code>false</code>.<br/>
-     * 如果为<code>false</code> 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言表达式不为<code>false</code>.<br>
+     * 如果为<code>false</code> 则抛出 异常,
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -289,8 +283,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式为<code>false</code>.<br/>
-     * 如果不为<code>false</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式为<code>false</code>.<br>
+     * 如果不为<code>false</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -308,8 +302,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式为<code>false</code>.<br/>
-     * 如果不为<code>false</code> 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言表达式为<code>false</code>.<br>
+     * 如果不为<code>false</code> 则抛出 异常,
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -330,8 +324,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式为<code>true</code>.<br/>
-     * 如果不为<code>true</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式为<code>true</code>.<br>
+     * 如果不为<code>true</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -347,8 +341,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式为<code>true</code>.<br/>
-     * 如果不为<code>true</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式为<code>true</code>.<br>
+     * 如果不为<code>true</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -366,8 +360,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式为<code>true</code>.<br/>
-     * 如果不为<code>true</code> 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言表达式为<code>true</code>.<br>
+     * 如果不为<code>true</code> 则抛出 异常,
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -388,8 +382,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式不为<code>true</code>.<br/>
-     * 如果为<code>true</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式不为<code>true</code>.<br>
+     * 如果为<code>true</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -405,8 +399,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式不为<code>true</code>.<br/>
-     * 如果为<code>true</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言表达式不为<code>true</code>.<br>
+     * 如果为<code>true</code> 则抛出 异常
      *
      * @param expression
      *            待校验的表达式
@@ -424,8 +418,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言表达式不为<code>true</code>.<br/>
-     * 如果为<code>true</code> 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言表达式不为<code>true</code>.<br>
+     * 如果为<code>true</code> 则抛出 异常,
      * 且允许自定义错误描述信息模板.
      *
      * @param expression
@@ -446,8 +440,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言对象为<code>null</code>.<br/>
-     * 如果不为<code>null</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言对象为<code>null</code>.<br>
+     * 如果不为<code>null</code> 则抛出 异常
      *
      * @param reference
      *            待校验的对象
@@ -465,8 +459,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言对象为<code>null</code>.<br/>
-     * 如果不为<code>null</code> 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言对象为<code>null</code>.<br>
+     * 如果不为<code>null</code> 则抛出 异常
      *
      * @param reference
      *            待校验的对象
@@ -486,8 +480,8 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言对象为<code>null</code>.<br/>
-     * 如果不为<code>null</code> 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言对象为<code>null</code>.<br>
+     * 如果不为<code>null</code> 则抛出 异常,
      * 且允许自定义错误描述信息模板.
      *
      * @param reference
@@ -511,7 +505,7 @@ public final class Validator {
 
     /**
      * 校验并断言任意对象不是<code>null</code>. 如果是<code>null</code>,
-     * 则抛出{@link java.lang.NullPointerException}异常
+     * 则抛出 异常
      *
      * @param reference
      *            待校验的对象
@@ -532,7 +526,7 @@ public final class Validator {
 
     /**
      * 校验并断言任意对象不是<code>null</code>. 如果是<code>null</code>,
-     * 则抛出{@link java.lang.NullPointerException}异常, 且允许自定义错误描述信息.
+     * 则抛出 异常, 且允许自定义错误描述信息.
      *
      * @param reference
      *            待校验的对象
@@ -555,7 +549,7 @@ public final class Validator {
 
     /**
      * 校验并断言任意对象不是<code>null</code>. 如果是<code>null</code>,
-     * 则抛出{@link java.lang.NullPointerException}异常, 且允许自定义错误描述信息模板.
+     * 则抛出 异常, 且允许自定义错误描述信息模板.
      *
      * @param reference
      *            待校验的对象
@@ -580,7 +574,7 @@ public final class Validator {
 
     /**
      * 校验并断言任意集合（如:List/Set）不是空. 如果是空,
-     * 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 则抛出 异常
      *
      * @param collection
      *            待校验的集合（如:List/Set）
@@ -599,7 +593,7 @@ public final class Validator {
 
     /**
      * 校验并断言任意集合（如:List/Set）不是空. 如果是空,
-     * 则抛出{@link java.lang.IllegalArgumentException}异常, 且允许自定义错误描述信息.
+     * 则抛出 异常, 且允许自定义错误描述信息.
      *
      * @param collection
      *            待校验的集合（如:List/Set）
@@ -620,7 +614,7 @@ public final class Validator {
 
     /**
      * 校验并断言任意集合（如:List/Set）不是空. 如果是空,
-     * 则抛出{@link java.lang.IllegalArgumentException}异常, 且允许自定义错误描述信息.
+     * 则抛出 异常, 且允许自定义错误描述信息.
      *
      * @param collection
      *            待校验的集合（如:List/Set）
@@ -643,7 +637,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言任意Map不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言任意Map不是空. 如果是空, 则抛出 异常
      *
      * @param map
      *            待校验的Map
@@ -661,7 +655,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言任意Map不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言任意Map不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param map
@@ -682,7 +676,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言任意Map不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言任意Map不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param map
@@ -705,7 +699,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言任意对象数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言任意对象数组不是空. 如果是空, 则抛出 异常
      *
      * @param arr
      *            待校验的对象数组
@@ -725,7 +719,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言任意对象数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言任意对象数组不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -749,7 +743,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言任意对象数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言任意对象数组不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -774,7 +768,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言字节型数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言字节型数组不是空. 如果是空, 则抛出 异常
      *
      * @param arr
      *            待校验的字节型数组
@@ -792,7 +786,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言字节型数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言字节型数组不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -814,7 +808,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言字节型数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言字节型数组不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -837,7 +831,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言整数型数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常
+     * 校验并断言整数型数组不是空. 如果是空, 则抛出 异常
      *
      * @param arr
      *            待校验的整数型数组
@@ -855,7 +849,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言整数型数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言整数型数组不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -877,7 +871,7 @@ public final class Validator {
     }
 
     /**
-     * 校验并断言整数型数组不是空. 如果是空, 则抛出{@link java.lang.IllegalArgumentException}异常,
+     * 校验并断言整数型数组不是空. 如果是空, 则抛出 异常,
      * 且允许自定义错误描述信息.
      *
      * @param arr
@@ -1085,6 +1079,7 @@ public final class Validator {
      *
      * @param arr
      *            任意对象数组
+     * @param <T> 泛型调用
      * @return <code>true</code> 是空对象数组; <code>false</code> 不是空对象数组
      * @author zhd
      * @since 1.0.0
@@ -1353,8 +1348,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为通用身份证( <code>ID Card</code> )格式.<br/>
-     * <br/>
+     * 校验任意对象是否为通用身份证( <code>ID Card</code> )格式.<br>
+     * <br>
      * 注: 此检查不够严格，只要包含至少6位的字母与数字组合均可通过.
      *
      * @param reference
@@ -1371,8 +1366,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为通用身份证( <code>ID Card</code> )格式.<br/>
-     * <br/>
+     * 校验任意对象是否为通用身份证( <code>ID Card</code> )格式.<br>
+     * <br>
      * 注: 此检查不够严格，只要包含至少6位的字母与数字组合均可通过.
      *
      * @param reference
@@ -1397,8 +1392,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为中国（含港澳台）身份证( <code>ID Card</code> )格式.<br/>
-     * <br/>
+     * 校验任意对象是否为中国（含港澳台）身份证( <code>ID Card</code> )格式.<br>
+     * <br>
      * 注: 此检查较为严格，但只保证中国（含港澳台）身份证( <code>ID Card</code>
      * )格式符合身份证编码规则，不能确定身份证本身是否有效.
      *
@@ -1420,8 +1415,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为中国（含港澳台）身份证( <code>ID Card</code> )格式.<br/>
-     * <br/>
+     * 校验任意对象是否为中国（含港澳台）身份证( <code>ID Card</code> )格式.<br>
+     * <br>
      * 注: 此检查较为严格，但只保证中国（含港澳台）身份证( <code>ID Card</code>
      * )格式符合身份证编码规则，不能确定身份证本身是否有效.
      *
@@ -1447,13 +1442,13 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为密码( <code>Password</code> )格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.PASSWORD}
+     * 校验任意对象是否为密码格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
-     * @return <code>true</code> 是密码( <code>Password</code> )格式;
-     *         <code>false</code> 不是密码( <code>Password</code> )格式
+     * @return <code>true</code> 是密码格式;
+     *         <code>false</code> 不是密码格式
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1464,15 +1459,15 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为密码( <code>Password</code> )格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.PASSWORD}
+     * 校验任意对象是否为密码格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
      * @param minLen
      *            自定义允许的最小长度(包含).
-     * @return <code>true</code> 是密码( <code>Password</code> )格式;
-     *         <code>false</code> 不是密码( <code>Password</code> )格式
+     * @return <code>true</code> 是密码格式;
+     *         <code>false</code> 不是密码格式
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1483,8 +1478,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为密码( <code>Password</code> )格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.PASSWORD}
+     * 校验任意对象是否为密码格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1492,8 +1487,8 @@ public final class Validator {
      *            自定义允许的最小长度(包含).
      * @param maxLen
      *            自定义允许的最大长度(包含).
-     * @return <code>true</code> 是密码( <code>Password</code> )格式;
-     *         <code>false</code> 不是密码( <code>Password</code> )格式
+     * @return <code>true</code> 是密码格式;
+     *         <code>false</code> 不是密码格式
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1505,14 +1500,14 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为密码( <code>Password</code> )格式.
+     * 校验任意对象是否为密码格式.
      *
      * @param reference
      *            待校验的对象
      * @param regex
      *            自定义正则表达式对<code>reference</code>进行校验.若为<code>null</code>,则使用默认正则表达式.
-     * @return <code>true</code> 是密码( <code>Password</code> )格式;
-     *         <code>false</code> 不是密码( <code>Password</code> )格式
+     * @return <code>true</code> 是密码格式;
+     *         <code>false</code> 不是密码格式
      * @param <T>
      *            校验结果
      * @author zhd
@@ -1545,8 +1540,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>URL</code> )地址格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.URL}
+     * 校验任意对象是否为( <code>URL</code> )地址格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1586,8 +1581,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>MD5</code> )16进制表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.MD5}
+     * 校验任意对象是否为( <code>MD5</code> )16进制表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1611,8 +1606,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>SHA1</code> )16进制表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.SHA1}
+     * 校验任意对象是否为( <code>SHA1</code> )16进制表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1628,8 +1623,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>SHA1</code> )16进制表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.SHA1}
+     * 校验任意对象是否为( <code>SHA1</code> )16进制表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1653,8 +1648,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>WSID</code> )表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.WSID}
+     * 校验任意对象是否为( <code>WSID</code> )表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1670,8 +1665,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>WSID</code> )表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.WSID}
+     * 校验任意对象是否为( <code>WSID</code> )表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1695,8 +1690,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>BASE64</code> )表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.BASE64}
+     * 校验任意对象是否为( <code>BASE64</code> )表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1712,8 +1707,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>BASE64</code> )表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.BASE64}
+     * 校验任意对象是否为( <code>BASE64</code> )表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1737,8 +1732,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>HEX</code> )16进制表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.HEX}
+     * 校验任意对象是否为( <code>HEX</code> )16进制表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象
@@ -1754,8 +1749,8 @@ public final class Validator {
     }
 
     /**
-     * 校验任意对象是否为( <code>HEX</code> )16进制表示的格式.<br/>
-     * 使用默认规则：{@link cn.signit.wesign.lib.common.Validator.RegexType.HEX}
+     * 校验任意对象是否为( <code>HEX</code> )16进制表示的格式.<br>
+     * 使用默认规则： 
      *
      * @param reference
      *            待校验的对象

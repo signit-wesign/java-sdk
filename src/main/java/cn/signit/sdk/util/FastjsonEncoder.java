@@ -7,13 +7,6 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import cn.signit.sdk.type.NamingStyle;
 
-/**
-* 基于Fastjson的序列化工具
-* @ClassName FastjsonEncoder
-* @author ZhangHongdong
-* @date 2016年9月6日-下午5:46:53
-* @version 0.0.2
-*/
 public final class FastjsonEncoder{
 	
 	/**
@@ -38,7 +31,7 @@ public final class FastjsonEncoder{
 	}
 	
 	/**
-	* 将指定java对象序列化成相应字符串<br/>
+	* 将指定java对象序列化成相应字符串<br>
 	* (默认：使用unicode编码（当有中文字段时）)
 	*@param obj java对象
 	*@param namingStyle 命名风格
@@ -50,7 +43,7 @@ public final class FastjsonEncoder{
 	}
 	
 	/**
-	* 将指定java对象序列化成相应字符串<br/>
+	* 将指定java对象序列化成相应字符串<br>
 	* (默认：使用NamingStyle.CAMEL命名风格)
 	*@param obj java对象
 	*@param useUnicode 是否使用unicode编码（当有中文字段时）
@@ -62,10 +55,9 @@ public final class FastjsonEncoder{
 	}
 	
 	/**
-	* 将指定java对象序列化成相应字符串<br/>
+	* 将指定java对象序列化成相应字符串<br>
 	* (默认：使用unicode编码（当有中文字段时）;使用NamingStyle.CAMEL命名风格)
 	*@param obj java对象
-	*@param useUnicode 是否使用unicode编码（当有中文字段时）
 	*@return 序列化后的json字符串
 	*@author Zhanghongdong
 	*/

@@ -30,22 +30,6 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-/**
- * HMAC认证请求相关构建按工具（包括摘要计算，摘要值比较等)类.<br/>
- * <br/>
- * 算法使用规则：<br/>
- * <ul>
- * <li>1.使用 <code>apiSecret</code> 作为HMAC认证的密钥 <code>KEY</code></li>
- * <li>2.根据 <code>KEY</code> 和 <code>algorithm</code> 初始化HMAC，
- * 将加入运算的字段根据"名称"字典排序后取其对应值， 值间分别以某分隔符(如：'\n')分隔,
- * 且最终也以该分隔符(如：'\n')结尾，构造成的数据作为HMAC输入参数来生成最终摘要值</li>
- * <li>3.将2中得到的原始摘要值（不可打印）进行Base64/16进制编码，得到最终可打印的 <code>signature</code>
- * 字符串值</li>
- * </ul>
- *
- * @author zhd
- * @since 1.0.0
- */
 public class HmacSignatureBuilder {
 
     /**
@@ -321,7 +305,7 @@ public class HmacSignatureBuilder {
     /**
      * 设置需要加入运算的服务器授权给客户端的私密密钥.（与<code>apiKey</code>配套，但不公开）.
      *
-     * @param apiSecretBytes
+     * @param apiSecret
      *            服务器授权给客户端的私密密钥.（与<code>apiKey</code>配套，但不公开）
      * @return 当前HMAC建造器对象
      * @author zhd
@@ -335,7 +319,7 @@ public class HmacSignatureBuilder {
     /**
      * 设置需要加入运算的请求数据.
      *
-     * @param payloadBytes
+     * @param payload
      *            请求数据
      * @return 当前HMAC建造器对象
      * @author zhd
@@ -347,7 +331,7 @@ public class HmacSignatureBuilder {
     }
 
     /**
-     * 完成HMAC认证消息的构建,并获得签名摘要值.<br/>
+     * 完成HMAC认证消息的构建,并获得签名摘要值.
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @return HMAC原始签名摘要值的内存数据字节.若构建失败，则返回<code>null</code>
@@ -437,7 +421,7 @@ public class HmacSignatureBuilder {
     }
 
     /**
-     * 完成HMAC认证消息的构建,并获得16进制编码表示的签名摘要值.<br/>
+     * 完成HMAC认证消息的构建,并获得16进制编码表示的签名摘要值.<br>
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      * 
      * @return HMAC的16进制编码表示的签名摘要值字符串.若构建失败，则返回<code>null</code>
@@ -466,7 +450,7 @@ public class HmacSignatureBuilder {
     }
 
     /**
-     * 完成HMAC认证消息的构建,并获得base64编码表示的签名摘要值.<br/>
+     * 完成HMAC认证消息的构建,并获得base64编码表示的签名摘要值.<br>
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      * 
      * @return HMAC的base64编码表示的签名摘要值字符串.若构建失败，则返回<code>null</code>
@@ -496,7 +480,7 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证成功.<br>
-     * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
+     * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -512,7 +496,7 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证成功.<br>
-     * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
+     * 若认证不成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -572,7 +556,7 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证失败.<br>
-     * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
+     * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -588,7 +572,7 @@ public class HmacSignatureBuilder {
 
     /**
      * 断言认证失败.<br>
-     * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br/>
+     * 若认证成功,则抛出异常{@link java.lang.IllegalArgumentException}.<br>
      * 默认采用：<code>BuilderMode.FULL</code> 方式构建加入运算的数据.
      *
      * @param expectedSignature
@@ -647,7 +631,7 @@ public class HmacSignatureBuilder {
     }
 
     /**
-     * 判断期望摘要是否与已构建的摘要相等.<br/>
+     * 判断期望摘要是否与已构建的摘要相等.<br>
      * 默认基于构建模式: <code>BuilderMode.FULL</code> 的方式判断
      *
      * @param expectedSignature
@@ -679,7 +663,7 @@ public class HmacSignatureBuilder {
     }
 
     /**
-     * 判断期望摘要是否与已构建的摘要相等.<br/>
+     * 判断期望摘要是否与已构建的摘要相等.<br>
      * 默认基于构建模式: <code>BuilderMode.FULL</code> 的方式判断
      *
      * @param expectedSignatureHex
@@ -716,7 +700,7 @@ public class HmacSignatureBuilder {
     }
 
     /**
-     * 判断期望摘要是否与已构建的摘要相等.<br/>
+     * 判断期望摘要是否与已构建的摘要相等.<br>
      * 默认基于构建模式: <code>BuilderMode.FULL</code> 的方式判断
      *
      * @param expectedSignatureBase64

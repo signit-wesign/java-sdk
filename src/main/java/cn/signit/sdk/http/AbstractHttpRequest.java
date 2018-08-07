@@ -32,13 +32,6 @@ import java.util.Scanner;
 
 import cn.signit.sdk.SignitException;
 
-/**
- * 网络请求的抽象父类.
- * </p>
- *
- * @author Ning
- * @since 1.0.0
- */
 public abstract class AbstractHttpRequest {
     protected String url;
 

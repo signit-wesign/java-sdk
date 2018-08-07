@@ -4,14 +4,7 @@ import java.util.List;
 
 import cn.signit.sdk.type.AcceptDataType;
 
-/**
- * 
- * 签名的请求体封装.
- * </p>
- *
- * @author Ning
- * @since 1.0.0
- */
+
 public class SignatureRequest {
     private FileData fileData;
     private AcceptDataType acceptDataType;
