@@ -24,32 +24,41 @@
 package cn.signit.sdk.pojo;
 
 public class FileData {
-    private String url;
-    private String base64;
+	private String url;
+	private String base64;
+	private Boolean enableSinglePage;
 
-    public FileData() {
-    }
+	public Boolean getEnableSinglePage() {
+		return enableSinglePage;
+	}
 
-    public FileData(String url) {
-        this.url = url;
-    }
+	public void setEnableSinglePage(Boolean enableSinglePage) {
+		this.enableSinglePage = enableSinglePage;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public FileData() {
+	}
 
-    public FileData setUrl(String url) {
-        this.url = url;
-        return this;
-    }
+	public FileData(String url) {
+		this.url = url;
+	}
 
-    public String getBase64() {
-        return base64;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public FileData setBase64(String base64) {
-        this.base64 = base64;
-        return this;
-    }
+	public FileData setUrl(String url) {
+		this.url = url;
+		return this;
+	}
+
+	public String getBase64() {
+		return base64;
+	}
+
+	public FileData setBase64(String base64) {
+		this.base64 = base64;
+		return this;
+	}
 
 }
