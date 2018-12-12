@@ -23,6 +23,7 @@
  */
 package cn.signit.sdk.pojo;
 
+import cn.signit.sdk.pojo.Signer.Position.RectanglePosition.RectanglePositionBuilder;
 import cn.signit.sdk.type.Direction;
 
 public class Signer {
@@ -127,9 +128,23 @@ public class Signer {
                 this.keywordPosition = keywordPosition;
                 return this;
             }
+            
+            public PositionBuilder withKeywordPosition(KeywordPosition.KeywordPositionBuilder keywordPositionBuilder) {
+                if(keywordPositionBuilder!=null) {
+                    this.keywordPosition = keywordPositionBuilder.build();
+                }
+                return this;
+            }
 
             public PositionBuilder withRectanglePosition(RectanglePosition rectanglePosition) {
                 this.rectanglePosition = rectanglePosition;
+                return this;
+            }
+            
+            public PositionBuilder withRectanglePosition(RectanglePositionBuilder rectanglePositionBuilder) {
+                if (rectanglePosition != null) {
+                    this.rectanglePosition = rectanglePositionBuilder.build();
+                }
                 return this;
             }
 
@@ -389,7 +404,7 @@ public class Signer {
                 this.page = page;
             }
 
-            static class RectanglePositionBuilder {
+            public static class RectanglePositionBuilder {
                 private Float lrx;
                 private Float lry;
                 private Float ulx;
@@ -405,7 +420,13 @@ public class Signer {
                     return this;
                 }
 
+                @Deprecated
                 public RectanglePositionBuilder withLyx(Float lry) {
+                    this.lry = lry;
+                    return this;
+                }
+
+                public RectanglePositionBuilder withLry(Float lry) {
                     this.lry = lry;
                     return this;
                 }
@@ -425,7 +446,13 @@ public class Signer {
                     return this;
                 }
 
+                @Deprecated
                 public RectanglePositionBuilder withLrx(Integer page) {
+                    this.page = page;
+                    return this;
+                }
+                
+                public RectanglePositionBuilder withPage(Integer page) {
                     this.page = page;
                     return this;
                 }

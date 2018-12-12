@@ -2,10 +2,10 @@ package cn.signit.sdk.pojo;
 
 import java.util.List;
 
+import cn.signit.sdk.pojo.request.AbstractSignitRequest;
 import cn.signit.sdk.type.AcceptDataType;
 
-
-public class SignatureRequest {
+public class SignatureRequest extends AbstractSignitRequest<SignatureResponse> {
     private FileData fileData;
     private AcceptDataType acceptDataType;
     private String returnUrl;
@@ -104,6 +104,11 @@ public class SignatureRequest {
 
     public void setSignDetails(List<Signer> signDetails) {
         this.signDetails = signDetails;
+    }
+
+    @Override
+    public Class<SignatureResponse> getResponseClass() {
+        return SignatureResponse.class;
     }
 
 }

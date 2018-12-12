@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
@@ -37,13 +39,24 @@ import cn.signit.sdk.pojo.OauthData;
 import cn.signit.sdk.pojo.SignatureRequest;
 import cn.signit.sdk.pojo.SignatureResponse;
 import cn.signit.sdk.pojo.WebhookData;
+import cn.signit.sdk.pojo.request.AbstractSignitRequest;
+import cn.signit.sdk.pojo.response.AbstractSignitResponse;
+import cn.signit.sdk.pojo.webhook.response.AbstractWebhookResponseData;
+import cn.signit.sdk.pojo.webhook.response.WebhookResponse;
 import cn.signit.sdk.type.TokenType;
 import cn.signit.sdk.util.FastjsonDecoder;
+import cn.signit.sdk.util.HmacSignatureBuilder;
 import cn.signit.sdk.util.RequestParam;
 import cn.signit.sdk.util.Validator;
 
 /**
  * 易企签快捷签署 Java SDK的基本操作类
+ * 
+ * <pre>
+2018-12-8
+将此Client扩展为易企签所有开放平台应用公共使用的Client
+since：1.0.2
+ * </pre>
  *
  */
 public class SignitClient {
@@ -52,20 +65,39 @@ public class SignitClient {
     private HttpClient httpClient;
     private final int MAX_COUNT = 3;
     private final AtomicInteger count = new AtomicInteger(MAX_COUNT);
-    private final Pattern LEFT_QUOTATION = Pattern.compile("\"\\{");
-    private final Pattern RIGHT_QUOTATION = Pattern.compile("\\}\"");
-    private final Pattern BACKLASH_QUOTATION = Pattern.compile("\\\\\"");
+    private final static Pattern LEFT_QUOTATION = Pattern.compile("\"\\{");
+    private final static Pattern RIGHT_QUOTATION = Pattern.compile("\\}\"");
+    private final static Pattern BACKLASH_QUOTATION = Pattern.compile("\\\\\"");
 
     private String BASE_URL;
 
     private String OAUTH_TOKEN_URL;
 
+    /**
+     * 默认为：快捷签署客户端.
+     *
+     * @param auth
+     *            授权信息
+     * @since 1.0.0
+     */
     public SignitClient(Authentication auth) {
         this(auth, new HttpClient(), RequestParam.DEFAULT_ENVIRONMENT_URL);
     }
 
-    public SignitClient(Authentication auth, String url) {
-        this(auth, new HttpClient(), url);
+    /**
+     * 默认为：快捷签署客户端. </br>
+     * 期望直接设置应用的请求路径，故而舍弃该方法
+     * 
+     * @param auth
+     *            授权信息
+     * @param envUrl
+     *            应用环境
+     * @since 1.0.0
+     * @since 1.0.2 废弃
+     */
+    @Deprecated
+    public SignitClient(Authentication auth, String envUrl) {
+        this(auth, new HttpClient(), envUrl);
     }
 
     private SignitClient(Authentication auth, HttpClient httpClient, String url) {
@@ -74,8 +106,26 @@ public class SignitClient {
         this.httpClient = httpClient;
     }
 
+    /**
+     * 应用客户端.
+     *
+     * @param appId
+     *            APP ID
+     * @param secretKey
+     *            APP Secret
+     * @param appUrl
+     *            应用请求路径
+     * @since 1.0.2
+     */
+    public SignitClient(String appId, String secretKey, String appUrl) {
+        this.auth = new Authentication(appId, secretKey);
+        this.BASE_URL = appUrl;
+        this.OAUTH_TOKEN_URL = RequestParam.DEFAULT_ENVIRONMENT_URL + RequestParam.DEFAULT_OAUTH_TOKEN_URL;
+        this.httpClient = new HttpClient();
+    }
+
     private void setUrl(String environmentUrl) {
-		String tempUrl = environmentUrl == null || environmentUrl.trim()
+        String tempUrl = environmentUrl == null || environmentUrl.trim()
                 .equals("") ? RequestParam.DEFAULT_ENVIRONMENT_URL : environmentUrl;
         BASE_URL = new StringBuilder().append(tempUrl)
                 .append(RequestParam.DEFAULT_BASE_API_URL)
@@ -85,21 +135,61 @@ public class SignitClient {
                 .toString();
     }
 
+    /**
+     * 
+     * 不期望用户修改应用环境. 如有需要请直接在初始化时直接设置应用请求路径
+     * 
+     *
+     * @param url
+     *            应用环境
+     * @return 修改应用环境后的快捷签署客户端
+     * @since 1.0.0
+     * @since 1.0.2 废弃
+     */
+    @Deprecated
     public SignitClient setEnvironmentUrl(String url) {
         setUrl(url);
         return this;
     }
 
+    /**
+     * 设置授权请求路径.
+     *
+     * @param url
+     *            授权请求路径
+     * @return 修改授权路径后的应用客户端
+     */
     public SignitClient setOauthUrl(String url) {
-        BASE_URL = url;
+        OAUTH_TOKEN_URL = url;
         return this;
     }
 
+    /**
+     * 设置快捷签署请求路径. </br>
+     * 期望在客戶端初始化时设置应用请求路径，故而废弃
+     * 
+     * @param url
+     *            快捷签署请求路径
+     * @return 快捷签署客户端
+     * @since 1.0.0
+     * @since 1.0.2 废弃
+     */
+    @Deprecated
     public SignitClient setSignUrl(String url) {
         BASE_URL = url;
         return this;
     }
 
+    /**
+     * 发送快捷签署请求.
+     *
+     * @param request
+     *            快捷签署请求
+     * @return 快捷签署响应
+     * @throws SignitException
+     * @throws IOException
+     * @since 1.0.0
+     */
     public SignatureResponse sendSignatureRequest(SignatureRequest request) throws SignitException, IOException {
         if (request == null) {
             return null;
@@ -145,10 +235,11 @@ public class SignitClient {
         if (apiKey == null || secretKey == null) {
             throw new SignitException("请完善开发者账户数据");
         }
+        TokenType tmpGrantType = grantType != null ? grantType : TokenType.CLIENT_CREDENTIALS;
         String response = httpClient.withAuth(auth)
                 .withGetParam(RequestParam.CLIENT_ID, apiKey)
                 .withGetParam(RequestParam.CLIENT_SECRET, secretKey)
-                .withGetParam(RequestParam.GRANT_TYPE, TokenType.CLIENT_CREDENTIALS.name()
+                .withGetParam(RequestParam.GRANT_TYPE, tmpGrantType.name()
                         .toLowerCase())
                 .get(OAUTH_TOKEN_URL)
                 .getLastResponse();
@@ -159,6 +250,13 @@ public class SignitClient {
         return FastjsonDecoder.decodeAsBean(response, OauthData.class);
     }
 
+    /**
+     * 快捷签署webhook响应数据解析.
+     *
+     * @param webhook
+     * @return
+     * @since 1.0.0
+     */
     public WebhookData parseWebhookData(String webhook) {
         if (webhook == null || webhook.trim()
                 .length() <= 0) {
@@ -170,6 +268,128 @@ public class SignitClient {
                 .replaceAll("}");
         webhook = BACKLASH_QUOTATION.matcher(webhook)
                 .replaceAll("\"");
+
         return FastjsonDecoder.decodeAsBean(webhook, WebhookData.class);
     }
+
+    /**
+     * 
+     * 解析webhook响应数据.
+     *
+     * @param webhook
+     * @return
+     * @since 1.0.2
+     */
+    public static <W extends AbstractWebhookResponseData> WebhookResponse parseWebhookResponse(String webhook) {
+        return FastjsonDecoder.decodeAsBean(webhook, WebhookResponse.class);
+    }
+
+    public <T extends AbstractSignitResponse> T execute(AbstractSignitRequest<T> request) throws SignitException {
+        if (request == null) {
+            return null;
+        }
+        if (!auth.hasAccessTokenType() || !auth.hasAppId() || !auth.hasSecretKey()) {
+            throw new SignitException("请完善开发者信息");
+        }
+        httpClient.withAuth(auth)
+                .withPostObject(request);
+        getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
+        return retrySendRequest(request.getResponseClass());
+    }
+
+    private <T> T retrySendRequest(Class<T> responseClass) throws SignitException {
+        if (count.decrementAndGet() <= -1) {
+            throw new SignitException("请核实开发者账户数据是否无误");
+        }
+        try {
+            return httpClient.withAuth(auth)
+                    .post(BASE_URL)
+                    .AsObject(responseClass);
+        } catch (SignitException e) {
+            if ("invalid_token".equals(e.getMessage())) {
+                // 重新授权
+                getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    return retrySendRequest(responseClass);
+                }
+                return retrySendRequest(responseClass);
+            } else {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw new SignitException(e);
+        }
+    }
+
+    /**
+     * 
+     * 客户端验证服务器的webhook响应数据.
+     * </p>
+     * 
+     * @param signitSignature
+     *            webhook响应header中x-signit-signature数据。服务器构建的hmac，用于客户端验证服务器
+     * @param appId
+     *            APP ID
+     * @param appSecretKey
+     *            APP Secret
+     * @param scheme
+     *            服务器发送给客户端的协议: http、https
+     * @param method
+     *            服务器发送给客户端的方式:POST
+     * @param contentType
+     *            服务器发送给客户端的数据格式
+     * @param body
+     *            webhook响应body数据
+     * @param nonce
+     *            webhook响应header中x-signit-nonce数据。随机数，用于防止重放攻击
+     * @param dateString
+     *            webhook响应header中x-signit-date数据。日期字符串，用于防止重放攻击
+     * @return 验证结果： true-是服务器发送给客户端的数据；false-验证失败
+     * @since 1.0.2
+     */
+    public static boolean verify(String signitSignature, String appId, HmacSignatureBuilder builder) {
+        if (builder == null || appId == null || signitSignature == null) {
+            return false;
+        }
+        String selfBuiltHmac = builder.getDefaultAlgorithm() + " " + appId + ":" + builder.buildAsBase64();
+        return selfBuiltHmac.equals(signitSignature);
+    }
+
+    /**
+     * 客户端验证服务器的webhook响应数据
+     * 
+     * @param appId
+     *            APP ID
+     * 
+     * @param appSecretKey
+     *            APP Secret
+     * @param body
+     *            webhook响应具体数据。考虑到request中只能获取到body一次，故而需要在方法外获取并传递给此方法
+     * @param request
+     *            服务端向客户端发起的请求
+     * @return 验证结果： true-是服务器发送给客户端的数据；false-验证失败
+     * @since 1.0.2
+     */
+    public static boolean verify(String appId, String appSecretKey, byte[] body, HttpServletRequest request)
+            throws IOException {
+        HmacSignatureBuilder builder = new HmacSignatureBuilder();
+
+        String signitSignature = request.getHeader("X-Signit-Signature");
+        builder.scheme(request.getProtocol())
+                .apiKey(appId)
+                .apiSecret(appSecretKey.getBytes())
+                .method(request.getMethod())
+                .payload(body)
+                .contentType(request.getContentType())
+                .host(Validator.isEmpty(request.getHeader("Host")) ? "" : request.getHeader("Host"))
+                .resource(Validator.isEmpty(request.getHeader("X-Signit-Resource")) ? ""
+                        : request.getHeader("X-Signit-Resource"))
+                .nonce(request.getHeader("X-Signit-Nonce"))
+                .date(request.getHeader("X-Signit-Date"));
+        String selfBuiltHmac = builder.getDefaultAlgorithm() + " " + appId + ":" + builder.buildAsBase64();
+        return selfBuiltHmac.equals(signitSignature);
+    }
+
 }

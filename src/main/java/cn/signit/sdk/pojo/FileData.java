@@ -22,7 +22,12 @@
  *
  */
 package cn.signit.sdk.pojo;
-
+/**
+ * 
+ * 快捷签署文件数据.
+ *
+ * @since 1.0.0
+ */
 public class FileData {
 	private String url;
 	private String base64;

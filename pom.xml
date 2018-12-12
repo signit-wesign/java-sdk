@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>cn.signit.sdk</groupId>
 	<artifactId>signit-java-sdk</artifactId>
-	<version>1.0.1</version>
+	<version>2.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>signit-java-sdk</name>
@@ -58,6 +58,13 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
+		</dependency>
+		<!-- httpServlet依赖 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<scm>
