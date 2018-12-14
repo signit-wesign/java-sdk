@@ -1,5 +1,7 @@
 package cn.signit.sdk.pojo.response;
 
+import java.util.regex.Pattern;
+
 /**
  * 开放平台应用公共响应信息.
  *
@@ -12,11 +14,17 @@ public abstract class AbstractSignitResponse {
     protected String invokeNo;
 
     public Boolean isSuccess() {
-        if (code != null && code.equals("100550001")) {
-            return true;
-        } else {
+        if (code == null || code.isEmpty() || code.length() < 4) {
             return false;
         }
+        String descCode = code.substring(code.length() - 4);
+        if (!Pattern.compile("[0-9]{4,4}")
+                .matcher(descCode)
+                .find()) {
+            return false;
+        }
+        int intCode = Integer.parseInt(descCode);
+        return intCode >= 0 && intCode < 100;
     }
 
     public String getCode() {
