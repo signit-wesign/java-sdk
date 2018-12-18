@@ -377,10 +377,11 @@ public class SignitClient {
         HmacSignatureBuilder builder = new HmacSignatureBuilder();
 
         String signitSignature = request.getHeader("X-Signit-Signature");
-        builder.scheme(request.getProtocol())
+        builder.scheme(request.getHeader("X-Signit-Scheme"))
                 .apiKey(appId)
                 .apiSecret(appSecretKey.getBytes())
-                .method(request.getMethod())
+                .method(request.getMethod()
+                        .toUpperCase())
                 .payload(body)
                 .contentType(request.getContentType())
                 .host(Validator.isEmpty(request.getHeader("Host")) ? "" : request.getHeader("Host"))
