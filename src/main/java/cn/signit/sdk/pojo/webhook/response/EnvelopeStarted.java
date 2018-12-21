@@ -13,8 +13,43 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
     private String account;// 接收方对应的在易企签的帐号
     private String customTag;// 自定义标识
     private String invokeNo;// 服务调用唯一标识
-    private BasicInfo basicInfo;// 信封基本信息
-    private ParticipantInfo participantInfo;// 参与签署方信息
+    private RawDataBasicInfo basicEnvelope;// 信封基本信息
+    private Sender senderParticipant;
+    private Receiver receiverParticipant;
+    private SignData signData;// 已完成的签署数据
+    private String returnUrl;// 客户端回调地址
+
+    public Sender getSenderParticipant() {
+        return senderParticipant;
+    }
+
+    public void setSenderParticipant(Sender senderParticipant) {
+        this.senderParticipant = senderParticipant;
+    }
+
+    public Receiver getReceiverParticipant() {
+        return receiverParticipant;
+    }
+
+    public void setReceiverParticipant(Receiver receiverParticipant) {
+        this.receiverParticipant = receiverParticipant;
+    }
+
+    public String getReturnUrl() {
+        return returnUrl;
+    }
+
+    public void setReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+    }
+
+    public SignData getSignData() {
+        return signData;
+    }
+
+    public void setSignData(SignData signData) {
+        this.signData = signData;
+    }
 
     public String getActionUrl() {
         return actionUrl;
@@ -56,30 +91,21 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
         this.invokeNo = invokeNo;
     }
 
-    public BasicInfo getBasicInfo() {
-        return basicInfo;
+    public RawDataBasicInfo getBasicEnvelope() {
+        return basicEnvelope;
     }
 
-    public void setBasicInfo(BasicInfo basicInfo) {
-        this.basicInfo = basicInfo;
-    }
-
-    public ParticipantInfo getParticipantInfo() {
-        return participantInfo;
-    }
-
-    public void setParticipantInfo(ParticipantInfo participantInfo) {
-        this.participantInfo = participantInfo;
+    public void setBasicEnvelope(RawDataBasicInfo basicEnvelope) {
+        this.basicEnvelope = basicEnvelope;
     }
 
     /**
      * 信封基本信息.
      * </p>
      *
-     * 
-     * @since 1.0.2
+     * @since 2.0.0
      */
-    public static class BasicInfo {
+    public static class RawDataBasicInfo {
         private String wsid;// 信封全局唯一ID
         private String status;// 信封状态
         private Long createdDatetime;// 信封创建时间
@@ -146,43 +172,14 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
     }
 
     /**
-     * 参与签署方信息.
-     * </p>
-     *
-     * 
-     * @since 1.0.2
-     */
-    public static class ParticipantInfo {
-        private Sender sender;// 发送方信息
-        private Receiver receiver;// 当前需要签署的接收方信息
-
-        public Sender getSender() {
-            return sender;
-        }
-
-        public void setSender(Sender sender) {
-            this.sender = sender;
-        }
-
-        public Receiver getReceiver() {
-            return receiver;
-        }
-
-        public void setReceiver(Receiver receiver) {
-            this.receiver = receiver;
-        }
-    }
-
-    /**
      * 当前需要签署的接收方信息.
      * </p>
      *
-     * 
-     * @since 1.0.2
+     * @since 2.0.0
      */
     public static class Receiver {
         private String name;// 接收方信息
-        private Contact contact;// 接收方联系方式
+        private BoContactMetadata contactMetadata;// 接收方联系方式
         private String secureLevel;// 安全级别
         private String type;// 接收方类型
         private String roleType;// 接收方角色类型
@@ -205,12 +202,12 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
             this.name = name;
         }
 
-        public Contact getContact() {
-            return contact;
+        public BoContactMetadata getContactMetadata() {
+            return contactMetadata;
         }
 
-        public void setContact(Contact contact) {
-            this.contact = contact;
+        public void setContactMetadata(BoContactMetadata contactMetadata) {
+            this.contactMetadata = contactMetadata;
         }
 
         public String getSecureLevel() {
@@ -322,12 +319,11 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
      * 发送方信息.
      * </p>
      *
-     * 
-     * @since 1.0.2
+     * @since 2.0.0
      */
     public static class Sender {// 和Receiver同级
         private String name;// 发送者姓名
-        private Contact contact;// 发送者联系方式
+        private BoContactMetadata contactMetadata;// 发送者联系方式
 
         public String getName() {
             return name;
@@ -337,26 +333,90 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
             this.name = name;
         }
 
-        public Contact getContact() {
-            return contact;
+        public BoContactMetadata getContactMetadata() {
+            return contactMetadata;
         }
 
-        public void setContact(Contact contact) {
-            this.contact = contact;
+        public void setContactMetadata(BoContactMetadata contactMetadata) {
+            this.contactMetadata = contactMetadata;
         }
 
     }
 
     /**
-     * 联系方式.
+     * 已成功完成签署流程的文件数据.
      * </p>
      *
-     * 
-     * @since 1.0.2
+     * @since 2.0.0
      */
-    public static class Contact {// sender和Receiver都有
-        private String email;// 邮箱
-        private String phone;// 手机号
+    public static class SignData {
+        private String fileWsid;// 文件ID
+        private String url;// 已签署的文件数据的URL地址
+        private String base64;// 已签署的文件数据数据的base64表示形式的字符串
+
+        public String getFileWsid() {
+            return fileWsid;
+        }
+
+        public void setFileWsid(String fileWsid) {
+            this.fileWsid = fileWsid;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getBase64() {
+            return base64;
+        }
+
+        public void setBase64(String base64) {
+            this.base64 = base64;
+        }
+
+    }
+
+    /**
+     * 联系方式元数据.
+     * </p>
+     *
+     * @since 2.0.0
+     */
+    public static class BoContactMetadata {
+        List<BoContact> contacts;
+
+        public List<BoContact> getContacts() {
+            return contacts;
+        }
+
+        public void setContacts(List<BoContact> contacts) {
+            this.contacts = contacts;
+        }
+
+    }
+
+    /**
+     * 联系方式详细数据.
+     * </p>
+     *
+     * @since 2.0.0
+     */
+    public static class BoContact {
+        private String authorWsid;
+        private String email;
+        private String sms;
+
+        public String getAuthorWsid() {
+            return authorWsid;
+        }
+
+        public void setAuthorWsid(String authorWsid) {
+            this.authorWsid = authorWsid;
+        }
 
         public String getEmail() {
             return email;
@@ -366,12 +426,12 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
             this.email = email;
         }
 
-        public String getPhone() {
-            return phone;
+        public String getSms() {
+            return sms;
         }
 
-        public void setPhone(String phone) {
-            this.phone = phone;
+        public void setSms(String sms) {
+            this.sms = sms;
         }
 
     }
