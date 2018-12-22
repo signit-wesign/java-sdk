@@ -380,15 +380,15 @@ public class SignitClient {
         builder.scheme(request.getHeader("X-Signit-Scheme"))
                 .apiKey(appId)
                 .apiSecret(appSecretKey.getBytes())
-                .method(request.getMethod()
-                        .toUpperCase())
+                .method(request.getMethod().toUpperCase())
                 .payload(body)
                 .contentType(request.getContentType())
-                .host(Validator.isEmpty(request.getHeader("Host")) ? "" : request.getHeader("Host"))
+                .host(Validator.isEmpty(request.getHeader("X-Signit-Host")) ? "" : request.getHeader("X-Signit-Host"))
                 .resource(Validator.isEmpty(request.getHeader("X-Signit-Resource")) ? ""
                         : request.getHeader("X-Signit-Resource"))
-                .nonce(request.getHeader("X-Signit-Nonce"))
-                .date(request.getHeader("X-Signit-Date"));
+                .nonce(Validator.isEmpty(request.getHeader("X-Signit-Nonce")) ? ""
+                        : request.getHeader("X-Signit-Nonce"))
+                .date(Validator.isEmpty(request.getHeader("X-Signit-Date")) ? "" : request.getHeader("X-Signit-Date"));
         String selfBuiltHmac = builder.getDefaultAlgorithm() + " " + appId + ":" + builder.buildAsBase64();
         return selfBuiltHmac.equals(signitSignature);
     }
