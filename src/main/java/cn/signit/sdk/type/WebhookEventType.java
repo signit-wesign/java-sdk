@@ -29,7 +29,7 @@ public enum WebhookEventType {
     /**
      * 企业实名认证初级完成
      */
-    ENTERPRISE_PRIMARY_COMPLETED("enterpriseVerificationPrimaryCompleted", " 企业实名认证初级完成"),
+    ENTERPRISE_VERIFICATION_PRIMARY_COMPLETED("enterpriseVerificationPrimaryCompleted", " 企业实名认证初级完成"),
     /**
      * 企业实名认证已打款
      */
