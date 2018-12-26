@@ -20,7 +20,19 @@ public class Sender {
      * @since 1.0.2
      */
     private Contact contact;
-
+    /**
+     * 流程完成后删除当前参与者的信封. <br/>
+     * 默认：false
+     * 
+     * @since 1.2.12
+     */
+    private boolean deleteCompletedEnvelope;
+    
+    
+    public boolean isDeleteCompletedEnvelope() {
+        return deleteCompletedEnvelope;
+    }
+    
     public String getName() {
         return name;
     }
@@ -35,6 +47,7 @@ public class Sender {
     public Sender(Builder builder) {
         this.contact = builder.contact;
         this.name = builder.name;
+        this.deleteCompletedEnvelope = builder.deleteCompletedEnvelope;
     }
 
     public Builder newBuilder() {
@@ -46,6 +59,7 @@ public class Sender {
     }
 
     public static class Builder implements cn.signit.sdk.pojo.Builder<Sender> {
+        private boolean deleteCompletedEnvelope;
         private String name;
         private Contact contact;
 
@@ -56,6 +70,7 @@ public class Sender {
         public Builder(Sender sender) {
             this.contact = sender.contact;
             this.name = sender.name;
+            this.deleteCompletedEnvelope = sender.deleteCompletedEnvelope;
         }
 
         public Builder contact(Contact contact) {
@@ -72,6 +87,11 @@ public class Sender {
 
         public Builder name(String name) {
             this.name = name;
+            return this;
+        }
+        
+        public Builder deleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
+            this.deleteCompletedEnvelope = deleteCompletedEnvelope;
             return this;
         }
 

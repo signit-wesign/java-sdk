@@ -92,6 +92,14 @@ public class Receiver {
 
     private EnvelopeRoleType roleType;
 
+    /**
+     * 流程完成后删除当前参与者的信封. <br/>
+     * 默认：false
+     * 
+     * @since 1.2.12
+     */
+    private boolean deleteCompletedEnvelope;
+
     public String getName() {
         return name;
     }
@@ -188,6 +196,14 @@ public class Receiver {
         this.roleType = roleType;
     }
 
+    public boolean isDeleteCompletedEnvelope() {
+        return deleteCompletedEnvelope;
+    }
+
+    public void setDeleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
+        this.deleteCompletedEnvelope = deleteCompletedEnvelope;
+    }
+
     public Receiver() {
     }
 
@@ -204,6 +220,7 @@ public class Receiver {
         this.metadata = builder.metadata;
         this.presetForms = builder.presetForms;
         this.roleType = builder.roleType;
+        this.deleteCompletedEnvelope = builder.deleteCompletedEnvelope;
     }
 
     public Builder newBuilder() {
@@ -227,6 +244,7 @@ public class Receiver {
         private String metadata;
         private List<PresetForm> presetForms;
         private EnvelopeRoleType roleType;
+        private boolean deleteCompletedEnvelope;
 
         public Builder() {
         }
@@ -244,6 +262,7 @@ public class Receiver {
             this.metadata = receiver.metadata;
             this.presetForms = receiver.presetForms;
             this.roleType = receiver.roleType;
+            this.deleteCompletedEnvelope = receiver.deleteCompletedEnvelope;
         }
 
         public Builder name(String name) {
@@ -315,6 +334,11 @@ public class Receiver {
 
         public Builder roleType(EnvelopeRoleType roleType) {
             this.roleType = roleType;
+            return this;
+        }
+
+        public Builder deleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
+            this.deleteCompletedEnvelope = deleteCompletedEnvelope;
             return this;
         }
 
