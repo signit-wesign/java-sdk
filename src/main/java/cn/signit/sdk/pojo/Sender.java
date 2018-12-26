@@ -27,12 +27,23 @@ public class Sender {
      * @since 1.2.12
      */
     private boolean deleteCompletedEnvelope;
-    
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public void setDeleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
+        this.deleteCompletedEnvelope = deleteCompletedEnvelope;
+    }
+
     public boolean isDeleteCompletedEnvelope() {
         return deleteCompletedEnvelope;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -89,7 +100,7 @@ public class Sender {
             this.name = name;
             return this;
         }
-        
+
         public Builder deleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
             this.deleteCompletedEnvelope = deleteCompletedEnvelope;
             return this;

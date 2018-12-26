@@ -203,10 +203,18 @@ public class Signer {
             private String keyword;
             private Float scale;
             private String pages;
+            /**
+             * x 方向的便移量 正是往右，负是往左，坐标缩放前进行最后的微调参数
+             */
+            private Float xOffset;
+            /**
+             * x 方向的便移量 正是往上，负是往下，坐标缩放前进行最后的微调参数
+             */
+            private Float yOffset;
 
             public KeywordPosition() {
             }
-
+            
             public KeywordPosition(Float width, Float relativeWidthRatio, Float height, Float relativeHeightRatio,
                     Direction direction, Float offset, Float relativeOffsetRatio, String keyword, Float scale,
                     String pages) {
@@ -221,6 +229,24 @@ public class Signer {
                 this.keyword = keyword;
                 this.scale = scale;
                 this.pages = pages;
+            }
+
+            public KeywordPosition(Float width, Float relativeWidthRatio, Float height, Float relativeHeightRatio,
+                    Direction direction, Float offset, Float relativeOffsetRatio, String keyword, Float scale,
+                    String pages, Float xOffset, Float yOffset) {
+                super();
+                this.width = width;
+                this.relativeWidthRatio = relativeWidthRatio;
+                this.height = height;
+                this.relativeHeightRatio = relativeHeightRatio;
+                this.direction = direction;
+                this.offset = offset;
+                this.relativeOffsetRatio = relativeOffsetRatio;
+                this.keyword = keyword;
+                this.scale = scale;
+                this.pages = pages;
+                this.xOffset = xOffset;
+                this.yOffset = yOffset;
             }
 
             public static KeywordPositionBuilder builder() {
@@ -238,6 +264,8 @@ public class Signer {
                 private String keyword;
                 private Float scale;
                 private String pages;
+                private Float xOffset;
+                private Float yOffset;
 
                 public KeywordPositionBuilder() {
                 }
@@ -291,10 +319,18 @@ public class Signer {
                     this.pages = pages;
                     return this;
                 }
+                public KeywordPositionBuilder withXOffset(Float xOffset) {
+                    this.xOffset = xOffset;
+                    return this;
+                }
+                public KeywordPositionBuilder withYOffset(Float yOffset) {
+                    this.yOffset = yOffset;
+                    return this;
+                }
 
                 public KeywordPosition build() {
                     return new KeywordPosition(width, relativeWidthRatio, height, relativeHeightRatio, direction,
-                            offset, relativeOffsetRatio, keyword, scale, pages);
+                            offset, relativeOffsetRatio, keyword, scale, pages, xOffset, yOffset);
                 }
             }
 
@@ -376,6 +412,22 @@ public class Signer {
 
             public void setPages(String pages) {
                 this.pages = pages;
+            }
+
+            public Float getxOffset() {
+                return xOffset;
+            }
+
+            public void setxOffset(Float xOffset) {
+                this.xOffset = xOffset;
+            }
+
+            public Float getyOffset() {
+                return yOffset;
+            }
+
+            public void setyOffset(Float yOffset) {
+                this.yOffset = yOffset;
             }
 
         }
