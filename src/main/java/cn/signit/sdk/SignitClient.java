@@ -41,7 +41,6 @@ import cn.signit.sdk.pojo.SignatureResponse;
 import cn.signit.sdk.pojo.WebhookData;
 import cn.signit.sdk.pojo.request.AbstractSignitRequest;
 import cn.signit.sdk.pojo.response.AbstractSignitResponse;
-import cn.signit.sdk.pojo.webhook.response.AbstractWebhookResponseData;
 import cn.signit.sdk.pojo.webhook.response.WebhookResponse;
 import cn.signit.sdk.type.TokenType;
 import cn.signit.sdk.util.FastjsonDecoder;
@@ -55,7 +54,7 @@ import cn.signit.sdk.util.Validator;
  * <pre>
 2018-12-8
 将此Client扩展为易企签所有开放平台应用公共使用的Client
-since：1.0.2
+since：2.0.0
  * </pre>
  *
  */
@@ -85,15 +84,14 @@ public class SignitClient {
     }
 
     /**
-     * 默认为：快捷签署客户端. </br>
-     * 期望直接设置应用的请求路径，故而舍弃该方法
+     * 默认为：快捷签署客户端. 期望直接设置应用的请求路径，故而舍弃该方法
      * 
      * @param auth
      *            授权信息
      * @param envUrl
      *            应用环境
      * @since 1.0.0
-     * @since 1.0.2 废弃
+     * @since 2.0.0 废弃
      */
     @Deprecated
     public SignitClient(Authentication auth, String envUrl) {
@@ -115,7 +113,7 @@ public class SignitClient {
      *            APP Secret
      * @param appUrl
      *            应用请求路径
-     * @since 1.0.2
+     * @since 2.0.0
      */
     public SignitClient(String appId, String secretKey, String appUrl) {
         this.auth = new Authentication(appId, secretKey);
@@ -144,7 +142,7 @@ public class SignitClient {
      *            应用环境
      * @return 修改应用环境后的快捷签署客户端
      * @since 1.0.0
-     * @since 1.0.2 废弃
+     * @since 2.0.0 废弃
      */
     @Deprecated
     public SignitClient setEnvironmentUrl(String url) {
@@ -165,14 +163,13 @@ public class SignitClient {
     }
 
     /**
-     * 设置快捷签署请求路径. </br>
-     * 期望在客戶端初始化时设置应用请求路径，故而废弃
+     * 设置快捷签署请求路径. 期望在客戶端初始化时设置应用请求路径，故而废弃
      * 
      * @param url
      *            快捷签署请求路径
      * @return 快捷签署客户端
      * @since 1.0.0
-     * @since 1.0.2 废弃
+     * @since 2.0.0 废弃
      */
     @Deprecated
     public SignitClient setSignUrl(String url) {
@@ -187,7 +184,9 @@ public class SignitClient {
      *            快捷签署请求
      * @return 快捷签署响应
      * @throws SignitException
+     *             易企签自定义异常
      * @throws IOException
+     *             数据流异常
      * @since 1.0.0
      */
     public SignatureResponse sendSignatureRequest(SignatureRequest request) throws SignitException, IOException {
@@ -254,7 +253,8 @@ public class SignitClient {
      * 快捷签署webhook响应数据解析.
      *
      * @param webhook
-     * @return
+     *            webhook Json格式数据字符串
+     * @return 推送给调用方的webhook事件数据
      * @since 1.0.0
      */
     public WebhookData parseWebhookData(String webhook) {
@@ -277,10 +277,11 @@ public class SignitClient {
      * 解析webhook响应数据.
      *
      * @param webhook
-     * @return
-     * @since 1.0.2
+     *            webhook Json格式字符串
+     * @return 推送给调用方的webhook事件数据
+     * @since 2.0.0
      */
-    public static <W extends AbstractWebhookResponseData> WebhookResponse parseWebhookResponse(String webhook) {
+    public static WebhookResponse parseWebhookResponse(String webhook) {
         return FastjsonDecoder.decodeAsBean(webhook, WebhookResponse.class);
     }
 
@@ -326,28 +327,15 @@ public class SignitClient {
     /**
      * 
      * 客户端验证服务器的webhook响应数据.
-     * </p>
      * 
      * @param signitSignature
      *            webhook响应header中x-signit-signature数据。服务器构建的hmac，用于客户端验证服务器
      * @param appId
      *            APP ID
-     * @param appSecretKey
-     *            APP Secret
-     * @param scheme
-     *            服务器发送给客户端的协议: http、https
-     * @param method
-     *            服务器发送给客户端的方式:POST
-     * @param contentType
-     *            服务器发送给客户端的数据格式
-     * @param body
-     *            webhook响应body数据
-     * @param nonce
-     *            webhook响应header中x-signit-nonce数据。随机数，用于防止重放攻击
-     * @param dateString
-     *            webhook响应header中x-signit-date数据。日期字符串，用于防止重放攻击
+     * @param builder
+     *            hmac签名建造器
      * @return 验证结果： true-是服务器发送给客户端的数据；false-验证失败
-     * @since 1.0.2
+     * @since 2.0.0
      */
     public static boolean verify(String signitSignature, String appId, HmacSignatureBuilder builder) {
         if (builder == null || appId == null || signitSignature == null) {
@@ -369,8 +357,10 @@ public class SignitClient {
      *            webhook响应具体数据。考虑到request中只能获取到body一次，故而需要在方法外获取并传递给此方法
      * @param request
      *            服务端向客户端发起的请求
+     * @throws IOException
+     *             数据流异常
      * @return 验证结果： true-是服务器发送给客户端的数据；false-验证失败
-     * @since 1.0.2
+     * @since 2.0.0
      */
     public static boolean verify(String appId, String appSecretKey, byte[] body, HttpServletRequest request)
             throws IOException {
@@ -380,7 +370,8 @@ public class SignitClient {
         builder.scheme(request.getHeader("X-Signit-Scheme"))
                 .apiKey(appId)
                 .apiSecret(appSecretKey.getBytes())
-                .method(request.getMethod().toUpperCase())
+                .method(request.getMethod()
+                        .toUpperCase())
                 .payload(body)
                 .contentType(request.getContentType())
                 .host(Validator.isEmpty(request.getHeader("X-Signit-Host")) ? "" : request.getHeader("X-Signit-Host"))

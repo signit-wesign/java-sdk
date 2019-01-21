@@ -1,9 +1,7 @@
 package cn.signit.sdk.pojo;
 
 /**
- * 手写签名数据.
- * </p>
- * 支持URL/Base64/签名全局唯一ID/签名名字，代表签名数据.
+ * 手写签名数据. 支持URL/Base64/签名全局唯一ID/签名名字，代表签名数据.
  *
  * @since 1.0.2
  */

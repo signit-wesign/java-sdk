@@ -4,38 +4,35 @@ import cn.signit.sdk.type.CertType;
 import cn.signit.sdk.type.RenderMode;
 
 /**
- * 签名初始化数据.
- * </p>
- * 包含印章数据、手写数据、证书数据、证书签名证书秘钥访问口令、证书类型、 渲染模式、签名地理位置、联系方式、签名是否锁定、签名原因.
- * </p>
+ * 签名初始化数据。包含印章数据、手写数据、证书数据、证书签名证书秘钥访问口令、证书类型、 渲染模式、签名地理位置、联系方式、签名是否锁定、签名原因。
  * 印章数据、手写数据仅一个不为空的有效。
  * 
  *
- * @since 1.0.2
+ * @since 2.0.0
  */
 public class InitialValue {
     /**
      * 印章数据.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private SealData sealData;
     /**
      * 手写签名数据.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private WriteData writeData;
     /**
      * 证书数据.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private CertData certData;
     /**
      * 证书签名证书密钥访问口令.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String certPassin;
     /**
@@ -43,7 +40,7 @@ public class InitialValue {
      * </p>
      * 对应枚举：CertType
      * 
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private CertType certType;
     /**
@@ -51,31 +48,31 @@ public class InitialValue {
      * </p>
      * 对应枚举：RenderMode
      * 
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private RenderMode renderingMode = RenderMode.GRAPHIC;
     /**
      * 签名地理位置.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String location;
     /**
      * 联系方式.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String contact;
     /**
      * 签名是否锁定.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private boolean locked = false;
     /**
      * 签名原因.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String reason;
 
@@ -183,6 +180,11 @@ public class InitialValue {
         return new Builder();
     }
 
+    /**
+     * 签名初始化数据对象建造器
+     * 
+     * @since 2.0.0
+     */
     public static class Builder implements cn.signit.sdk.pojo.Builder<InitialValue> {
         private SealData sealData;
         private WriteData writeData;
@@ -211,11 +213,25 @@ public class InitialValue {
             this.reason = initValue.reason;
         }
 
+        /**
+         * 
+         * @param sealData
+         *            签名预设数据对象，目前仅支持表单类型为SEAL_SIGN时使用{@link SealData}
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.0.0
+         */
         public Builder sealData(SealData sealData) {
             this.sealData = sealData;
             return this;
         }
 
+        /**
+         * 
+         * @param sealDataBuilder
+         *            签名预设数据对象建造器，目前仅支持表单类型为SEAL_SIGN时使用{@link SealData.SealDataBuilder}
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.0.0
+         */
         public Builder sealData(SealData.SealDataBuilder sealDataBuilder) {
             if (sealDataBuilder != null) {
                 this.sealData = sealDataBuilder.build();
@@ -223,11 +239,13 @@ public class InitialValue {
             return this;
         }
 
+        @Deprecated
         public Builder writeData(WriteData writeData) {
             this.writeData = writeData;
             return this;
         }
 
+        @Deprecated
         public Builder writeData(WriteData.Builder writeDataBuilder) {
             if (writeDataBuilder != null) {
                 this.writeData = writeDataBuilder.build();
@@ -235,11 +253,13 @@ public class InitialValue {
             return this;
         }
 
+        @Deprecated
         public Builder certData(CertData certData) {
             this.certData = certData;
             return this;
         }
 
+        @Deprecated
         public Builder certData(CertData.Builder certDataBuilder) {
             if (certDataBuilder != null) {
                 this.certData = certDataBuilder.build();
@@ -247,41 +267,68 @@ public class InitialValue {
             return this;
         }
 
+        @Deprecated
         public Builder certPassin(String certPassin) {
             this.certPassin = certPassin;
             return this;
         }
 
+        @Deprecated
         public Builder certType(CertType certType) {
             this.certType = certType;
             return this;
         }
 
+        /**
+         * 
+         * @param renderingMode
+         *            GRAPHIC - 仅图像渲染；DESCRIPTION - 仅描述渲染；NAME_AND_DESCRIPTION -
+         *            签名着和描述渲染 ； GRAPHIC_AND_DESCRIPTION - 图像和描述渲染 ； 渲染模式 - 默认：
+         *            GRAPHIC {@link RenderMode}
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.0.0
+         */
         public Builder renderingMode(RenderMode renderingMode) {
             this.renderingMode = renderingMode;
             return this;
         }
 
+        @Deprecated
         public Builder location(String location) {
             this.location = location;
             return this;
         }
 
+        @Deprecated
         public Builder contact(String contact) {
             this.contact = contact;
             return this;
         }
 
+        /**
+         * 
+         * @param locked
+         *            签名是否锁定；true-签名后pdf文件将被锁定，不能够再向pdf文件中追加签名。
+         *            false-签名后依然可以向pdf文件中追加签名。默认为false
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.0.0
+         */
         public Builder locked(boolean locked) {
             this.locked = locked;
             return this;
         }
 
+        @Deprecated
         public Builder reason(String reason) {
             this.reason = reason;
             return this;
         }
 
+        /**
+         * 
+         * @return 签名初始化数据对象 {@link InitialValue}
+         * @since 2.0.0
+         */
         @Override
         public InitialValue build() {
             return new InitialValue(this);

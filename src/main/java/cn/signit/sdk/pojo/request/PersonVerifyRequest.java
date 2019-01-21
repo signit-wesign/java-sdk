@@ -34,59 +34,60 @@ import cn.signit.sdk.util.ListBuilder;
 /**
  * 个人实名认证请求数据结构.
  * 
- * @since 1.0.2
+ * @since 2.0.0
  */
+@Deprecated
 public class PersonVerifyRequest {
 
     /**
      * 待认证的用户姓名.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String name;
 
     /**
      * 待认证的用户手机号.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String phone;
     /**
      * 待认证的用户证件类型.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private IdCardType idCardType;
     /**
      * 待认证的用户证件号.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String idCardNo;
     /**
      * 待认证的用户证件照片数组.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private List<IdCardImage> idCardImages;
     /**
      * 调用方自定义标识，易企签会原封不动返回.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String customTag;
 
     /**
      * 调用方自定义要求易企签的WEB平台在流程结束后需要跳转的指定URL地址.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String returnUrl;
 
     /**
      * 调用方接受的响应数据类型，支持：BASE64/URL.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private AcceptDataType acceptDataType;
 

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 信封启动事件webhook信息具体数据.
  * 
- * @since 1.0.2
+ * @since 2.0.0
  */
 public class EnvelopeStarted extends AbstractWebhookResponseData {
     private String actionUrl;// 执行的动作对应的URL地址
@@ -101,7 +101,6 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
     /**
      * 信封基本信息.
-     * </p>
      *
      * @since 2.0.0
      */
@@ -173,7 +172,6 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
     /**
      * 当前需要签署的接收方信息.
-     * </p>
      *
      * @since 2.0.0
      */
@@ -317,7 +315,6 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
     /**
      * 发送方信息.
-     * </p>
      *
      * @since 2.0.0
      */
@@ -345,7 +342,7 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
     /**
      * 已成功完成签署流程的文件数据.
-     * </p>
+     * 
      *
      * @since 2.0.0
      */
@@ -382,7 +379,6 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
     /**
      * 联系方式元数据.
-     * </p>
      *
      * @since 2.0.0
      */
@@ -401,7 +397,6 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
     /**
      * 联系方式详细数据.
-     * </p>
      *
      * @since 2.0.0
      */

@@ -7,7 +7,7 @@ import cn.signit.sdk.util.FastjsonDecoder;
  * 
  * 推送给调用方的webhook事件数据结构.
  *
- * @since 1.0.2
+ * @since 2.0.0
  */
 public class WebhookResponse {
     private String event;

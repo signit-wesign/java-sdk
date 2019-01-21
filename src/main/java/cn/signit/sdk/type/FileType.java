@@ -1,9 +1,9 @@
 package cn.signit.sdk.type;
+
 /**
  * 基于文件头描述源文件真实类型.
- * </p>
  *
- * @since 1.0.2
+ * @since 2.0.0
  */
 public enum FileType {
     /**

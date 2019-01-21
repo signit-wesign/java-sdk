@@ -22,7 +22,6 @@ public final class Case {
      *            待转换字符串
      * @return 下划线风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toUnix(String s)}
      */
     public static String toUnderline(String str) {
         if (str == null) {
@@ -75,8 +74,6 @@ public final class Case {
      *            待转换字符串
      * @return 下划线风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toUnderline(String
-     *      s)}
      */
     public static String toUnix(String str) {
         return toUnderline(str);
@@ -89,8 +86,6 @@ public final class Case {
      *            待转换字符串
      * @return 蛇型命名风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toUnderline(String
-     *      s)}
      */
     public static String toSnake(String str) {
         return toUnderline(str);
@@ -147,8 +142,6 @@ public final class Case {
      *            待转换字符串
      * @return 大驼峰风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toUpperCamel(String
-     *      s)}
      */
     public static String toCapitalizeCamel(String str) {
         String s = str;
@@ -178,8 +171,6 @@ public final class Case {
      *            待转换字符串
      * @return 大驼峰风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toCapitalizeCamel(String
-     *      s)}
      */
     public static String toUpperCamel(String str) {
         return toCapitalizeCamel(str);
@@ -192,8 +183,6 @@ public final class Case {
      *            待转换字符串
      * @return 帕斯卡风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toCapitalizeCamel(String
-     *      s)}
      */
     public static String toPascal(String str) {
         return toCapitalizeCamel(str);
@@ -206,8 +195,6 @@ public final class Case {
      *            待转换字符串
      * @return 连词符命名风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toHyphenLine(String
-     *      s)}
      */
     public static String toKebab(String str) {
         return toHyphenLine(str);
@@ -220,7 +207,6 @@ public final class Case {
      *            待转换字符串
      * @return 连词符命名风格字符串
      * @author Zhanghongdong
-     * @see {@link cn.signit.wesign.lib.common.string.Case.toKebab(String s)}
      */
     public static String toHyphenLine(String str) {
         if (str == null) {
@@ -267,8 +253,7 @@ public final class Case {
      * @param str
      *            待转换字符串. 若为null，则返回null.
      * @param namingStyle
-     *            命名风格的枚举.
-     *            若namingStyle为null，则默认为{@link cn.signit.wesign.lib.common.type.NamingStyle.CAMEL}.
+     *            命名风格的枚举. 若namingStyle为null，CAMEL
      * @return namingStyle命名风格的字符串
      * @author zhd
      * @since 1.0.0

@@ -3,9 +3,8 @@ package cn.signit.sdk.type;
 /**
  * 
  * 签名所使用的证书类型枚举.
- * </p>
  *
- * @since 1.0.2
+ * @since 2.0.0
  */
 public enum CertType {
 

@@ -7,34 +7,38 @@ import cn.signit.sdk.pojo.response.StartEnvelopeResponse;
 import cn.signit.sdk.type.AcceptDataType;
 
 /**
- * 信封启动服务请求体.
- * </p>
- * 包含信封基本信息、信封流程中的签署文件内容、签署参与者信息、自定义跳转URL、自定义可接受数据类型、自定义标识.
+ * 信封启动服务请求体. 包含信封基本信息、信封流程中的签署文件内容、签署参与者信息、自定义跳转URL、自定义可接受数据类型、自定义标识.
  * 
- * @since 1.0.2
+ * @since 2.0.0
  */
 public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeResponse> {
 
     /**
      * 信封基本信息.
      *
-     * @since 1.0.5
+     * @since 2.0.0
      */
     private EnvelopeBasicInfo basicinfo;
 
     /**
      * 信封流程中的签署文件内容.
      *
-     * @since 1.0.5
+     * @since 2.0.0
      */
     private EnvelopeContentInfo contentInfo;
     /**
      * 签署参与者信息.
      *
-     * @since 1.0.5
+     * @since 2.0.0
      */
     private EnvelopeParticipantInfo participantInfo;
 
+    /**
+     * 获取响应信息类
+     * 
+     * @return StartEnvelopeResponse.class
+     * @since 2.0.0
+     */
     @Override
     public Class<StartEnvelopeResponse> getResponseClass() {
         return StartEnvelopeResponse.class;
@@ -76,6 +80,11 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
         return new Builder();
     }
 
+    /**
+     * 信封启动请求对象建筑器.
+     * 
+     * @since 2.0.0
+     */
     public static class Builder implements cn.signit.sdk.pojo.Builder<StartEnvelopeRequest> {
         private EnvelopeBasicInfo basicinfo;
         private EnvelopeContentInfo contentInfo;
@@ -97,11 +106,26 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
             this.acceptDataType = request.acceptDataType;
         }
 
+        /**
+         * 
+         * @param basicinfo
+         *            信封基本信息对象 {@link EnvelopeBasicInfo}
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder basicinfo(EnvelopeBasicInfo basicinfo) {
             this.basicinfo = basicinfo;
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param basicinfoBuilder
+         *            信封基本信息对象建筑器 {@link EnvelopeBasicInfo.Builder}
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder basicinfo(EnvelopeBasicInfo.Builder basicinfoBuilder) {
             if (basicinfoBuilder != null) {
                 this.basicinfo = basicinfoBuilder.build();
@@ -109,11 +133,27 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param contentInfo
+         *            签署文件内容对象 {@link EnvelopeContentInfo }
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder contentInfo(EnvelopeContentInfo contentInfo) {
             this.contentInfo = contentInfo;
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param contentInfoBuilder
+         *            签署文件内容对象建筑器 {@link EnvelopeContentInfo.Builder}
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder contentInfo(EnvelopeContentInfo.Builder contentInfoBuilder) {
             if (contentInfoBuilder != null) {
                 this.contentInfo = contentInfoBuilder.build();
@@ -121,11 +161,27 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param participantInfo
+         *            参与文件签署人员的信息对象 {@link EnvelopeParticipantInfo}
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder participantInfo(EnvelopeParticipantInfo participantInfo) {
             this.participantInfo = participantInfo;
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param participantInfoBuilder
+         *            参与文件签署人员的信息对象建筑器 {@link EnvelopeParticipantInfo.Builder}
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder participantInfo(EnvelopeParticipantInfo.Builder participantInfoBuilder) {
             if (participantInfoBuilder != null) {
                 this.participantInfo = participantInfoBuilder.build();
@@ -133,21 +189,50 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param customTag
+         *            调用方自定义标识，易企签会原封不动返回
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder customTag(String customTag) {
             this.customTag = customTag;
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param returnUrl
+         *            调用方自定义要求易企签的WEB平台在流程结束后需要跳转的指定URL地址
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder returnUrl(String returnUrl) {
             this.returnUrl = returnUrl;
             return this;
         }
 
+        /**
+         * 
+         *
+         * @param acceptDataType
+         *            调用方接受的数据类型，支持：BASE64/URL {@link AcceptDataType}；默认是BASE64
+         * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder acceptDataType(AcceptDataType acceptDataType) {
             this.acceptDataType = acceptDataType;
             return this;
         }
 
+        /**
+         * 
+         * @return 信封启动请求 {@link StartEnvelopeRequest}
+         * @since 2.0.0
+         */
         @Override
         public StartEnvelopeRequest build() {
             return new StartEnvelopeRequest(this);

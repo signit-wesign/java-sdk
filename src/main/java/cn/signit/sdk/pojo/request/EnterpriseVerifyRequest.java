@@ -14,79 +14,79 @@ import cn.signit.sdk.util.ListBuilder;
 /**
  * 企业实名认证请求数据结构.
  * 
- * @since 1.0.2
+ * @since 2.0.0
  */
 public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVerifyResponse> {
     /**
      * 待认证企业名称.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String name;
     /**
      * 待认证企业电话.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String telephone;
     /**
      * 经办人信息.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private EnterpriseAgent agent;
     /**
-     * 经办人信息.
+     * 法人信息.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private EnterpriseLegalPerson legalPerson;
     /**
      * 统一社会信用代码.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String unifiedSocialCode;
     /**
      * 营业执照照片信息.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private IdCardImage businessLicenceImage;
     /**
      * 组织机构代码（已由“统一社会信用代码”替换）.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String orgCode;
     /**
      * 组织机构代码证照片信息.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private IdCardImage orgImage;
     /**
      * 工商注册号（已由“统一社会信用代码”替换）.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String registCode;
     /**
      * LEGAL_PERSON-法人认证，AGENT-经办人认证.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private EnterpriseAuthType authType;
     /**
      * 企业对公银行信息.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private EnterpriseBankCardInfo bankCardInfo;
     /**
      * 额外认证所需照片信息数组.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private List<IdCardImage> extraAuthImages;
 
@@ -168,6 +168,11 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
         return new Builder();
     }
 
+    /**
+     * 企业实名认证请求对象建筑器
+     * 
+     * @since 2.0.0
+     */
     public static class Builder implements cn.signit.sdk.pojo.Builder<EnterpriseVerifyRequest> {
         private String name;
         private String telephone;
@@ -207,81 +212,197 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             this.acceptDataType = enterpriseVerifyRequest.acceptDataType;
         }
 
+        /**
+         * 
+         * @param name
+         *            待认证的企业名称
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder name(String name) {
             this.name = name;
             return this;
         }
 
+        /**
+         * 
+         * @param telephone
+         *            待认证的企业电话
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder telephone(String telephone) {
             this.telephone = telephone;
             return this;
         }
 
+        /**
+         * 
+         * @param agent
+         *            经办人信息 {@link EnterpriseAgent}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder agent(EnterpriseAgent agent) {
             this.agent = agent;
             return this;
         }
 
+        /**
+         * 
+         * @param legalPerson
+         *            法人信息 {@link EnterpriseLegalPerson}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder legalPerson(EnterpriseLegalPerson legalPerson) {
             this.legalPerson = legalPerson;
             return this;
         }
 
+        /**
+         * 
+         * @param unifiedSocialCode
+         *            统一社会信用代码
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder unifiedSocialCode(String unifiedSocialCode) {
             this.unifiedSocialCode = unifiedSocialCode;
             return this;
         }
 
+        /**
+         * 
+         * @param businessLicenceImage
+         *            营业执照图像信息 {@link IdCardImage}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder businessLicenceImage(IdCardImage businessLicenceImage) {
             this.businessLicenceImage = businessLicenceImage;
             return this;
         }
 
+        /**
+         * 
+         * @param orgCode
+         *            组织机构代码（已由“统一社会信用代码”替换
+         *            {@link Builder#unifiedSocialCode(String)}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
+        @Deprecated
         public Builder orgCode(String orgCode) {
             this.orgCode = orgCode;
             return this;
         }
 
+        /**
+         * 
+         * @param orgImage
+         *            组织机构代码证图像信息（已由“统一社会信用代码”替换）
+         *            {@link Builder#unifiedSocialCode(String)}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder orgImage(IdCardImage orgImage) {
             this.orgImage = orgImage;
             return this;
         }
 
+        /**
+         * 
+         * @param registCode
+         *            工商注册号（已由“统一社会信用代码”替换）{@link Builder#unifiedSocialCode(String)}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder registCode(String registCode) {
             this.registCode = registCode;
             return this;
         }
 
+        /**
+         * 
+         * @param authType
+         *            LEGAL_PERSON-法人认证，AGENT-代理认证 {@link EnterpriseAuthType}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder authType(EnterpriseAuthType authType) {
             this.authType = authType;
             return this;
         }
 
+        /**
+         * 
+         * @param bankCardInfo
+         *            对公银行信息 {@link EnterpriseBankCardInfo}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder bankCardInfo(EnterpriseBankCardInfo bankCardInfo) {
             this.bankCardInfo = bankCardInfo;
             return this;
         }
 
+        /**
+         * 
+         * @param extraAuthImages
+         *            认证所需额外照片信息列表 {@link IdCardImage}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder extraAuthImages(List<IdCardImage> extraAuthImages) {
             this.extraAuthImages = extraAuthImages;
             return this;
         }
 
+        /**
+         * 
+         * @param customTag
+         *            调用方自定义标识，易企签会原封不动返回。
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder customTag(String customTag) {
             this.customTag = customTag;
             return this;
         }
 
+        /**
+         * 
+         * @param returnUrl
+         *            调用方自定义要求易企签的WEB平台在流程结束后需要跳转的指定URL地址
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder returnUrl(String returnUrl) {
             this.returnUrl = returnUrl;
             return this;
         }
 
+        /**
+         * 
+         * @param acceptDataType
+         *            调用方接受的响应数据类型，支持：BASE64/URL {@link AcceptDataType}
+         *            默认为BASE64
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder acceptDataType(AcceptDataType acceptDataType) {
             this.acceptDataType = acceptDataType;
             return this;
         }
 
+        /**
+         * 
+         * @param builder
+         *            经办人信息对象建筑器 {@link EnterpriseAgent.Builder}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder agent(EnterpriseAgent.Builder builder) {
             if (builder != null) {
                 this.agent = builder.build();
@@ -289,6 +410,13 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             return this;
         }
 
+        /**
+         * 
+         * @param builder
+         *            法人信息对象建筑器 {@link EnterpriseLegalPerson.Builder}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder legalPerson(EnterpriseLegalPerson.Builder builder) {
             if (builder != null) {
                 this.legalPerson = builder.build();
@@ -296,6 +424,13 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             return this;
         }
 
+        /**
+         * 
+         * @param builder
+         *            营业执照图像信息对象建筑器 {@link IdCardImage.Builder}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder businessLicenceImage(IdCardImage.Builder builder) {
             if (builder != null) {
                 this.businessLicenceImage = builder.build();
@@ -303,6 +438,14 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             return this;
         }
 
+        /**
+         * 
+         * @param builder
+         *            组织机构代码证图像信息对象建筑器（已由“统一社会信用代码”替换）
+         *            {@link Builder#unifiedSocialCode(String)}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder orgImage(IdCardImage.Builder builder) {
             if (builder != null) {
                 this.orgImage = builder.build();
@@ -310,6 +453,13 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             return this;
         }
 
+        /**
+         * 
+         * @param builder
+         *            对公银行信息对象建筑器 {@link EnterpriseBankCardInfo.Builder}
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder bankCardInfo(EnterpriseBankCardInfo.Builder builder) {
             if (builder != null) {
                 this.bankCardInfo = builder.build();
@@ -317,11 +467,23 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             return this;
         }
 
+        /**
+         * 
+         * @param builders
+         *            认证额外所需照片信息对象建筑器列表
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.0.0
+         */
         public Builder extraAuthImages(IdCardImage.Builder... builders) {
             this.extraAuthImages = ListBuilder.buildList(builders);
             return this;
         }
 
+        /**
+         * 
+         * @return 企业实名认证请求对象
+         * @since 2.0.0
+         */
         public EnterpriseVerifyRequest build() {
             return new EnterpriseVerifyRequest(this);
         }

@@ -68,7 +68,8 @@ public enum WebhookEventType {
      *
      * @param event
      *            事件名称(不区分大小写)
-     * @return 对应的事件类型,如无法识别返回{@link cn.signit.wesign.mss.developer.utils.type.WebhookEventType.UNKNOWN }
+     * @return 对应的事件类型,如无法识别返回
+     *         {@link cn.signit.sdk.type.WebhookEventType#UNKNOWN }
      * @since 2.0.0
      */
     public static WebhookEventType parse(String event) {

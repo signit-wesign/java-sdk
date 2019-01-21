@@ -1,18 +1,15 @@
 package cn.signit.sdk.pojo;
 
 /**
- * 证书数据.
- * </p>
- * 支持base64、URL、证书数据全局唯一ID中对的任意一种方式.
+ * 证书数据. 支持base64、URL、证书数据全局唯一ID中对的任意一种方式.
  *
- * @see (可填，引用或参考其他类型资源，如: {@link java.util.Properties}).
- * @since 1.0.2
+ * @since 2.0.0
  */
 public class CertData extends BaseFileData {
     /**
      * 证书数据的全局唯一ID.
      *
-     * @since 1.0.2
+     * @since 2.0.0
      */
     private String wsid;
 
