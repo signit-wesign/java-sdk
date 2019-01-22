@@ -198,7 +198,9 @@ public class SignitClient {
         }
         httpClient.withAuth(auth)
                 .withPostObject(request);
-        getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
+        if (!auth.hasAccessToken()) {
+            getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
+        }
         return retrySendRequest();
     }
 
@@ -294,7 +296,9 @@ public class SignitClient {
         }
         httpClient.withAuth(auth)
                 .withPostObject(request);
-        getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
+        if (!auth.hasAccessToken()) {
+            getOauthData(auth.getAppId(), auth.getSecretKey(), auth.getAccessTokenType(), true);
+        }
         return retrySendRequest(request.getResponseClass());
     }
 

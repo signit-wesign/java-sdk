@@ -14,7 +14,7 @@ public enum ImageCode {
     /**
      * 身份证背面。具有人像的一面
      */
-    ID_CARD_BACK(1001, "身份证背面"),
+    ID_CARD_BACK(1002, "身份证背面"),
     /**
      * 企业营业执照
      */

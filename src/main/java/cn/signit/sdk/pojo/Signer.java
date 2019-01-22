@@ -182,7 +182,7 @@ public class Signer {
              * @since 1.0.0
              */
             public PositionBuilder withRectanglePosition(RectanglePositionBuilder rectanglePositionBuilder) {
-                if (rectanglePosition != null) {
+                if (rectanglePositionBuilder != null) {
                     this.rectanglePosition = rectanglePositionBuilder.build();
                 }
                 return this;
