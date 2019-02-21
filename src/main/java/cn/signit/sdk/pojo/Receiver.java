@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.signit.sdk.type.AuthLevel;
 import cn.signit.sdk.type.EnvelopeRoleType;
+import cn.signit.sdk.type.ParticipantHandleMode;
 import cn.signit.sdk.type.ReceiverType;
 import cn.signit.sdk.type.SecureLevel;
 import cn.signit.sdk.util.ListBuilder;
@@ -94,6 +95,10 @@ public class Receiver {
      * @since 2.0.0
      */
     private boolean deleteCompletedEnvelope;
+    /**
+     * 参与者处理表单各种模式的枚举
+     */
+    private ParticipantHandleMode handleMode;
 
     public String getName() {
         return name;
@@ -199,6 +204,14 @@ public class Receiver {
         this.deleteCompletedEnvelope = deleteCompletedEnvelope;
     }
 
+    public ParticipantHandleMode getHandleMode() {
+        return handleMode;
+    }
+
+    public void setHandleMode(ParticipantHandleMode handleMode) {
+        this.handleMode = handleMode;
+    }
+
     public Receiver() {
     }
 
@@ -216,6 +229,7 @@ public class Receiver {
         this.presetForms = builder.presetForms;
         this.roleType = builder.roleType;
         this.deleteCompletedEnvelope = builder.deleteCompletedEnvelope;
+        this.handleMode = builder.handleMode;
     }
 
     public Builder newBuilder() {
@@ -245,6 +259,7 @@ public class Receiver {
         private List<PresetForm> presetForms;
         private EnvelopeRoleType roleType;
         private boolean deleteCompletedEnvelope;
+        private ParticipantHandleMode handleMode;
 
         public Builder() {
         }
@@ -263,6 +278,7 @@ public class Receiver {
             this.presetForms = receiver.presetForms;
             this.roleType = receiver.roleType;
             this.deleteCompletedEnvelope = receiver.deleteCompletedEnvelope;
+            this.handleMode = receiver.handleMode;
         }
 
         /**
@@ -447,6 +463,18 @@ public class Receiver {
          */
         public Builder deleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
             this.deleteCompletedEnvelope = deleteCompletedEnvelope;
+            return this;
+        }
+
+        /**
+         *
+         * @param handleMode
+         *            参与者处理表单的模式枚举
+         * @return 接收方信息对象建造器{@link Receiver.Builder}
+         * @since 2.0.0
+         */
+        public Builder handleMode(ParticipantHandleMode handleMode) {
+            this.handleMode = handleMode;
             return this;
         }
 

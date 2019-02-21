@@ -78,7 +78,7 @@ public class InitialValue {
     /**
      * 文本框文本内容
      */
-    private String text;
+    private String textContent;
 
     public SealData getSealData() {
         return sealData;
@@ -160,11 +160,15 @@ public class InitialValue {
         this.reason = reason;
     }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setTextContent(String textContent) {
+        this.textContent = textContent;
+    }
 
-	public InitialValue() {
+    public String getTextContent() {
+        return textContent;
+    }
+
+    public InitialValue() {
     }
 
     public InitialValue(Builder builder) {
@@ -178,7 +182,7 @@ public class InitialValue {
         this.contact = builder.contact;
         this.locked = builder.locked;
         this.reason = builder.reason;
-        this.text = builder.text;
+        this.textContent = builder.textContent;
     }
 
     public Builder newBuilder() {
@@ -205,7 +209,7 @@ public class InitialValue {
         private String contact;
         private boolean locked = false;
         private String reason;
-        private String text;
+        private String textContent;
 
         public Builder() {
         }
@@ -221,7 +225,7 @@ public class InitialValue {
             this.contact = initValue.contact;
             this.locked = initValue.locked;
             this.reason = initValue.reason;
-            this.text = initValue.text;
+            this.textContent = initValue.textContent;
         }
 
         /**
@@ -334,16 +338,18 @@ public class InitialValue {
             this.reason = reason;
             return this;
         }
-        
+
         /**
-         * @param text 文本框文本内容
+         * @param textContent
+         *            文本框文本内容
          * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
          * @since 2.0.0
          */
-        public Builder text(String text) {
-        	this.text = text;
-        	return this;
+        public Builder textContent(String textContent) {
+            this.textContent = textContent;
+            return this;
         }
+
         /**
          * 
          * @return 签名初始化数据对象 {@link InitialValue}
