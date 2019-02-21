@@ -15,5 +15,10 @@ public enum FormType {
     /**
      * 手写签名表单域
      */
-    WRITE_SIGN;
+    WRITE_SIGN,
+    /**
+     * 文本框表单
+     */
+    TEXT,
+    ;
 }

@@ -75,6 +75,10 @@ public class InitialValue {
      * @since 2.0.0
      */
     private String reason;
+    /**
+     * 文本框文本内容
+     */
+    private String text;
 
     public SealData getSealData() {
         return sealData;
@@ -156,7 +160,11 @@ public class InitialValue {
         this.reason = reason;
     }
 
-    public InitialValue() {
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public InitialValue() {
     }
 
     public InitialValue(Builder builder) {
@@ -170,6 +178,7 @@ public class InitialValue {
         this.contact = builder.contact;
         this.locked = builder.locked;
         this.reason = builder.reason;
+        this.text = builder.text;
     }
 
     public Builder newBuilder() {
@@ -196,6 +205,7 @@ public class InitialValue {
         private String contact;
         private boolean locked = false;
         private String reason;
+        private String text;
 
         public Builder() {
         }
@@ -211,6 +221,7 @@ public class InitialValue {
             this.contact = initValue.contact;
             this.locked = initValue.locked;
             this.reason = initValue.reason;
+            this.text = initValue.text;
         }
 
         /**
@@ -323,7 +334,16 @@ public class InitialValue {
             this.reason = reason;
             return this;
         }
-
+        
+        /**
+         * @param text 文本框文本内容
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.0.0
+         */
+        public Builder text(String text) {
+        	this.text = text;
+        	return this;
+        }
         /**
          * 
          * @return 签名初始化数据对象 {@link InitialValue}
