@@ -17,8 +17,16 @@ public enum FormType {
      */
     WRITE_SIGN,
     /**
-     * 文本框表单
+     * 文本表单域
      */
     TEXT,
+    /**
+     * 骑缝章表单域
+     */
+    MULTI_CHECK_MARK,
+    /**
+     * 二维码骑缝章表单域
+     */
+    MULTI_QRCODE_MARK,
     ;
 }

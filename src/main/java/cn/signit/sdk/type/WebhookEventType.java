@@ -53,7 +53,11 @@ public enum WebhookEventType {
     /**
      * 信封流程完成
      */
-    ENVELOPE_COMPLETED("envelopeCompleted", "信封流程完成"),;
+    ENVELOPE_COMPLETED("envelopeCompleted", "信封流程完成"),
+    /**
+     * 参与者正在处理信封
+     */
+    PARTICIPANT_HANDLING("ParticipantHandling", "参与者正在处理信封"),;
     private String event;
     private String description;
 

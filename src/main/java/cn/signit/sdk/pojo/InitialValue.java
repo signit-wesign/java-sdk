@@ -77,8 +77,17 @@ public class InitialValue {
     private String reason;
     /**
      * 文本框文本内容
+     * 
+     * @since 2.0.1
      */
     private String textContent;
+    /**
+     * 
+     * 二维码内容字符串.
+     *
+     * @since 2.0.1
+     */
+    private String qrcodeContent;
 
     public SealData getSealData() {
         return sealData;
@@ -168,6 +177,14 @@ public class InitialValue {
         return textContent;
     }
 
+    public String getQrcodeContent() {
+        return qrcodeContent;
+    }
+
+    public void setQrcodeContent(String qrcodeContent) {
+        this.qrcodeContent = qrcodeContent;
+    }
+
     public InitialValue() {
     }
 
@@ -183,6 +200,7 @@ public class InitialValue {
         this.locked = builder.locked;
         this.reason = builder.reason;
         this.textContent = builder.textContent;
+        this.qrcodeContent = builder.qrcodeContent;
     }
 
     public Builder newBuilder() {
@@ -210,6 +228,7 @@ public class InitialValue {
         private boolean locked = false;
         private String reason;
         private String textContent;
+        private String qrcodeContent;
 
         public Builder() {
         }
@@ -226,6 +245,7 @@ public class InitialValue {
             this.locked = initValue.locked;
             this.reason = initValue.reason;
             this.textContent = initValue.textContent;
+            this.qrcodeContent = initValue.qrcodeContent;
         }
 
         /**
@@ -347,6 +367,18 @@ public class InitialValue {
          */
         public Builder textContent(String textContent) {
             this.textContent = textContent;
+            return this;
+        }
+
+        /**
+         *
+         * @param qrcodeContent
+         *            二维码内容
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.0.1
+         */
+        public Builder qrcodeContent(String qrcodeContent) {
+            this.qrcodeContent = qrcodeContent;
             return this;
         }
 
