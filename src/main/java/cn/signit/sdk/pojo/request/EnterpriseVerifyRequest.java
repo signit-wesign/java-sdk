@@ -28,6 +28,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
      *
      * @since 2.0.0
      */
+    @Deprecated
     private String telephone;
     /**
      * 经办人信息.
@@ -231,6 +232,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
          * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
          * @since 2.0.0
          */
+        @Deprecated
         public Builder telephone(String telephone) {
             this.telephone = telephone;
             return this;
