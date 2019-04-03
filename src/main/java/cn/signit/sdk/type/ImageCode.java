@@ -12,9 +12,21 @@ public enum ImageCode {
      */
     ID_CARD_FRONT(1000, "身份证正面"),
     /**
+     * 手持身份证具有人像的一面
+     */
+    PERSON_HANDHELD_ID_CARD_BACK(1001, "手持身份证背面"),
+    /**
      * 身份证背面。具有人像的一面
      */
     ID_CARD_BACK(1002, "身份证背面"),
+    /**
+     * 护照
+     */
+    PASSPORT(1003, "护照"),
+    /**
+     * 手持护照
+     */
+    PERSON_HANDHELE_PASSPORT(1004, "手持护照"),
     /**
      * 企业营业执照
      */
