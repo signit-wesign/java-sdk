@@ -30,6 +30,7 @@ import cn.signit.sdk.pojo.IdCardImage;
 import cn.signit.sdk.pojo.response.PersonVerifyResponse;
 import cn.signit.sdk.type.AcceptDataType;
 import cn.signit.sdk.type.IdCardType;
+import cn.signit.sdk.type.PersonAuthType;
 import cn.signit.sdk.util.ListBuilder;
 
 /**
@@ -91,6 +92,12 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
      */
     private AcceptDataType acceptDataType;
 
+    private List<PersonAuthType> authModes;
+
+    public List<PersonAuthType> getAuthModes() {
+        return authModes;
+    }
+
     public String getName() {
         return name;
     }
@@ -132,6 +139,7 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         this.customTag = builder.customTag;
         this.returnUrl = builder.returnUrl;
         this.acceptDataType = builder.acceptDataType;
+        this.authModes = builder.authModes;
     }
 
     public PersonVerifyRequest() {
@@ -145,6 +153,11 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         return new Builder();
     }
 
+    /**
+     * 个人实名认证构造器.
+     *
+     * @since 2.0.1
+     */
     public static class Builder implements cn.signit.sdk.pojo.Builder<PersonVerifyRequest> {
         private String name;
         private String phone;
@@ -154,6 +167,7 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         private String customTag;
         private String returnUrl;
         private AcceptDataType acceptDataType;
+        private List<PersonAuthType> authModes;
 
         public Builder() {
         }
@@ -167,50 +181,125 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
             this.customTag = personVerifyRequest.customTag;
             this.returnUrl = personVerifyRequest.returnUrl;
             this.acceptDataType = personVerifyRequest.acceptDataType;
+            this.authModes = personVerifyRequest.authModes;
         }
 
+        /**
+         * 
+         * @param name
+         *            待认证的个人真实姓名
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder name(String name) {
             this.name = name;
             return this;
         }
 
+        /**
+         * 
+         * @param phone
+         *            用户联系方式
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder phone(String phone) {
             this.phone = phone;
             return this;
         }
 
+        /**
+         * 
+         * @param idCardType
+         *            认证资料中证件类型
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder idCardType(IdCardType idCardType) {
             this.idCardType = idCardType;
             return this;
         }
 
+        /**
+         * 
+         * @param idCardNo
+         *            认证资料中证件号码
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder idCardNo(String idCardNo) {
             this.idCardNo = idCardNo;
             return this;
         }
 
+        /**
+         * 
+         * @param idCardImages
+         *            认证所需照片信息列表 {@link IdCardImage}
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder idCardImages(List<IdCardImage> idCardImages) {
             this.idCardImages = idCardImages;
             return this;
         }
 
+        /**
+         * 
+         * @param customTag
+         *            调用方自定义标识，易企签会原封不动返回
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder customTag(String customTag) {
             this.customTag = customTag;
             return this;
         }
 
+        /**
+         * 
+         * @param returnUrl
+         *            调用方自定义要求易企签的WEB平台在流程结束后需要跳转的指定URL地址
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder returnUrl(String returnUrl) {
             this.returnUrl = returnUrl;
             return this;
         }
 
+        /**
+         * 
+         * @param acceptDataType
+         *            调用方接受的数据类型，支持：BASE64/URL {@link AcceptDataType}；默认是BASE64
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder acceptDataType(AcceptDataType acceptDataType) {
             this.acceptDataType = acceptDataType;
             return this;
         }
 
+        /**
+         * 
+         * @param idCardImageBuilders
+         *            认证所需照片信息列表构造器 {@link IdCardImage.Builder}
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
         public Builder idCardImages(IdCardImage.Builder... idCardImageBuilders) {
             this.idCardImages = ListBuilder.buildList(Arrays.asList(idCardImageBuilders));
+            return this;
+        }
+
+        /**
+         * @param authMode
+         *            个人认证方式
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
+        public Builder authModes(PersonAuthType authMode) {
+            this.authModes = Arrays.asList(authMode);
             return this;
         }
 
