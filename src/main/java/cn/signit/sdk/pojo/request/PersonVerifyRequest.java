@@ -310,6 +310,17 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
             return this;
         }
 
+        /**
+         * @param authModes
+         *            个人认证方式
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.0.1
+         */
+        public Builder authModes(List<PersonAuthType> authModes) {
+            this.authModes = authModes;
+            return this;
+        }
+
         public PersonVerifyRequest build() {
             return new PersonVerifyRequest(this);
         }

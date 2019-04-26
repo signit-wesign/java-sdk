@@ -1,5 +1,6 @@
 package cn.signit.sdk.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.signit.sdk.type.AuthLevel;
@@ -539,6 +540,24 @@ public class Receiver {
          */
         public Builder selectedAuthTypes(List<AuthType> selectedAuthTypes) {
             this.selectedAuthTypes = selectedAuthTypes;
+            return this;
+        }
+
+        /**
+         *
+         * @param selectedAuthTypes
+         *            调用方为用户选择的签署认证方式
+         * @return 接收方信息对象建造器{@link Receiver.Builder}
+         * @since 2.1.0
+         */
+        public Builder selectedAuthTypes(AuthType... selectedAuthTypes) {
+            if (selectedAuthTypes != null && selectedAuthTypes.length != 0) {
+                List<AuthType> list = new ArrayList<AuthType>();
+                for (AuthType type : selectedAuthTypes) {
+                    list.add(type);
+                }
+                this.selectedAuthTypes = list;
+            }
             return this;
         }
 
