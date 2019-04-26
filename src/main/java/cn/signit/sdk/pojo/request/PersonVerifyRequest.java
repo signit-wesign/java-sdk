@@ -23,6 +23,7 @@ package cn.signit.sdk.pojo.request;
  *
  */
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -293,13 +294,19 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         }
 
         /**
-         * @param authMode
+         * @param authModes
          *            个人认证方式
          * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
          * @since 2.0.1
          */
-        public Builder authModes(PersonAuthType authMode) {
-            this.authModes = Arrays.asList(authMode);
+        public Builder authModes(PersonAuthType... authModes) {
+            if (authModes != null && authModes.length != 0) {
+                List<PersonAuthType> list = new ArrayList<PersonAuthType>();
+                for (PersonAuthType authMode : authModes) {
+                    list.add(authMode);
+                }
+                this.authModes = list;
+            }
             return this;
         }
 
