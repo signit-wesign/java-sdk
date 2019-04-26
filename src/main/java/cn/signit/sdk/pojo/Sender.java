@@ -26,6 +26,37 @@ public class Sender {
      */
     private boolean deleteCompletedEnvelope;
 
+    /**
+     * 启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，签署流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false.
+     *
+     * @since 2.1.0
+     */
+    private boolean enableEmbeddedMode;
+
+    /**
+     * 签署发送方用户在调用方系统的唯一标识.<br/>
+     * enableEmbeddedMode为false时，非必填；当enableEmbeddedMode为true时，则必填。默认：null
+     *
+     * @since 2.1.0
+     */
+    private String clientId;
+
+    public boolean isEnableEmbeddedMode() {
+        return enableEmbeddedMode;
+    }
+
+    public void setEnableEmbeddedMode(boolean enableEmbeddedMode) {
+        this.enableEmbeddedMode = enableEmbeddedMode;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -57,6 +88,8 @@ public class Sender {
         this.contact = builder.contact;
         this.name = builder.name;
         this.deleteCompletedEnvelope = builder.deleteCompletedEnvelope;
+        this.enableEmbeddedMode = builder.enableEmbeddedMode;
+        this.clientId = builder.clientId;
     }
 
     public Builder newBuilder() {
@@ -76,6 +109,8 @@ public class Sender {
         private boolean deleteCompletedEnvelope;
         private String name;
         private Contact contact;
+        private boolean enableEmbeddedMode;
+        private String clientId;
 
         public Builder() {
 
@@ -85,6 +120,8 @@ public class Sender {
             this.contact = sender.contact;
             this.name = sender.name;
             this.deleteCompletedEnvelope = sender.deleteCompletedEnvelope;
+            this.enableEmbeddedMode = sender.enableEmbeddedMode;
+            this.clientId = sender.clientId;
         }
 
         /**
@@ -134,6 +171,30 @@ public class Sender {
          */
         public Builder deleteCompletedEnvelope(boolean deleteCompletedEnvelope) {
             this.deleteCompletedEnvelope = deleteCompletedEnvelope;
+            return this;
+        }
+
+        /**
+         *
+         * @param enableEmbeddedMode
+         *            启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，签署流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.1.0
+         */
+        public Builder enableEmbeddedMode(boolean enableEmbeddedMode) {
+            this.enableEmbeddedMode = enableEmbeddedMode;
+            return this;
+        }
+
+        /**
+         *
+         * @param clientId
+         *            签署发送方用户在调用方系统的唯一标识;enableEmbeddedMode为false时，非必填；当enableEmbeddedMode为true时，则必填。默认：null
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.1.0
+         */
+        public Builder clientId(String clientId) {
+            this.clientId = clientId;
             return this;
         }
 

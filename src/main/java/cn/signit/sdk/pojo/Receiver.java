@@ -3,6 +3,7 @@ package cn.signit.sdk.pojo;
 import java.util.List;
 
 import cn.signit.sdk.type.AuthLevel;
+import cn.signit.sdk.type.AuthType;
 import cn.signit.sdk.type.EnvelopeRoleType;
 import cn.signit.sdk.type.ParticipantHandleMode;
 import cn.signit.sdk.type.ReceiverType;
@@ -67,6 +68,7 @@ public class Receiver {
      * 
      * @since 2.0.0
      */
+    @Deprecated
     private AuthLevel authLevel;
     /**
      * 接收方所在企业名称.
@@ -99,6 +101,47 @@ public class Receiver {
      * 参与者处理表单各种模式的枚举
      */
     private ParticipantHandleMode handleMode;
+
+    private List<AuthType> selectedAuthTypes;
+
+    /**
+     * 启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，签署流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false.
+     *
+     * @since 2.1.0
+     */
+    private boolean enableEmbeddedMode;
+
+    /**
+     * 签署接收方用户在调用方系统的唯一标识.<br/>
+     * enableEmbeddedMode为false时，非必填；当enableEmbeddedMode为true时，则必填。默认：null
+     *
+     * @since 2.1.0
+     */
+    private String clientId;
+
+    public boolean isEnableEmbeddedMode() {
+        return enableEmbeddedMode;
+    }
+
+    public void setEnableEmbeddedMode(boolean enableEmbeddedMode) {
+        this.enableEmbeddedMode = enableEmbeddedMode;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public List<AuthType> getSelectedAuthTypes() {
+        return selectedAuthTypes;
+    }
+
+    public void setSelectedAuthTypes(List<AuthType> selectedAuthTypes) {
+        this.selectedAuthTypes = selectedAuthTypes;
+    }
 
     public String getName() {
         return name;
@@ -230,6 +273,9 @@ public class Receiver {
         this.roleType = builder.roleType;
         this.deleteCompletedEnvelope = builder.deleteCompletedEnvelope;
         this.handleMode = builder.handleMode;
+        this.selectedAuthTypes = builder.selectedAuthTypes;
+        this.enableEmbeddedMode = builder.enableEmbeddedMode;
+        this.clientId = builder.clientId;
     }
 
     public Builder newBuilder() {
@@ -260,6 +306,9 @@ public class Receiver {
         private EnvelopeRoleType roleType;
         private boolean deleteCompletedEnvelope;
         private ParticipantHandleMode handleMode;
+        private List<AuthType> selectedAuthTypes;
+        private boolean enableEmbeddedMode;
+        private String clientId;
 
         public Builder() {
         }
@@ -279,6 +328,9 @@ public class Receiver {
             this.roleType = receiver.roleType;
             this.deleteCompletedEnvelope = receiver.deleteCompletedEnvelope;
             this.handleMode = receiver.handleMode;
+            this.selectedAuthTypes = receiver.selectedAuthTypes;
+            this.enableEmbeddedMode = receiver.enableEmbeddedMode;
+            this.clientId = receiver.clientId;
         }
 
         /**
@@ -475,6 +527,42 @@ public class Receiver {
          */
         public Builder handleMode(ParticipantHandleMode handleMode) {
             this.handleMode = handleMode;
+            return this;
+        }
+
+        /**
+         *
+         * @param selectedAuthTypes
+         *            调用方为用户选择的签署认证方式
+         * @return 接收方信息对象建造器{@link Receiver.Builder}
+         * @since 2.1.0
+         */
+        public Builder selectedAuthTypes(List<AuthType> selectedAuthTypes) {
+            this.selectedAuthTypes = selectedAuthTypes;
+            return this;
+        }
+
+        /**
+         *
+         * @param enableEmbeddedMode
+         *            启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，签署流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.1.0
+         */
+        public Builder enableEmbeddedMode(boolean enableEmbeddedMode) {
+            this.enableEmbeddedMode = enableEmbeddedMode;
+            return this;
+        }
+
+        /**
+         *
+         * @param clientId
+         *            签署接收方用户在调用方系统的唯一标识;enableEmbeddedMode为false时，非必填；当enableEmbeddedMode为true时，则必填。默认：null
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.1.0
+         */
+        public Builder clientId(String clientId) {
+            this.clientId = clientId;
             return this;
         }
 
