@@ -43,8 +43,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import org.apache.commons.codec.binary.Base64;
-
 import cn.signit.sdk.SignitException;
 import cn.signit.sdk.type.TokenType;
 
@@ -90,7 +88,7 @@ public class Authentication {
                     fis.read(datas);
 
                     String keyBase64 = "9ijhWI+0fNf0RSRJxgPt7q2zciyGVxmcco95I+gKids=";
-                    Key key = new SecretKeySpec(Base64.decodeBase64(keyBase64), "AES");
+                    Key key = new SecretKeySpec(DatatypeConverter.parseBase64Binary(keyBase64), "AES");
                     Cipher cipher = null;
                     // 解密
                     cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
@@ -129,7 +127,7 @@ public class Authentication {
                 MessageDigest md5 = MessageDigest.getInstance("MD5");
                 md5.update(sb.toString()
                         .getBytes());
-                return cacheTokenDir.concat(Base64.encodeBase64String(md5.digest()));
+                return cacheTokenDir.concat(DatatypeConverter.printBase64Binary(md5.digest()));
             } catch (NoSuchAlgorithmException e) {
                 return null;
             }
@@ -154,7 +152,7 @@ public class Authentication {
                     byte[] datas = this.accessToken.getBytes();
 
                     String keyBase64 = "9ijhWI+0fNf0RSRJxgPt7q2zciyGVxmcco95I+gKids=";
-                    Key key = new SecretKeySpec(Base64.decodeBase64(keyBase64), "AES");
+                    Key key = new SecretKeySpec(DatatypeConverter.parseBase64Binary(keyBase64), "AES");
 
                     Cipher cipher = null;
                     // 加密
