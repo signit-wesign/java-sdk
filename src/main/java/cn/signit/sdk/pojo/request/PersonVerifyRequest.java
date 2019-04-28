@@ -95,6 +95,13 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
 
     private List<PersonAuthType> authModes;
 
+    /**
+     * 启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，签署流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false.
+     *
+     * @since 2.1.0
+     */
+    private Boolean enableEmbeddedMode;
+
     public List<PersonAuthType> getAuthModes() {
         return authModes;
     }
@@ -131,6 +138,10 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         return acceptDataType;
     }
 
+    public boolean getEnableEmbeddedMode() {
+        return enableEmbeddedMode;
+    }
+
     public PersonVerifyRequest(Builder builder) {
         this.name = builder.name;
         this.phone = builder.phone;
@@ -141,6 +152,7 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         this.returnUrl = builder.returnUrl;
         this.acceptDataType = builder.acceptDataType;
         this.authModes = builder.authModes;
+        this.enableEmbeddedMode = builder.enableEmbeddedMode;
     }
 
     public PersonVerifyRequest() {
@@ -169,6 +181,7 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         private String returnUrl;
         private AcceptDataType acceptDataType;
         private List<PersonAuthType> authModes;
+        private Boolean enableEmbeddedMode;
 
         public Builder() {
         }
@@ -183,6 +196,7 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
             this.returnUrl = personVerifyRequest.returnUrl;
             this.acceptDataType = personVerifyRequest.acceptDataType;
             this.authModes = personVerifyRequest.authModes;
+            this.enableEmbeddedMode = personVerifyRequest.enableEmbeddedMode;
         }
 
         /**
@@ -318,6 +332,18 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
          */
         public Builder authModes(List<PersonAuthType> authModes) {
             this.authModes = authModes;
+            return this;
+        }
+
+        /**
+         *
+         * @param enableEmbeddedMode
+         *            启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，实名认证流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false
+         * @return 个人实名认证请求对象建筑器{@link PersonVerifyRequest.Builder}
+         * @since 2.1.0
+         */
+        public Builder enableEmbeddedMode(boolean enableEmbeddedMode) {
+            this.enableEmbeddedMode = enableEmbeddedMode;
             return this;
         }
 
