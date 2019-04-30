@@ -138,7 +138,7 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
         return acceptDataType;
     }
 
-    public boolean getEnableEmbeddedMode() {
+    public Boolean getEnableEmbeddedMode() {
         return enableEmbeddedMode;
     }
 
