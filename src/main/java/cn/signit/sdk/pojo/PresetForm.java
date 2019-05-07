@@ -68,63 +68,63 @@ public class PresetForm {
     /**
      * 跨页表单距离页面边缘边距，单位px
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Float margin;
     /**
      * 防伪标记中心按顺时针方向,沿页面边缘偏移的量
      *
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Float offset;
     /**
      * 签署完成后证书所在的页数，若为空字符串或null，则等价于为均为无证书骑缝章。支持格式形如：'first','last','all','odd','even','1','1-5','1,3,4,7,8',...
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private String certPages;
     /**
      * 单位图片所占像素(当且仅当每页宽度不足1px时有效).
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Integer pixel;
     /**
      * 单页数是否加盖骑缝章
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private boolean singlePageMark;
     /**
      * 是否重设骑缝章尺寸
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private boolean resizable;
     /**
      * 重设骑缝章尺寸宽度.单位px.当resizable=true时该值的设置才有效
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Float resizeWidth;
     /**
      * 重设骑缝章尺寸高度.单位px.当resizable=true时该值的设置才有效
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Float resizeHeight;
 
     /**
      * 二维码宽,单位px.
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Float width;
 
     /**
      * 二维码高，单位px.
      * 
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private Float height;
 
@@ -515,7 +515,7 @@ public class PresetForm {
          * @param margin
          *            跨页表单距离页面边缘边距，单位px
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder margin(Float margin) {
             this.margin = margin;
@@ -529,7 +529,7 @@ public class PresetForm {
          * @param offset
          *            防伪标记中心按顺时针方向,沿页面边缘偏移的量
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder offset(Float offset) {
             this.offset = offset;
@@ -543,7 +543,7 @@ public class PresetForm {
          * @param certPages
          *            签署完成后证书所在的页数，若为空字符串或null，则等价于为均为无证书骑缝章。支持格式形如：'first','last','all','odd','even','1','1-5','1,3,4,7,8',...
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder certPages(String certPages) {
             this.certPages = certPages;
@@ -557,7 +557,7 @@ public class PresetForm {
          * @param pixel
          *            单位图片所占像素(当且仅当每页宽度不足1px时有效).
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder pixel(Integer pixel) {
             this.pixel = pixel;
@@ -571,7 +571,7 @@ public class PresetForm {
          * @param singlePageMark
          *            单页数是否加盖骑缝章
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder singlePageMark(boolean singlePageMark) {
             this.singlePageMark = singlePageMark;
@@ -585,7 +585,7 @@ public class PresetForm {
          * @param resizable
          *            是否重设骑缝章尺寸
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder resizable(boolean resizable) {
             this.resizable = resizable;
@@ -599,7 +599,7 @@ public class PresetForm {
          * @param resizeWidth
          *            重设骑缝章尺寸宽度.单位px.当resizable=true时该值的设置才有效
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder resizeWidth(Float resizeWidth) {
             this.resizeWidth = resizeWidth;
@@ -613,7 +613,7 @@ public class PresetForm {
          * @param resizeHeight
          *            重设骑缝章尺寸高度.单位px.当resizable=true时该值的设置才有效
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder resizeHeight(Float resizeHeight) {
             this.resizeHeight = resizeHeight;
@@ -627,7 +627,7 @@ public class PresetForm {
          * @param width
          *            二维码宽,单位px.
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder width(Float width) {
             this.width = width;
@@ -641,7 +641,7 @@ public class PresetForm {
          * @param height
          *            二维码高，单位px.
          * @return 预设表单信息对象建造器{@link PresetForm.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder height(Float height) {
             this.height = height;

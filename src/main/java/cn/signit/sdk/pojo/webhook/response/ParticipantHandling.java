@@ -11,7 +11,7 @@ import cn.signit.sdk.pojo.webhook.response.EnvelopeStarted.SignData;
  * 
  * 参与者处理信封事件.
  *
- * @since 2.0.1
+ * @since 2.1.0
  */
 public class ParticipantHandling extends AbstractWebhookResponseData{
     private String actionUrl;// 执行的动作对应的URL地址

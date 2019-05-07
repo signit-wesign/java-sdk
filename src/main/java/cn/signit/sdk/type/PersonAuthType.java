@@ -3,7 +3,7 @@ package cn.signit.sdk.type;
 /**
  * 个人实名认证方式
  *
- * @since 2.0.1
+ * @since 2.1.0
  */
 public enum PersonAuthType {
     /**

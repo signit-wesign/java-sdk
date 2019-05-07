@@ -78,14 +78,14 @@ public class InitialValue {
     /**
      * 文本框文本内容
      * 
-     * @since 2.0.1
+     * @since 2.0.0
      */
     private String textContent;
     /**
      * 
      * 二维码内容字符串.
      *
-     * @since 2.0.1
+     * @since 2.1.0
      */
     private String qrcodeContent;
 
@@ -375,7 +375,7 @@ public class InitialValue {
          * @param qrcodeContent
          *            二维码内容
          * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
-         * @since 2.0.1
+         * @since 2.1.0
          */
         public Builder qrcodeContent(String qrcodeContent) {
             this.qrcodeContent = qrcodeContent;
