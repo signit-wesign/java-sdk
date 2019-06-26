@@ -46,6 +46,12 @@ public class SignatureRequest extends AbstractSignitRequest<SignatureResponse> {
             return this;
         }
 
+        public SignatureRequestBuilder withReturnUrl(String returnUrl) {
+            this.returnUrl = returnUrl;
+            return this;
+        }
+
+        @Deprecated
         public SignatureRequestBuilder withFileData(String returnUrl) {
             this.returnUrl = returnUrl;
             return this;
@@ -65,7 +71,7 @@ public class SignatureRequest extends AbstractSignitRequest<SignatureResponse> {
             return new SignatureRequest(fileData, acceptDataType, returnUrl, customTag, signDetails);
         }
     }
-
+ 
     public FileData getFileData() {
         return fileData;
     }

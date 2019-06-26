@@ -88,6 +88,21 @@ public class InitialValue {
      * @since 2.1.0
      */
     private String qrcodeContent;
+    
+    /**
+     * 时间表单的时间戳（单位：毫秒（ms））.
+     *
+     * @since 2.2.0
+     */
+    private Long timestamp;
+
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public SealData getSealData() {
         return sealData;
@@ -201,6 +216,7 @@ public class InitialValue {
         this.reason = builder.reason;
         this.textContent = builder.textContent;
         this.qrcodeContent = builder.qrcodeContent;
+        this.timestamp = builder.timestamp;
     }
 
     public Builder newBuilder() {
@@ -229,6 +245,7 @@ public class InitialValue {
         private String reason;
         private String textContent;
         private String qrcodeContent;
+        private Long timestamp;
 
         public Builder() {
         }
@@ -245,6 +262,7 @@ public class InitialValue {
             this.locked = initValue.locked;
             this.reason = initValue.reason;
             this.textContent = initValue.textContent;
+            this.timestamp = initValue.timestamp;
             this.qrcodeContent = initValue.qrcodeContent;
         }
 
@@ -381,6 +399,20 @@ public class InitialValue {
             this.qrcodeContent = qrcodeContent;
             return this;
         }
+
+        /**
+         *
+         * @param timestamp
+         *            时间表单的时间戳（单位：毫秒（ms））
+         * 
+         * @return 签名初始化数据对象建造器{@link InitialValue.Builder}
+         * @since 2.2.0
+         */
+        public Builder timestamp(Long timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
 
         /**
          * 
