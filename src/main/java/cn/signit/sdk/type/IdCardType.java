@@ -18,6 +18,18 @@ public enum IdCardType {
     /**
      * 护照
      */
-    PASSPORT;
+    PASSPORT,
+    /**
+     * 香港身份证
+     */
+    HONG_KONG_IDCARD,
+    /**
+     * 澳门身份证
+     */
+    MA_CAO_IDCARD,
+    /**
+     * 台湾身份证
+     */
+    TAI_WAN_IDCARD;
 
 }
