@@ -28,5 +28,8 @@ public enum FormType {
      * 二维码骑缝章表单域
      */
     MULTI_QRCODE_MARK,
-    ;
+    /**
+     * 时间戳表单
+     */
+    DATE;
 }
