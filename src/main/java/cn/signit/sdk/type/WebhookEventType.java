@@ -59,7 +59,7 @@ public enum WebhookEventType {
      */
     PARTICIPANT_HANDLING("participantHandling", "参与者正在处理信封"),
     /**
-     * 信封逾期未签署完成.
+     * 参与者逾期未签署信封.
      */
     PARTICIPANT_EXPIRED("participantExpired", "参与者逾期未签署信封")
     ;
