@@ -13,7 +13,7 @@ public class WebhookResponse {
     private String event;
     private Source source;
     private Target target;
-    private Boolean needCallback;
+    private Boolean needCallBack;
     private String rawData;
 
     public static class Source {
@@ -84,12 +84,32 @@ public class WebhookResponse {
         this.target = target;
     }
 
+    /**
+     * 字段needCallback更新为needCallBack,因此该方法建议被弃用
+     * 
+     * @since 2.4.1
+     */
+    @Deprecated
     public Boolean getNeedCallback() {
-        return needCallback;
+        return needCallBack;
     }
 
+    /**
+     * 字段needCallback更新为needCallBack,因此该方法建议被弃用
+     * 
+     * @since 2.4.1
+     */
+    @Deprecated
     public void setNeedCallback(Boolean needCallback) {
-        this.needCallback = needCallback;
+        this.needCallBack = needCallback;
+    }
+
+    public Boolean getNeedCallBack() {
+        return needCallBack;
+    }
+
+    public void setNeedCallBack(Boolean needCallBack) {
+        this.needCallBack = needCallBack;
     }
 
     public String getRawData() {
