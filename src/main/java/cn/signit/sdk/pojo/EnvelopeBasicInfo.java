@@ -44,6 +44,21 @@ public class EnvelopeBasicInfo {
      */
     private String metadata;
 
+    /**
+     * 时间单位：天；如果 当前时间 》 信封发起时间+逾期时间后，信封将不可签署
+     * 
+     * @since 2.4.0
+     */
+    private Integer expire;
+
+    public Integer getExpire() {
+        return expire;
+    }
+
+    public void setExpire(Integer expire) {
+        this.expire = expire;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -94,6 +109,7 @@ public class EnvelopeBasicInfo {
         this.type = builder.type;
         this.authLevel = builder.authLevel;
         this.metadata = builder.metadata;
+        this.expire = builder.expire;
     }
 
     public Builder newBuilder() {
@@ -115,6 +131,7 @@ public class EnvelopeBasicInfo {
         private EnvelopeType type;
         private AuthLevel authLevel;
         private String metadata;
+        private Integer expire;
 
         public Builder() {
         }
@@ -125,6 +142,7 @@ public class EnvelopeBasicInfo {
             this.type = enveBasicInfo.type;
             this.authLevel = enveBasicInfo.authLevel;
             this.metadata = enveBasicInfo.metadata;
+            this.expire = enveBasicInfo.expire;
         }
 
         /**
@@ -186,6 +204,18 @@ public class EnvelopeBasicInfo {
          */
         public Builder metadata(String metadata) {
             this.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * 
+         * @param expire
+         *            时间单位：天；如果 当前时间 》 信封发起时间+逾期时间后，信封将不可签署
+         * @return 信封基本信息对象建造器{@link EnvelopeBasicInfo.Builder}
+         * @since 2.4.0
+         */
+        public Builder expire(Integer expire) {
+            this.expire = expire;
             return this;
         }
 

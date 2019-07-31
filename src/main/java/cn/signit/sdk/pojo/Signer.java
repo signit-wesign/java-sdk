@@ -262,6 +262,25 @@ public class Signer {
             private String keyword;
             private Float scale;
             private String pages;
+            private String replaceTextAfterLocate;
+            private Boolean deleteTextAfterLocate;
+
+            public String getReplaceTextAfterLocate() {
+                return replaceTextAfterLocate;
+            }
+
+            public void setReplaceTextAfterLocate(String replaceTextAfterLocate) {
+                this.replaceTextAfterLocate = replaceTextAfterLocate;
+            }
+
+            public Boolean getDeleteTextAfterLocate() {
+                return deleteTextAfterLocate;
+            }
+
+            public void setDeleteTextAfterLocate(Boolean deleteTextAfterLocate) {
+                this.deleteTextAfterLocate = deleteTextAfterLocate;
+            }
+
             /**
              * x 方向的便移量 正是往右，负是往左，坐标缩放前进行最后的微调参数
              */
@@ -337,6 +356,29 @@ public class Signer {
                 this.index = index;
             }
 
+            // 2.3.0
+            public KeywordPosition(Float width, Float relativeWidthRatio, Float height, Float relativeHeightRatio,
+                    Direction direction, Float offset, Float relativeOffsetRatio, String keyword, Float scale,
+                    String pages, Float xOffset, Float yOffset, Integer index, String replaceTextAfterLocate,
+                    Boolean deleteTextAfterLocate) {
+                super();
+                this.width = width;
+                this.relativeWidthRatio = relativeWidthRatio;
+                this.height = height;
+                this.relativeHeightRatio = relativeHeightRatio;
+                this.direction = direction;
+                this.offset = offset;
+                this.relativeOffsetRatio = relativeOffsetRatio;
+                this.keyword = keyword;
+                this.scale = scale;
+                this.pages = pages;
+                this.xOffset = xOffset;
+                this.yOffset = yOffset;
+                this.index = index;
+                this.replaceTextAfterLocate = replaceTextAfterLocate;
+                this.deleteTextAfterLocate = deleteTextAfterLocate;
+            }
+
             public static KeywordPositionBuilder builder() {
                 return new KeywordPositionBuilder();
             }
@@ -360,6 +402,8 @@ public class Signer {
                 private Float xOffset;
                 private Float yOffset;
                 private Integer index;
+                private String replaceTextAfterLocate;
+                private Boolean deleteTextAfterLocate;
 
                 public KeywordPositionBuilder() {
                 }
@@ -527,12 +571,40 @@ public class Signer {
 
                 /**
                  * 
+                 *
+                 * @param replaceTextAfterLocate
+                 *            关键字定位完成后，将关键字内容替换为replaceTextAfterLocate；删除关键字
+                 *            优先于 替换关键字
+                 * @return 利用关键字定位签名矩形框所在位置的数据对象建造器{@link KeywordPositionBuilder}
+                 * @since 2.3.0
+                 */
+                public KeywordPositionBuilder withReplaceTextAfterLocate(String replaceTextAfterLocate) {
+                    this.replaceTextAfterLocate = replaceTextAfterLocate;
+                    return this;
+
+                }
+
+                /**
+                 *
+                 * @param deleteTextAfterLocate
+                 *            关键字定位完成后，将关键字删除；删除关键字 优先于 替换关键字
+                 * @return 利用关键字定位签名矩形框所在位置的数据对象建造器{@link KeywordPositionBuilder}
+                 * @since 2.3.0
+                 */
+                public KeywordPositionBuilder withDeleteTextAfterLocate(Boolean deleteTextAfterLocate) {
+                    this.deleteTextAfterLocate = deleteTextAfterLocate;
+                    return this;
+                }
+
+                /**
+                 * 
                  * @return 利用关键字定位签名矩形框所在位置的数据对象 {@link KeywordPosition}
                  * @since 1.0.0
                  */
                 public KeywordPosition build() {
                     return new KeywordPosition(width, relativeWidthRatio, height, relativeHeightRatio, direction,
-                            offset, relativeOffsetRatio, keyword, scale, pages, xOffset, yOffset, index);
+                            offset, relativeOffsetRatio, keyword, scale, pages, xOffset, yOffset, index,
+                            replaceTextAfterLocate, deleteTextAfterLocate);
                 }
             }
 
