@@ -1,4 +1,5 @@
 
+
 # 欢迎使用易企签 Java SDK
 
 易企签Java sdk包括：
@@ -11,9 +12,20 @@
 
 了解更多易企签详情请访问  [https://www.signit.cn](https://www.signit.cn)
 
+# 安装方式
+
+### Maven
+
+    <dependency>
+        <groupId>cn.signit.sdk</groupId>
+        <artifactId>signit-java-sdk</artifactId>
+        <version>2.4.1</version>
+    </dependency>
+
 # 版本更新日志：
+
 #### V2.4.1 2019.07
-1. 修复字段封装错误
+1. SignitClient客户端对象支持单例方式的使用
 
 #### V2.4.0 2019.07
 1. 支持自定义信封逾期时间
