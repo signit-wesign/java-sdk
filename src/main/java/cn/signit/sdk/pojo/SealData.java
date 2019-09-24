@@ -36,7 +36,7 @@ public class SealData extends FileData {
      * 
      * @since 2.0.0
      */
-    public static class SealDataBuilder {
+    public static class SealDataBuilder extends FileData.Builder {
         private String url;
         private String base64;
         private String name;
