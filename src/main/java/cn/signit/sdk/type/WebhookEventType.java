@@ -61,7 +61,11 @@ public enum WebhookEventType {
     /**
      * 参与者逾期未签署信封.
      */
-    PARTICIPANT_EXPIRED("participantExpired", "参与者逾期未签署信封")
+    PARTICIPANT_EXPIRED("participantExpired", "参与者逾期未签署信封"),
+    /**
+     * 会签签署完成
+     */
+    COUNTERSIGNATURE_SIGN_COMPLETED("countersignatureSignCompleted", "会签签署完成"),
     ;
     private String event;
     private String description;
