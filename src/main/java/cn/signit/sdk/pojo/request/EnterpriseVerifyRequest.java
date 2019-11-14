@@ -90,6 +90,17 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
      * @since 2.0.0
      */
     private List<IdCardImage> extraAuthImages;
+    
+    /**
+     * 启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，签署流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false.
+     *
+     * @since 2.5.1
+     */
+    private Boolean enableEmbeddedMode;
+
+    public Boolean getEnableEmbeddedMode() {
+        return enableEmbeddedMode;
+    }
 
     public String getName() {
         return name;
@@ -159,6 +170,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
         this.customTag = builder.customTag;
         this.returnUrl = builder.returnUrl;
         this.acceptDataType = builder.acceptDataType;
+        this.enableEmbeddedMode = builder.enableEmbeddedMode;
     }
 
     public Builder newBuilder() {
@@ -190,6 +202,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
         private String customTag;
         private String returnUrl;
         private AcceptDataType acceptDataType;
+        private Boolean enableEmbeddedMode;
 
         public Builder() {
 
@@ -211,6 +224,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             this.customTag = enterpriseVerifyRequest.customTag;
             this.returnUrl = enterpriseVerifyRequest.returnUrl;
             this.acceptDataType = enterpriseVerifyRequest.acceptDataType;
+            this.enableEmbeddedMode = enterpriseVerifyRequest.enableEmbeddedMode;
         }
 
         /**
@@ -478,6 +492,18 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
          */
         public Builder extraAuthImages(IdCardImage.Builder... builders) {
             this.extraAuthImages = ListBuilder.buildList(builders);
+            return this;
+        }
+        
+        /**
+         *
+         * @param enableEmbeddedMode
+         *            启用嵌入模式，调用方系统中直接嵌入易企签WEB流程时设置为true，实名认证流程消息只会通过webhook事件消息方式通知，用户在易企签平台设置的短信/邮件等消息将自动屏蔽。非必填，默认值：false
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.5.1
+         */
+        public Builder enableEmbeddedMode(boolean enableEmbeddedMode) {
+            this.enableEmbeddedMode = enableEmbeddedMode;
             return this;
         }
 
