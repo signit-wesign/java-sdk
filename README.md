@@ -20,7 +20,7 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>2.5.0</version>
+        <version>2.5.2</version>
     </dependency>
 
 # 版本更新日志：
