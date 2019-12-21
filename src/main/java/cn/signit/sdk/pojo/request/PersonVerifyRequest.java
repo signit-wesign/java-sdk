@@ -93,6 +93,11 @@ public class PersonVerifyRequest extends AbstractSignitRequest<PersonVerifyRespo
      */
     private AcceptDataType acceptDataType;
 
+    /**
+     * 个人认证方式
+     * 
+     * @since 2.1.0
+     */
     private List<PersonAuthType> authModes;
 
     /**

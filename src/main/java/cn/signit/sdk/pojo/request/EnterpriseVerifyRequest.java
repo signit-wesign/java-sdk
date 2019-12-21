@@ -1,5 +1,6 @@
 package cn.signit.sdk.pojo.request;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.signit.sdk.pojo.EnterpriseAgent;
@@ -9,6 +10,7 @@ import cn.signit.sdk.pojo.IdCardImage;
 import cn.signit.sdk.pojo.response.EnterpriseVerifyResponse;
 import cn.signit.sdk.type.AcceptDataType;
 import cn.signit.sdk.type.EnterpriseAuthType;
+import cn.signit.sdk.type.PersonAuthType;
 import cn.signit.sdk.util.ListBuilder;
 
 /**
@@ -78,6 +80,14 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
      * @since 2.0.0
      */
     private EnterpriseAuthType authType;
+    
+    /**
+     * 设置经办人或者法人的个人实名认证方式，默认为：PHONE_AUTH
+     *
+     * @since 2.5.2
+     */
+    private List<PersonAuthType> authModes;
+    
     /**
      * 企业对公银行信息.
      *
@@ -142,6 +152,10 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
         return authType;
     }
 
+    public List<PersonAuthType> getAuthModes() {
+        return authModes;
+    }
+
     public EnterpriseBankCardInfo getBankCardInfo() {
         return bankCardInfo;
     }
@@ -165,6 +179,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
         this.orgImage = builder.orgImage;
         this.registCode = builder.registCode;
         this.authType = builder.authType;
+        this.authModes = builder.authModes;
         this.bankCardInfo = builder.bankCardInfo;
         this.extraAuthImages = builder.extraAuthImages;
         this.customTag = builder.customTag;
@@ -197,6 +212,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
         private IdCardImage orgImage;
         private String registCode;
         private EnterpriseAuthType authType;
+        private List<PersonAuthType> authModes;
         private EnterpriseBankCardInfo bankCardInfo;
         private List<IdCardImage> extraAuthImages;
         private String customTag;
@@ -219,6 +235,7 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
             this.orgImage = enterpriseVerifyRequest.orgImage;
             this.registCode = enterpriseVerifyRequest.registCode;
             this.authType = enterpriseVerifyRequest.authType;
+            this.authModes = enterpriseVerifyRequest.authModes;
             this.bankCardInfo = enterpriseVerifyRequest.bankCardInfo;
             this.extraAuthImages = enterpriseVerifyRequest.extraAuthImages;
             this.customTag = enterpriseVerifyRequest.customTag;
@@ -348,6 +365,35 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
          */
         public Builder authType(EnterpriseAuthType authType) {
             this.authType = authType;
+            return this;
+        }
+
+        /**
+         * @param authModes
+         *            个人认证方式
+         * @return 个人实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.5.2
+         */
+        public Builder authModes(PersonAuthType... authModes) {
+            if (authModes != null && authModes.length != 0) {
+                List<PersonAuthType> list = new ArrayList<PersonAuthType>();
+                for (PersonAuthType authMode : authModes) {
+                    list.add(authMode);
+                }
+                this.authModes = list;
+            }
+            return this;
+        }
+
+        /**
+         * 
+         * @param authModes
+         *            个人认证方式
+         * @return 企业实名认证请求对象建筑器{@link EnterpriseVerifyRequest.Builder}
+         * @since 2.5.2
+         */
+        public Builder authModes(List<PersonAuthType> authModes) {
+            this.authModes = authModes;
             return this;
         }
 
@@ -521,4 +567,5 @@ public class EnterpriseVerifyRequest extends AbstractSignitRequest<EnterpriseVer
     public Class<EnterpriseVerifyResponse> getResponseClass() {
         return EnterpriseVerifyResponse.class;
     }
+
 }
