@@ -20,10 +20,13 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>2.5.2</version>
+        <version>2.5.3</version>
     </dependency>
 
 # 版本更新日志：
+
+#### V2.5.3 2020.01
+1. 更新信封完成webhook事件中返回senderName发起者名字
 
 #### V2.5.2 2019.12
 1. 提交企业实名认证，法人和经办人个人实名认证支持支付宝认证，手机三网认证，人脸认证，手机三网+人脸双重认证

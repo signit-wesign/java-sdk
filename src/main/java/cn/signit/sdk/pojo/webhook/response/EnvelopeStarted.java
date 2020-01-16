@@ -106,7 +106,12 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
      */
     public static class RawDataBasicInfo {
         private String wsid;// 信封全局唯一ID
+        private String senderWsid;//信封发起者ID
+        private String senderName;//信封发起者名字
         private String status;// 信封状态
+        private String type;//信封类型
+        private String title;//信封标题
+        private String subject;//信封主题
         private Long createdDatetime;// 信封创建时间
         private Long expireDatetime;// 信封过期时间
         private Long statusDatetime;// 信封最新状态时间
@@ -167,6 +172,46 @@ public class EnvelopeStarted extends AbstractWebhookResponseData {
 
         public void setCurrentSequence(Integer currentSequence) {
             this.currentSequence = currentSequence;
+        }
+
+        public String getSenderWsid() {
+            return senderWsid;
+        }
+
+        public void setSenderWsid(String senderWsid) {
+            this.senderWsid = senderWsid;
+        }
+
+        public String getSenderName() {
+            return senderName;
+        }
+
+        public void setSenderName(String senderName) {
+            this.senderName = senderName;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getSubject() {
+            return subject;
+        }
+
+        public void setSubject(String subject) {
+            this.subject = subject;
         }
     }
 
