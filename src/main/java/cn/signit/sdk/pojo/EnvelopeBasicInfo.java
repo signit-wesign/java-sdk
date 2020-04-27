@@ -51,6 +51,20 @@ public class EnvelopeBasicInfo {
      */
     private Integer expire;
 
+    /**
+     * 信封ID.
+     *
+     * @since 3.6.0
+     */
+    private String envelopeWsid;
+
+    /**
+     * 模式.
+     *
+     * @since 3.6.0
+     */
+    private String mode;
+
     public Integer getExpire() {
         return expire;
     }
@@ -110,6 +124,8 @@ public class EnvelopeBasicInfo {
         this.authLevel = builder.authLevel;
         this.metadata = builder.metadata;
         this.expire = builder.expire;
+        this.envelopeWsid = builder.envelopeWsid;
+        this.mode = builder.mode;
     }
 
     public Builder newBuilder() {
@@ -132,6 +148,8 @@ public class EnvelopeBasicInfo {
         private AuthLevel authLevel;
         private String metadata;
         private Integer expire;
+        private String envelopeWsid;
+        private String mode;
 
         public Builder() {
         }
@@ -143,6 +161,8 @@ public class EnvelopeBasicInfo {
             this.authLevel = enveBasicInfo.authLevel;
             this.metadata = enveBasicInfo.metadata;
             this.expire = enveBasicInfo.expire;
+            this.envelopeWsid = enveBasicInfo.envelopeWsid;
+            this.mode = enveBasicInfo.mode;
         }
 
         /**
@@ -216,6 +236,30 @@ public class EnvelopeBasicInfo {
          */
         public Builder expire(Integer expire) {
             this.expire = expire;
+            return this;
+        }
+
+        /**
+         * 
+         * @param envelopeWsid
+         *            信封ID
+         * @return 信封基本信息对象建造器{@link EnvelopeBasicInfo.Builder}
+         * @since 3.6.0
+         */
+        public Builder envelopeWsid(String envelopeWsid) {
+            this.envelopeWsid = envelopeWsid;
+            return this;
+        }
+
+        /**
+         * 
+         * @param mode
+         *            模式
+         * @return 信封基本信息对象建造器{@link EnvelopeBasicInfo.Builder}
+         * @since 3.6.0
+         */
+        public Builder mode(String mode) {
+            this.mode = mode;
             return this;
         }
 

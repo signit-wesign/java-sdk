@@ -120,6 +120,48 @@ public class Receiver {
      */
     private String clientId;
 
+    /**
+     * 参与者唯一标识.<br/>
+     *
+     * @since 3.6.0
+     */
+    private String participantWsid;
+
+    /**
+     * 是否是外部.<br/>
+     *
+     * @since 3.6.0
+     */
+    private boolean isExternal;
+
+    /**
+     * 是否是委托外部.<br/>
+     *
+     * @since 3.6.0
+     */
+    private boolean isEntrust;
+
+    /**
+     * 是否允许撤销.<br/>
+     *
+     * @since 3.6.0
+     */
+    private boolean allowRevoke;
+
+    /**
+     * 是否区分顺序.<br/>
+     *
+     * @since 3.6.0
+     */
+    private boolean sequenceSensitive;
+
+    /**
+     * 用户ID.<br/>
+     *
+     * @since 3.6.0
+     */
+    private String userWsid;
+
     public boolean isEnableEmbeddedMode() {
         return enableEmbeddedMode;
     }
@@ -256,6 +298,54 @@ public class Receiver {
         this.handleMode = handleMode;
     }
 
+    public String getParticipantWsid() {
+        return participantWsid;
+    }
+
+    public void setParticipantWsid(String participantWsid) {
+        this.participantWsid = participantWsid;
+    }
+
+    public boolean isExternal() {
+        return isExternal;
+    }
+
+    public void setExternal(boolean isExternal) {
+        this.isExternal = isExternal;
+    }
+
+    public boolean isEntrust() {
+        return isEntrust;
+    }
+
+    public void setEntrust(boolean isEntrust) {
+        this.isEntrust = isEntrust;
+    }
+
+    public boolean isAllowRevoke() {
+        return allowRevoke;
+    }
+
+    public void setAllowRevoke(boolean allowRevoke) {
+        this.allowRevoke = allowRevoke;
+    }
+
+    public boolean isSequenceSensitive() {
+        return sequenceSensitive;
+    }
+
+    public void setSequenceSensitive(boolean sequenceSensitive) {
+        this.sequenceSensitive = sequenceSensitive;
+    }
+
+    public String getUserWsid() {
+        return userWsid;
+    }
+
+    public void setUserWsid(String userWsid) {
+        this.userWsid = userWsid;
+    }
+
     public Receiver() {
     }
 
@@ -277,6 +367,13 @@ public class Receiver {
         this.selectedAuthTypes = builder.selectedAuthTypes;
         this.enableEmbeddedMode = builder.enableEmbeddedMode;
         this.clientId = builder.clientId;
+        this.participantWsid = builder.participantWsid;
+        this.isExternal = builder.isExternal;
+        this.isEntrust = builder.isEntrust;
+        this.allowRevoke = builder.allowRevoke;
+        this.sequenceSensitive = builder.sequenceSensitive;
+        this.userWsid = builder.userWsid;
+
     }
 
     public Builder newBuilder() {
@@ -310,6 +407,12 @@ public class Receiver {
         private List<AuthType> selectedAuthTypes;
         private boolean enableEmbeddedMode;
         private String clientId;
+        private String participantWsid;
+        private boolean isExternal;
+        private boolean isEntrust;
+        private boolean allowRevoke;
+        private boolean sequenceSensitive;
+        private String userWsid;
 
         public Builder() {
         }
@@ -332,6 +435,12 @@ public class Receiver {
             this.selectedAuthTypes = receiver.selectedAuthTypes;
             this.enableEmbeddedMode = receiver.enableEmbeddedMode;
             this.clientId = receiver.clientId;
+            this.participantWsid = receiver.participantWsid;
+            this.isExternal = receiver.isExternal;
+            this.isEntrust = receiver.isEntrust;
+            this.allowRevoke = receiver.allowRevoke;
+            this.sequenceSensitive = receiver.sequenceSensitive;
+            this.userWsid = receiver.userWsid;
         }
 
         /**
@@ -582,6 +691,78 @@ public class Receiver {
          */
         public Builder clientId(String clientId) {
             this.clientId = clientId;
+            return this;
+        }
+
+        /**
+         *
+         * @param participantWsid
+         *            参与者ID
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 3.6.0
+         */
+        public Builder participantWsid(String participantWsid) {
+            this.participantWsid = participantWsid;
+            return this;
+        }
+
+        /**
+         *
+         * @param isExternal
+         *            是否外部
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 3.6.0
+         */
+        public Builder isExternal(boolean isExternal) {
+            this.isExternal = isExternal;
+            return this;
+        }
+
+        /**
+         *
+         * @param isEntrust
+         *            是否委托
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 3.6.0
+         */
+        public Builder isEntrust(boolean isEntrust) {
+            this.isEntrust = isEntrust;
+            return this;
+        }
+
+        /**
+         *
+         * @param allowRevoke
+         *            是否允许撤销
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 3.6.0
+         */
+        public Builder allowRevoke(boolean allowRevoke) {
+            this.allowRevoke = allowRevoke;
+            return this;
+        }
+
+        /**
+         *
+         * @param sequenceSensitive
+         *            是否区分顺序
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 3.6.0
+         */
+        public Builder sequenceSensitive(boolean sequenceSensitive) {
+            this.sequenceSensitive = sequenceSensitive;
+            return this;
+        }
+
+        /**
+         *
+         * @param userWsid
+         *            用户ID
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 3.6.0
+         */
+        public Builder userWsid(String userWsid) {
+            this.userWsid = userWsid;
             return this;
         }
 
