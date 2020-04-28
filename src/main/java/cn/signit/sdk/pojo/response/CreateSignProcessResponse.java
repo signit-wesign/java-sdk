@@ -35,7 +35,7 @@ import cn.signit.sdk.pojo.EnvelopeParticipantInfo;
 public class CreateSignProcessResponse extends AbstractSignitResponse {
 
     private String actionUrl;
-    private EnvelopeBasicInfo basicinfo;
+    private EnvelopeBasicInfo basicInfo;
     private EnvelopeParticipantInfo participantInfo;
 
     public CreateSignProcessResponse() {
@@ -44,7 +44,7 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
     public CreateSignProcessResponse(Builder builder) {
         super();
         this.actionUrl = builder.actionUrl;
-        this.basicinfo = builder.basicinfo;
+        this.basicInfo = builder.basicInfo;
         this.participantInfo = builder.participantInfo;
     }
 
@@ -57,11 +57,11 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
     }
 
     public EnvelopeBasicInfo getBasicinfo() {
-        return basicinfo;
+        return basicInfo;
     }
 
-    public void setBasicinfo(EnvelopeBasicInfo basicinfo) {
-        this.basicinfo = basicinfo;
+    public void setBasicinfo(EnvelopeBasicInfo basicInfo) {
+        this.basicInfo = basicInfo;
     }
 
     public EnvelopeParticipantInfo getParticipantInfo() {
@@ -88,7 +88,7 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
     public static class Builder implements cn.signit.sdk.pojo.Builder<CreateSignProcessResponse> {
 
         private String actionUrl;
-        private EnvelopeBasicInfo basicinfo;
+        private EnvelopeBasicInfo basicInfo;
         private EnvelopeParticipantInfo participantInfo;
 
         public Builder() {
@@ -97,31 +97,22 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
 
         public Builder(CreateSignProcessResponse createSignProcessResponse) {
             this.actionUrl = createSignProcessResponse.actionUrl;
-            this.basicinfo = createSignProcessResponse.basicinfo;
+            this.basicInfo = createSignProcessResponse.basicInfo;
             this.participantInfo = createSignProcessResponse.participantInfo;
         }
 
-        /**
-         * 
-         * @param actionUrl
-         *            访问URL
-         * @return 创建签署流程响应对象建造器{@link CreateSignProcessResponse.Builder}
-         * @since 3.6.0
-         */
         public Builder actionUrl(String actionUrl) {
             this.actionUrl = actionUrl;
             return this;
         }
 
-        /**
-         * 
-         * @param basicinfo
-         *            信封基本信息
-         * @return 创建签署流程响应对象建造器{@link CreateSignProcessResponse.Builder}
-         * @since 3.6.0
-         */
-        public Builder basicinfo(EnvelopeBasicInfo basicinfo) {
-            this.basicinfo = basicinfo;
+        public Builder basicInfo(EnvelopeBasicInfo basicInfo) {
+            this.basicInfo = basicInfo;
+            return this;
+        }
+
+        public Builder basicInfo(EnvelopeBasicInfo.Builder basicInfoBuilder) {
+            this.basicInfo = basicInfoBuilder.build();
             return this;
         }
 
@@ -134,6 +125,18 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
          */
         public Builder participantInfo(EnvelopeParticipantInfo participantInfo) {
             this.participantInfo = participantInfo;
+            return this;
+        }
+
+        /**
+         * 
+         * @param participantInfoBuilder
+         *            参与者基本信息
+         * @return 创建签署流程响应对象建造器{@link CreateSignProcessResponse.Builder}
+         * @since 3.6.0
+         */
+        public Builder participantInfo(EnvelopeParticipantInfo.Builder participantInfoBuilder) {
+            this.participantInfo = participantInfoBuilder.build();
             return this;
         }
 

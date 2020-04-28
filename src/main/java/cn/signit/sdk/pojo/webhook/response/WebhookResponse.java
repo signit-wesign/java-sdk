@@ -86,7 +86,7 @@ public class WebhookResponse {
 
     /**
      * 字段needCallback更新为needCallBack,因此该方法建议被弃用
-     * 
+     * @return needCallBack
      * @since 2.4.1
      */
     @Deprecated
@@ -96,7 +96,7 @@ public class WebhookResponse {
 
     /**
      * 字段needCallback更新为needCallBack,因此该方法建议被弃用
-     * 
+     * @param needCallback 是否回调
      * @since 2.4.1
      */
     @Deprecated

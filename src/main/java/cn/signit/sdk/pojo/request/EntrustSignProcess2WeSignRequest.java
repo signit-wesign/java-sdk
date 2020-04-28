@@ -106,25 +106,11 @@ public class EntrustSignProcess2WeSignRequest extends AbstractSignitRequest<Entr
             this.expireDatetime = entrustSignProcess2WeSignRequest.expireDatetime;
         }
 
-        /**
-         * 
-         * @param depth
-         *            需要托管的流程深度
-         * @return 托管的流程请求对象建造器{@link EntrustSignProcess2WeSignResponse.Builder}
-         * @since 3.6.0
-         */
         public Builder depth(Integer depth) {
             this.depth = depth;
             return this;
         }
 
-        /**
-         * 
-         * @param expireDatetime
-         *            托管流程过期日期
-         * @return 托管的流程请求对象建造器{@link EntrustSignProcess2WeSignResponse.Builder}
-         * @since 3.6.0
-         */
         public Builder expireDatetime(Date expireDatetime) {
             this.expireDatetime = expireDatetime;
             return this;

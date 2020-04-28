@@ -113,6 +113,22 @@ public class EnvelopeBasicInfo {
         this.metadata = metadata;
     }
 
+    public String getEnvelopeWsid() {
+        return envelopeWsid;
+    }
+
+    public void setEnvelopeWsid(String envelopeWsid) {
+        this.envelopeWsid = envelopeWsid;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
     public EnvelopeBasicInfo() {
 
     }

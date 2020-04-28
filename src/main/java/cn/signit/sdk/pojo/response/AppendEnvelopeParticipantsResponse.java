@@ -23,6 +23,10 @@
  */
 package cn.signit.sdk.pojo.response;
 
+import java.util.List;
+
+import cn.signit.sdk.pojo.Participant;
+
 /**
  * 签署流程中追加新的签署方响应数据
  *
@@ -31,4 +35,13 @@ package cn.signit.sdk.pojo.response;
  */
 public class AppendEnvelopeParticipantsResponse extends AbstractSignitResponse {
 
+    private List<Participant> participants;
+
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Participant> participants) {
+        this.participants = participants;
+    }
 }

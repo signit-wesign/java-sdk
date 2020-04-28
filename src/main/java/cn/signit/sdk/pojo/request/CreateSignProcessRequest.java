@@ -37,18 +37,18 @@ import cn.signit.sdk.type.AcceptDataType;
  */
 public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignProcessResponse> {
 
-    private EnvelopeBasicInfo basicinfo;
+    private EnvelopeBasicInfo basicInfo;
 
     private EnvelopeContentInfo contentInfo;
 
     private EnvelopeParticipantInfo participantInfo;
 
     public EnvelopeBasicInfo getBasicinfo() {
-        return basicinfo;
+        return basicInfo;
     }
 
-    public void setBasicinfo(EnvelopeBasicInfo basicinfo) {
-        this.basicinfo = basicinfo;
+    public void setBasicinfo(EnvelopeBasicInfo basicInfo) {
+        this.basicInfo = basicInfo;
     }
 
     public EnvelopeContentInfo getContentInfo() {
@@ -76,7 +76,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
     }
 
     public CreateSignProcessRequest(Builder builder) {
-        this.basicinfo = builder.basicinfo;
+        this.basicInfo = builder.basicInfo;
         this.contentInfo = builder.contentInfo;
         this.participantInfo = builder.participantInfo;
         this.customTag = builder.customTag;
@@ -99,7 +99,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
      */
     public static class Builder implements cn.signit.sdk.pojo.Builder<CreateSignProcessRequest> {
 
-        private EnvelopeBasicInfo basicinfo;
+        private EnvelopeBasicInfo basicInfo;
         private EnvelopeContentInfo contentInfo;
         private EnvelopeParticipantInfo participantInfo;
         private String customTag;
@@ -110,7 +110,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
         }
 
         public Builder(CreateSignProcessRequest createSignProcessRequest) {
-            this.basicinfo = createSignProcessRequest.basicinfo;
+            this.basicInfo = createSignProcessRequest.basicInfo;
             this.contentInfo = createSignProcessRequest.contentInfo;
             this.participantInfo = createSignProcessRequest.participantInfo;
             this.customTag = createSignProcessRequest.customTag;
@@ -125,8 +125,8 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
          * @since 3.6.0
          */
-        public Builder basicinfo(EnvelopeBasicInfo basicinfo) {
-            this.basicinfo = basicinfo;
+        public Builder basicInfo(EnvelopeBasicInfo basicinfo) {
+            this.basicInfo = basicinfo;
             return this;
         }
 
@@ -137,9 +137,9 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
          * @since 3.6.0
          */
-        public Builder basicinfo(EnvelopeBasicInfo.Builder basicinfoBuilder) {
+        public Builder basicInfo(EnvelopeBasicInfo.Builder basicinfoBuilder) {
             if (basicinfoBuilder != null) {
-                this.basicinfo = basicinfoBuilder.build();
+                this.basicInfo = basicinfoBuilder.build();
             }
             return this;
         }
