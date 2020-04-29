@@ -68,9 +68,9 @@ public enum WebhookEventType {
     COUNTERSIGNATURE_SIGN_COMPLETED("countersignatureSignCompleted", "会签签署完成"),
 
     /**
-     * 撤销签署流程
+     * 参与者撤销
      */
-    PARTICIPANT_REVOKED("participantRevoked", "撤销签署流程"),;
+    PARTICIPANT_REVOKED("participantRevoked", "参与者撤销"),;
 
     private String event;
     private String description;
