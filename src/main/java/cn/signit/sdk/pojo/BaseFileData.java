@@ -9,6 +9,9 @@ package cn.signit.sdk.pojo;
 public class BaseFileData {
     protected String url;
     protected String base64;
+    protected String name;
+
+
 
     public String getUrl() {
         return url;
@@ -16,6 +19,10 @@ public class BaseFileData {
 
     public String getBase64() {
         return base64;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setUrl(String url) {
@@ -26,9 +33,14 @@ public class BaseFileData {
         this.base64 = base64;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public BaseFileData(Builder builder) {
         this.base64 = builder.base64;
         this.url = builder.url;
+        this.name = builder.name;
     }
 
     public BaseFileData() {
@@ -51,6 +63,7 @@ public class BaseFileData {
     public static class Builder implements cn.signit.sdk.pojo.Builder<BaseFileData> {
         protected String base64;
         protected String url;
+        protected String name;
 
         public Builder() {
         }
@@ -58,6 +71,7 @@ public class BaseFileData {
         public Builder(BaseFileData fileData) {
             this.base64 = fileData.base64;
             this.url = fileData.url;
+            this.name = fileData.name;
         }
 
         /**
@@ -81,6 +95,18 @@ public class BaseFileData {
          */
         public Builder base64(String base64) {
             this.base64 = base64;
+            return this;
+        }
+
+        /**
+         * 
+         * @param name
+         *            文件名
+         * @return 文件基础数据对象建造器{@link BaseFileData.Builder}
+         * @since 2.6.0
+         */
+        public Builder name(String name) {
+            this.name = name;
             return this;
         }
 

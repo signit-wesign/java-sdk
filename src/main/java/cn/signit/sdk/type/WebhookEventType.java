@@ -66,7 +66,12 @@ public enum WebhookEventType {
      * 会签签署完成
      */
     COUNTERSIGNATURE_SIGN_COMPLETED("countersignatureSignCompleted", "会签签署完成"),
-    ;
+
+    /**
+     * 参与者撤销
+     */
+    PARTICIPANT_REVOKED("participantRevoked", "参与者撤销"),;
+
     private String event;
     private String description;
 
@@ -87,10 +92,7 @@ public enum WebhookEventType {
      */
     public static WebhookEventType parse(String event) {
         for (WebhookEventType val : values()) {
-            if (val.name()
-                    .equalsIgnoreCase(event)
-                    || val.getEvent()
-                            .equalsIgnoreCase(event)) {
+            if (val.name().equalsIgnoreCase(event) || val.getEvent().equalsIgnoreCase(event)) {
                 return val;
             }
         }
