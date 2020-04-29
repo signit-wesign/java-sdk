@@ -29,7 +29,7 @@ import cn.signit.sdk.pojo.response.RevokeSignProcessResopnse;
  * 撤销指定签署流程请求数据
  *
  * @author dengwen
- * @since 3.6.0
+ * @since 2.6.0
  */
 public class RevokeSignProcessRequest extends AbstractSignitRequest<RevokeSignProcessResopnse> {
 
@@ -77,7 +77,7 @@ public class RevokeSignProcessRequest extends AbstractSignitRequest<RevokeSignPr
          * @param revokeReason
          *            信撤销指定签署流程原因
          * @return 信撤销指定签署流程请求对象建造器{@link RevokeSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder revokeReason(String revokeReason) {
             this.revokeReason = revokeReason;

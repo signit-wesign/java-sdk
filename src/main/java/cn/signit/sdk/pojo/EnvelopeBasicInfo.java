@@ -54,14 +54,14 @@ public class EnvelopeBasicInfo {
     /**
      * 信封ID.
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private String envelopeWsid;
 
     /**
      * 模式.
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private String mode;
 
@@ -260,7 +260,7 @@ public class EnvelopeBasicInfo {
          * @param envelopeWsid
          *            信封ID
          * @return 信封基本信息对象建造器{@link EnvelopeBasicInfo.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder envelopeWsid(String envelopeWsid) {
             this.envelopeWsid = envelopeWsid;
@@ -272,7 +272,7 @@ public class EnvelopeBasicInfo {
          * @param mode
          *            模式
          * @return 信封基本信息对象建造器{@link EnvelopeBasicInfo.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder mode(String mode) {
             this.mode = mode;

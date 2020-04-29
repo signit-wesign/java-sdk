@@ -31,7 +31,7 @@ import cn.signit.sdk.pojo.response.EntrustSignProcess2WeSignResponse;
  * 托管签署流程到易企签请求数据
  *
  * @author dengwen
- * @since 3.6.0
+ * @since 2.6.0
  */
 public class EntrustSignProcess2WeSignRequest extends AbstractSignitRequest<EntrustSignProcess2WeSignResponse> {
 
@@ -47,7 +47,7 @@ public class EntrustSignProcess2WeSignRequest extends AbstractSignitRequest<Entr
      * O       <-- depth = 2
      * </pre>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private Integer depth = 0;
     /**

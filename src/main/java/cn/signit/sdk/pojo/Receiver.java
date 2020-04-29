@@ -123,42 +123,42 @@ public class Receiver {
     /**
      * 参与者唯一标识.<br/>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private String participantWsid;
 
     /**
      * 是否是外部.<br/>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private boolean isExternal;
 
     /**
      * 是否是委托外部.<br/>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private boolean isEntrust;
 
     /**
      * 是否允许撤销.<br/>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private boolean allowRevoke;
 
     /**
      * 是否区分顺序.<br/>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private boolean sequenceSensitive;
 
     /**
      * 用户ID.<br/>
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     private String userWsid;
 
@@ -699,7 +699,7 @@ public class Receiver {
          * @param participantWsid
          *            参与者ID
          * @return 发送方信息对象建造器{@link Sender.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder participantWsid(String participantWsid) {
             this.participantWsid = participantWsid;
@@ -711,7 +711,7 @@ public class Receiver {
          * @param isExternal
          *            是否外部
          * @return 发送方信息对象建造器{@link Sender.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder isExternal(boolean isExternal) {
             this.isExternal = isExternal;
@@ -723,7 +723,7 @@ public class Receiver {
          * @param isEntrust
          *            是否委托
          * @return 发送方信息对象建造器{@link Sender.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder isEntrust(boolean isEntrust) {
             this.isEntrust = isEntrust;
@@ -735,7 +735,7 @@ public class Receiver {
          * @param allowRevoke
          *            是否允许撤销
          * @return 发送方信息对象建造器{@link Sender.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder allowRevoke(boolean allowRevoke) {
             this.allowRevoke = allowRevoke;
@@ -747,7 +747,7 @@ public class Receiver {
          * @param sequenceSensitive
          *            是否区分顺序
          * @return 发送方信息对象建造器{@link Sender.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder sequenceSensitive(boolean sequenceSensitive) {
             this.sequenceSensitive = sequenceSensitive;
@@ -759,7 +759,7 @@ public class Receiver {
          * @param userWsid
          *            用户ID
          * @return 发送方信息对象建造器{@link Sender.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder userWsid(String userWsid) {
             this.userWsid = userWsid;

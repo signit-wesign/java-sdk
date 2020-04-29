@@ -26,7 +26,7 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>3.6.0</version>
+        <version>2.6.0</version>
     </dependency>
 
 # 版本更新日志：

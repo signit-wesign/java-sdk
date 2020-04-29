@@ -30,7 +30,7 @@ import cn.signit.sdk.pojo.EnvelopeParticipantInfo;
  * 创建签署流程响应数据
  *
  * @author dengwen
- * @since 3.6.0
+ * @since 2.6.0
  */
 public class CreateSignProcessResponse extends AbstractSignitResponse {
 
@@ -83,7 +83,7 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
     /**
      * 创建签署流程响应对象建造器
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     public static class Builder implements cn.signit.sdk.pojo.Builder<CreateSignProcessResponse> {
 
@@ -121,7 +121,7 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
          * @param participantInfo
          *            参与者基本信息
          * @return 创建签署流程响应对象建造器{@link CreateSignProcessResponse.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder participantInfo(EnvelopeParticipantInfo participantInfo) {
             this.participantInfo = participantInfo;
@@ -133,7 +133,7 @@ public class CreateSignProcessResponse extends AbstractSignitResponse {
          * @param participantInfoBuilder
          *            参与者基本信息
          * @return 创建签署流程响应对象建造器{@link CreateSignProcessResponse.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder participantInfo(EnvelopeParticipantInfo.Builder participantInfoBuilder) {
             this.participantInfo = participantInfoBuilder.build();

@@ -103,7 +103,7 @@ public class BaseFileData {
          * @param name
          *            文件名
          * @return 文件基础数据对象建造器{@link BaseFileData.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder name(String name) {
             this.name = name;

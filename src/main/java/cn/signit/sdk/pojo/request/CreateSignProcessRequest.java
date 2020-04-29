@@ -33,7 +33,7 @@ import cn.signit.sdk.type.AcceptDataType;
  * 创建签署流程请求数据
  *
  * @author dengwen
- * @since 3.6.0
+ * @since 2.6.0
  */
 public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignProcessResponse> {
 
@@ -95,7 +95,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
     /**
      * 创建签署流程请求对象建造器
      *
-     * @since 3.6.0
+     * @since 2.6.0
      */
     public static class Builder implements cn.signit.sdk.pojo.Builder<CreateSignProcessRequest> {
 
@@ -123,7 +123,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param basicinfo
          *            信封基本信息
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder basicInfo(EnvelopeBasicInfo basicinfo) {
             this.basicInfo = basicinfo;
@@ -135,7 +135,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param basicinfoBuilder
          *            信封基本信息建造器
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder basicInfo(EnvelopeBasicInfo.Builder basicinfoBuilder) {
             if (basicinfoBuilder != null) {
@@ -149,7 +149,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param contentInfo
          *            信封内容基本信息
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder contentInfo(EnvelopeContentInfo contentInfo) {
             this.contentInfo = contentInfo;
@@ -161,7 +161,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param contentInfoBuilder
          *            信封内容基本信息建造器
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder contentInfo(EnvelopeContentInfo.Builder contentInfoBuilder) {
             if (contentInfoBuilder != null) {
@@ -175,7 +175,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param participantInfo
          *            参与者基本信息
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder participantInfo(EnvelopeParticipantInfo participantInfo) {
             this.participantInfo = participantInfo;
@@ -187,7 +187,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param participantInfoBuilder
          *            参与者基本信息建造器
          * @return 创建签署流程请求对象建造器{@link CreateSignProcessRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder participantInfo(EnvelopeParticipantInfo.Builder participantInfoBuilder) {
             if (participantInfoBuilder != null) {
@@ -202,7 +202,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param customTag
          *            调用方自定义标识，易企签会原封不动返回
          * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder customTag(String customTag) {
             this.customTag = customTag;
@@ -215,7 +215,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param returnUrl
          *            调用方自定义要求易企签的WEB平台在流程结束后需要跳转的指定URL地址
          * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder returnUrl(String returnUrl) {
             this.returnUrl = returnUrl;
@@ -228,7 +228,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
          * @param acceptDataType
          *            调用方接受的数据类型，支持：BASE64/URL {@link AcceptDataType}；默认是BASE64
          * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         public Builder acceptDataType(AcceptDataType acceptDataType) {
             this.acceptDataType = acceptDataType;
@@ -238,7 +238,7 @@ public class CreateSignProcessRequest extends AbstractSignitRequest<CreateSignPr
         /**
          * 
          * @return 创建签署流程请求响应对象{@link CreateSignProcessRequest}
-         * @since 3.6.0
+         * @since 2.6.0
          */
         @Override
         public CreateSignProcessRequest build() {
