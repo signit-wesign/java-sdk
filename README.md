@@ -10,6 +10,12 @@
 - 提交企业实名认证（即：开通在线电子签约服务接口（企业））
 - 提交个人实名认证（即：开通在线电子签约服务接口（个人））
 - 启动信封签署流程
+- 信封资源-标准签手动模式（即：自由签）共 (5) 个  
+	- 创建签署流程  
+	- 托管签署流程到易企签  
+	- 签署流程中追加新的签署方  
+	- 撤销指定签署流程  
+	- 结束整个签署流程  
 
 了解更多易企签详情请访问  [https://www.signit.cn](https://www.signit.cn)
 
@@ -20,7 +26,7 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>2.5.3</version>
+        <version>3.6.0</version>
     </dependency>
 
 # 版本更新日志：
