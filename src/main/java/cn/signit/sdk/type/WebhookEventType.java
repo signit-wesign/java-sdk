@@ -70,7 +70,7 @@ public enum WebhookEventType {
     /**
      * 撤销签署流程
      */
-    ENVELOPE_REVOKED("envelopeRevoked", "撤销签署流程"),;
+    PARTICIPANT_REVOKED("participantRevoked", "撤销签署流程"),;
 
     private String event;
     private String description;
