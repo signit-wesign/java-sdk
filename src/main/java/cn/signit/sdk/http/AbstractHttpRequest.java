@@ -28,9 +28,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.security.cert.X509Certificate;
 import java.util.Scanner;
 
 import cn.signit.sdk.SignitException;
+
+import javax.net.ssl.*;
 
 public abstract class AbstractHttpRequest {
     protected String url;
@@ -54,6 +57,11 @@ public abstract class AbstractHttpRequest {
             connection = getConnection();
             connection.setConnectTimeout(CONNECT_TIMEOUT);
             connection.setReadTimeout(READ_TIMEOUT);
+            if (url.startsWith("https")) {
+                HttpsURLConnection https = (HttpsURLConnection) connection;
+                trustAllHosts(https);
+                https.setHostnameVerifier(DO_NOT_VERIFY);
+            }
         } catch (MalformedURLException e) {
             throw new SignitException(e);
         } catch (IOException e) {
@@ -97,4 +105,50 @@ public abstract class AbstractHttpRequest {
     }
 
     abstract HttpURLConnection getConnection() throws SignitException, IOException;
+
+    /**
+     * 覆盖java默认的证书验证
+     */
+    private static final TrustManager[] TRUST_ALL_CERTS = new TrustManager[]{new X509TrustManager() {
+        @Override
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            return new java.security.cert.X509Certificate[]{};
+        }
+
+        @Override
+        public void checkClientTrusted(X509Certificate[] chain, String authType) {
+        }
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] chain, String authType) {
+        }
+    }};
+
+    /**
+     * 设置不验证主机
+     */
+    private static final HostnameVerifier DO_NOT_VERIFY = new HostnameVerifier() {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+    };
+
+    /**
+     * 信任所有
+     * @param connection
+     * @return
+     */
+    private static SSLSocketFactory trustAllHosts(HttpsURLConnection connection) {
+        SSLSocketFactory oldFactory = connection.getSSLSocketFactory();
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, TRUST_ALL_CERTS, new java.security.SecureRandom());
+            SSLSocketFactory newFactory = sc.getSocketFactory();
+            connection.setSSLSocketFactory(newFactory);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return oldFactory;
+    }
 }
