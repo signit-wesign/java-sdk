@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javadoc-plugin.version>2.10.4</javadoc-plugin.version>
 		<source-plugin.version>3.0.1</source-plugin.version>
-		<fastjson.version>1.2.15</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 	</properties>
 	<description>welcome use signit Java Sdk!</description>
 	<url>https://github.com/signit-wesign/java-sdk</url>
