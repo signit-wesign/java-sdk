@@ -162,6 +162,13 @@ public class Receiver {
      */
     private String userWsid;
 
+    /**
+     * 是否允许参与者添加表单.<br/>
+     *
+     * @since 2.7.2
+     */
+    private Boolean allowAddForms;
+
     public boolean isEnableEmbeddedMode() {
         return enableEmbeddedMode;
     }
@@ -346,6 +353,14 @@ public class Receiver {
         this.userWsid = userWsid;
     }
 
+    public Boolean getAllowAddForms() {
+        return allowAddForms;
+    }
+
+    public void setAllowAddForms(Boolean allowAddForms) {
+        this.allowAddForms = allowAddForms;
+    }
+
     public Receiver() {
     }
 
@@ -373,6 +388,7 @@ public class Receiver {
         this.allowRevoke = builder.allowRevoke;
         this.sequenceSensitive = builder.sequenceSensitive;
         this.userWsid = builder.userWsid;
+        this.allowAddForms = builder.allowAddForms;
 
     }
 
@@ -413,6 +429,7 @@ public class Receiver {
         private boolean allowRevoke;
         private boolean sequenceSensitive;
         private String userWsid;
+        private boolean allowAddForms;
 
         public Builder() {
         }
@@ -441,6 +458,7 @@ public class Receiver {
             this.allowRevoke = receiver.allowRevoke;
             this.sequenceSensitive = receiver.sequenceSensitive;
             this.userWsid = receiver.userWsid;
+            this.allowAddForms = receiver.allowAddForms;
         }
 
         /**
@@ -763,6 +781,18 @@ public class Receiver {
          */
         public Builder userWsid(String userWsid) {
             this.userWsid = userWsid;
+            return this;
+        }
+
+        /**
+         *
+         * @param allowAddForms
+         *            是否允许参与者添加表单
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.6.0
+         */
+        public Builder allowAddForms(boolean allowAddForms) {
+            this.allowAddForms = allowAddForms;
             return this;
         }
 
