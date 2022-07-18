@@ -3,7 +3,6 @@ package cn.signit.sdk.type;
 /**
  * 
  * wehook推送事件枚举.
- * </p>
  *
  * @author luliangwei
  * @since 1.0.0
@@ -225,7 +224,7 @@ public enum WebhookEventType {
      *
      * @param event
      *            事件名称(不区分大小写)
-     * @return 对应的事件类型,如无法识别返回{@link cn.signit.wesign.mss.developer.utils.type.WebhookEventType.UNKNOWN }
+     * @return 对应的事件类型,如无法识别返回
      * @author luliangwei
      * @since 1.0.0
      */
