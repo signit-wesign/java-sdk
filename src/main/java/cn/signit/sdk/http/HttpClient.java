@@ -94,17 +94,6 @@ public class HttpClient {
         return request.getResponseCode();
     }
 
-    private void validate(JSONObject json) throws SignitException {
-        if (json.containsKey("error")) {
-            try {
-                String error = json.getString("error");
-                throw new SignitException(error, getLastResponseCode(), null);
-            } catch (JSONException ex) {
-                throw new SignitException(ex);
-            }
-        }
-    }
-
     /**
      * Clears the client after a request has successfully completed.
      */
