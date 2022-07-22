@@ -2,8 +2,7 @@ package cn.signit.sdk.type;
 
 /**
  * 可编辑范围枚举.
- * </p>
- * 
+ *
  * @author zhd
  * @since 2.5.5
  */

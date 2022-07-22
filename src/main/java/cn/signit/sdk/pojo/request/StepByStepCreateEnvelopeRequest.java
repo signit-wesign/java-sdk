@@ -161,7 +161,7 @@ public class StepByStepCreateEnvelopeRequest extends AbstractSignitRequest<StepB
         /**
          * 
          *
-         * @param basicinfoBuilder
+         * @param basicInfoBuilder
          *            信封基本信息对象建筑器 {@link EnvelopeBasicInfo.Builder}
          * @return 信封启动请求建筑器.{@link StepByStepCreateEnvelopeRequest.Builder}
          * @since 2.7.4

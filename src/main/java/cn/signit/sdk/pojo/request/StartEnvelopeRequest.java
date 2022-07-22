@@ -57,6 +57,7 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
     /**
      * 
      * 使用 {@link #getBasicInfo} 替换，后续版本会删除这个方法
+     * @return 信封基础信息
      */
     @Deprecated
     public EnvelopeBasicInfo getBasicinfo() {
@@ -174,7 +175,7 @@ public class StartEnvelopeRequest extends AbstractSignitRequest<StartEnvelopeRes
         /**
          * 
          *
-         * @param basicinfoBuilder
+         * @param basicInfoBuilder
          *            信封基本信息对象建筑器 {@link EnvelopeBasicInfo.Builder}
          * @return 信封启动请求建筑器.{@link StartEnvelopeRequest.Builder}
          * @since 2.7.4
