@@ -168,6 +168,19 @@ public class Receiver {
      * @since 2.7.2
      */
     private Boolean allowAddForms;
+    /**
+     * 候选印章签名列表
+     *
+     * @since 2.7.4
+     */
+    private List<ElecSign> candidateSealSigns;
+    
+    /**
+     * 候选手写签名列表
+     *
+     * @since 2.7.4
+     */
+    private List<ElecSign> candidateWriteSigns;
 
     public boolean isEnableEmbeddedMode() {
         return enableEmbeddedMode;
@@ -361,6 +374,22 @@ public class Receiver {
         this.allowAddForms = allowAddForms;
     }
 
+    public List<ElecSign> getCandidateSealSigns() {
+        return candidateSealSigns;
+    }
+
+    public void setCandidateSealSigns(List<ElecSign> candidateSealSigns) {
+        this.candidateSealSigns = candidateSealSigns;
+    }
+
+    public List<ElecSign> getCandidateWriteSigns() {
+        return candidateWriteSigns;
+    }
+
+    public void setCandidateWriteSigns(List<ElecSign> candidateWriteSigns) {
+        this.candidateWriteSigns = candidateWriteSigns;
+    }
+
     public Receiver() {
     }
 
@@ -389,7 +418,8 @@ public class Receiver {
         this.sequenceSensitive = builder.sequenceSensitive;
         this.userWsid = builder.userWsid;
         this.allowAddForms = builder.allowAddForms;
-
+        this.candidateSealSigns = builder.candidateSealSigns;
+        this.candidateWriteSigns = builder.candidateWriteSigns;
     }
 
     public Builder newBuilder() {
@@ -430,6 +460,19 @@ public class Receiver {
         private boolean sequenceSensitive;
         private String userWsid;
         private boolean allowAddForms;
+        /**
+         * 候选印章签名列表
+         *
+         * @since 2.7.4
+         */
+        private List<ElecSign> candidateSealSigns;
+
+        /**
+         * 候选手写签名列表
+         *
+         * @since 2.7.4
+         */
+        private List<ElecSign> candidateWriteSigns;
 
         public Builder() {
         }
@@ -459,6 +502,8 @@ public class Receiver {
             this.sequenceSensitive = receiver.sequenceSensitive;
             this.userWsid = receiver.userWsid;
             this.allowAddForms = receiver.allowAddForms;
+            this.candidateSealSigns = receiver.candidateSealSigns;
+            this.candidateWriteSigns = receiver.candidateWriteSigns;
         }
 
         /**
@@ -793,6 +838,30 @@ public class Receiver {
          */
         public Builder allowAddForms(boolean allowAddForms) {
             this.allowAddForms = allowAddForms;
+            return this;
+        }
+
+        /**
+         *
+         * @param candidateSealSigns
+         *            候选印章签名列表
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.7.4
+         */
+        public Builder candidateSealSigns(List<ElecSign> candidateSealSigns) {
+            this.candidateSealSigns = candidateSealSigns;
+            return this;
+        }
+
+        /**
+         *
+         * @param candidateWriteSigns
+         *            候选手写签名列表
+         * @return 发送方信息对象建造器{@link Sender.Builder}
+         * @since 2.7.4
+         */
+        public Builder candidateWriteSigns(List<ElecSign> candidateWriteSigns) {
+            this.candidateWriteSigns = candidateWriteSigns;
             return this;
         }
 
