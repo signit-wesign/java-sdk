@@ -1,9 +1,11 @@
 package cn.signit.sdk.type;
 
 /**
- * webhook响应事件类型.
+ * 
+ * wehook推送事件枚举.
  *
- * @since 2.0.0
+ * @author luliangwei
+ * @since 1.0.0
  */
 public enum WebhookEventType {
     /**
@@ -14,6 +16,10 @@ public enum WebhookEventType {
      * 快捷签署完成
      */
     QUICK_SIGN_COMPLETED("quickSignCompleted", "快捷签署完成"),
+    /**
+     * 会签签署完成
+     */
+    COUNTERSIGNATURE_SIGN_COMPLETED("countersignatureSignCompleted", "会签签署完成"),
     /**
      * 个人实名认证提交
      */
@@ -43,35 +49,167 @@ public enum WebhookEventType {
      */
     ENVELOPE_STARTED("envelopeStarted", "信封流程启动"),
     /**
+     * 信封启动成功事件
+     */
+    ENVELOPE_STARTED_SUCCEED("envelopeStartedSucceed", "信封启动成功事件"),
+    /**
+     * 信封启动失败事件
+     */
+    ENVELOPE_STARTED_FAILED("envelopeStartedFailed", "信封启动失败事件"),
+    /**
      * 参与者拒绝
      */
     PARTICIPANT_REJECTED("participantRejected", "参与者拒绝"),
+    /**
+     * 参与者撤销
+     */
+    PARTICIPANT_REVOKED("participantRevoked", "参与者撤销"),
     /**
      * 参与者确认
      */
     PARTICIPANT_CONFIRMED("participantConfirmed", "参与者确认"),
     /**
+     * 参与者作废
+     */
+    PARTICIPANT_INVALIDATED("participantInvalidated", "参与者作废"),
+    /**
+     * 参与者审核不通过
+     */
+    PARTICIPANT_NOT_PASS_CHECKED("participantNotPassChecked", "参与者审核不通过"),
+    /**
+     * 参与者待他处理信封.
+     *
+     * @since 1.2.19
+     */
+    PARTICIPANT_HANDLING("participantHandling", "参与者处理信封"),
+    
+    /**
+     * 信封逾期未签署完成.
+     *
+     * @since 2.1.7
+     */
+    PARTICIPANT_EXPIRED("participantExpired", "参与者逾期未签署信封"),
+    /**
      * 信封流程完成
      */
     ENVELOPE_COMPLETED("envelopeCompleted", "信封流程完成"),
     /**
-     * 参与者正在处理信封
+     * 信封成功流程结束
      */
-    PARTICIPANT_HANDLING("participantHandling", "参与者正在处理信封"),
+    ENVELOPE_COMPLETED_SUCCEED("envelopeCompletedSucceed", "信封成功流程结束"),
     /**
-     * 参与者逾期未签署信封.
+     * 信封作废流程结束
      */
-    PARTICIPANT_EXPIRED("participantExpired", "参与者逾期未签署信封"),
+    ENVELOPE_COMPLETED_INVALIDATED("envelopeCompletedInvalidated", "信封作废流程结束"),
     /**
-     * 会签签署完成
+     * 信封拒签流程结束
      */
-    COUNTERSIGNATURE_SIGN_COMPLETED("countersignatureSignCompleted", "会签签署完成"),
+    ENVELOPE_COMPLETED_REJECTED("envelopeCompletedRejected", "信封拒签流程结束"),
+    /**
+     * 信封审核未通过流程结束
+     */
+    ENVELOPE_COMPLETED_NOT_PASS_CHECKED("envelopeCompletedNotPassChecked", "信封审核未通过流程结束"),
+    /**
+     * 信封撤销流程结束
+     */
+    ENVELOPE_COMPLETED_REVOKED("envelopeCompletedRevoked", "信封撤销流程结束"),
+    /**
+     * 信封逾期流程结束
+     */
+    ENVELOPE_COMPLETED_EXPIRED("envelopeCompletedExpired", "信封逾期流程结束"),
+    /**
+     * 身份验证-人脸验证-录入流程完成
+     * 
+     * @since 2.2.0
+     */
+    FACE_INPUT_VERIFICATION_COMPLETED("faceInputVerificationCompleted", "身份验证-人脸验证-录入流程完成"),
+    /**
+     * 身份验证-人脸验证-验证流程完成
+     * 
+     * @since 2.2.0
+     */
+    FACE_VERIFY_VERIFICATION_COMPLETED("faceVerifyVerificationCompleted", "身份验证-人脸验证-验证流程完成"),
+    /**
+     * 身份验证-USBKEY验证-录入流程完成
+     * 
+     * @since 2.2.0
+     */
+    USBKEY_INPUT_VERIFICATION_COMPLETED("usbkeyInputVerificationCompleted", "身份验证-USBKEY验证-录入流程完成"),
+    /**
+     * 身份验证-USBKEY验证-验证流程完成
+     * 
+     * @since 2.2.0
+     */
+    USBKEY_VERIFY_VERIFICATION_COMPLETED("usbkeyVerifyVerificationCompleted", "身份验证-USBKEY验证-验证流程完成"),
 
     /**
-     * 参与者撤销
+     * 企业账户同步-激活启动
+     * 
+     * @since 1.4.0
      */
-    PARTICIPANT_REVOKED("participantRevoked", "参与者撤销"),;
+    ENTERPRISE_ACCOUNT_ACTIVATE_STARTED("enterpriseAccountActivateStarted", "企业账户同步-激活启动"),
+    /**
+     * 企业账户同步-激活完成
+     * 
+     * @since 1.4.0
+     */
+    ENTERPRISE_ACCOUNT_ACTIVATE_COMPLETED("enterpriseAccountActivateCompleted", "企业账户同步-激活完成"),
+    /**
+     * 企业账户同步-认证等待审核
+     * 
+     * @since 1.4.0
+     */
+    ENTERPRISE_ACCOUNT_AUTHENTICATION_WAITING("enterpriseAccountAuthenticationWaiting", "企业账户同步-认证等待审核"),
+    /**
+     * 企业账户同步-认证完成
+     * 
+     * @since 1.4.0
+     */
+    ENTERPRISE_ACCOUNT_AUTHENTICATION_COMPLETED("enterpriseAccountAuthenticationCompleted", "企业账户同步-认证完成"),
+    /**
+     * 个人账户同步-个人账户激活完成
+     * 
+     * @since 1.4.0
+     */
+    PERSON_ACCOUNT_ACTIVATE_COMPLETED("personAccountActivateCompleted", "个人账户同步-激活完成"),
+    /**
+     * 个人账户同步-个人账户激活开始
+     * 
+     * @since 1.4.0
+     */
+    PERSON_ACCOUNT_ACTIVATE_STARTED("personAccountActivateStarted", "个人账户同步-激活开始"),
+    /**
+     * 个人账户同步-个人账户认证完成
+     * 
+     * @since 1.4.0
+     */
+    PERSON_ACCOUNT_AUTHENTICATION_COMPLETED("personAccountAuthenticationCompleted", "个人账户同步-认证完成"),
+    /**
+     * 个人实名认证-个人实名认证完成
+     * 
+     * @since 1.4.0
+     */
+    PERSON_AUTHENTICATION_COMPLETED("personAuthenticationCompleted", "个人账户同步-认证完成"),
 
+    /**
+     * 开放平台独立企业实名认证流程认证成功
+     *
+     * @since 2.2.3
+     */
+    OPEN_ENTERPRISE_AUTHENTICATION_SUCCESS("openEnterpriseAuthenticationSuccess", "开放平台独立企业实名认证流程认证成功"),
+
+    /**
+     * 开放平台独立企业实名认证流程认证失败
+     *
+     * @since 2.2.3
+     */
+    OPEN_ENTERPRISE_AUTHENTICATION_DENY("openEnterpriseAuthenticationDeny", "开放平台独立企业实名认证流程认证失败"),
+    /**
+     * 开放平台独立企业实名认证流程认证失败
+     *
+     * @since 2.2.3
+     */
+    OPEN_ENTERPRISE_AUTHENTICATION_CHANGE("openEnterpriseAuthenticationChange", "开放平台独立企业实名认证流程认证改变"),;
     private String event;
     private String description;
 
@@ -87,8 +225,8 @@ public enum WebhookEventType {
      * @param event
      *            事件名称(不区分大小写)
      * @return 对应的事件类型,如无法识别返回
-     *         {@link cn.signit.sdk.type.WebhookEventType#UNKNOWN }
-     * @since 2.0.0
+     * @author luliangwei
+     * @since 1.0.0
      */
     public static WebhookEventType parse(String event) {
         for (WebhookEventType val : values()) {
@@ -106,7 +244,8 @@ public enum WebhookEventType {
      * @param events
      *            待检查的事件列表
      * @return <code>true</code>--支持当前事件列表,<code>false</code>--不支持当前事件列表
-     * @since 2.0.0
+     * @author luliangwei
+     * @since 1.0.0
      */
     public static boolean support(String[] events) {
         if (events == null || events.length == 0) {
@@ -127,7 +266,8 @@ public enum WebhookEventType {
      * @param event
      *            待判断的字段
      * @return <code>true</code>--支持当前事件,<code>false</code>--不支持当前事件
-     * @since 2.0.0
+     * @author luliangwei
+     * @since 1.0.0
      */
     public static boolean support(String event) {
         return parse(event) != WebhookEventType.UNKNOWN;

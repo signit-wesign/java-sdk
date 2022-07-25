@@ -16,6 +16,7 @@
     - 签署流程中追加新的签署方
     - 撤销指定签署流程
     - 结束整个签署流程
+ - 标准签署流程-分步骤-创建单个签署流程
 
 了解更多易企签详情请访问  [https://www.signit.cn](https://www.signit.cn)
 
@@ -26,10 +27,27 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>2.6.0</version>
+        <version>2.7.4</version>
     </dependency>
 
+# 依赖版本
+
+  - JDK 1.8+
+  - fastjson 1.2.83
+
 # 版本更新日志：
+
+#### V2.7.4 2022.07
+1. 新增分步骤-创建单个签署流程
+2. 修改 StartEnvelopeRequest.basicinfo 属性为过时，使用 StartEnvelopeRequest.basicInfo 替换
+3. 升级 jdk最低版本要求到1.8 和 fastjson 最低版本到1.2.83
+
+#### V2.7.3 2022.07
+1. 新增ENVELOPE_STARTED_SUCCEED/ENVELOPE_STARTED_FAILED/PARTICIPANT_INVALIDATED/PARTICIPANT_NOT_PASS_CHECKED/ENVELOPE_COMPLETED_SUCCEED/ENVELOPE_COMPLETED_INVALIDATED/ENVELOPE_COMPLETED_REJECTED/ENVELOPE_COMPLETED_NOT_PASS_CHECKED/ENVELOPE_COMPLETED_REVOKED/ENVELOPE_COMPLETED_EXPIRED
+2. 新增个人/企业实名认证相关事件类型
+
+#### V2.7.2 2022.07
+1. 标准签添加是否允许参与者添加表单和关键字定位索引是否逆向搜索参数
 
 #### V2.7.1 2022.05
 1. 发起https请求时忽略服务器证书的验证

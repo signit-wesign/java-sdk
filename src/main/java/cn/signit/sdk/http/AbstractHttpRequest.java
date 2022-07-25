@@ -127,7 +127,12 @@ public abstract class AbstractHttpRequest {
     /**
      * 设置不验证主机
      */
-    private static final HostnameVerifier DO_NOT_VERIFY = (hostname, session) -> true;
+    private static final HostnameVerifier DO_NOT_VERIFY = new HostnameVerifier() {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+    };
 
     /**
      * 信任所有

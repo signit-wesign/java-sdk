@@ -290,6 +290,7 @@ public class Signer {
              */
             private Float yOffset;
             private Integer index;
+            private Boolean reverseIndex;
 
             public Integer getIndex() {
                 return index;
@@ -297,6 +298,14 @@ public class Signer {
 
             public void setIndex(Integer index) {
                 this.index = index;
+            }
+
+            public Boolean getReverseIndex() {
+                return reverseIndex;
+            }
+
+            public void setReverseIndex(Boolean reverseIndex) {
+                this.reverseIndex = reverseIndex;
             }
 
             public KeywordPosition() {
@@ -379,6 +388,30 @@ public class Signer {
                 this.deleteTextAfterLocate = deleteTextAfterLocate;
             }
 
+            // 2.7.2
+            public KeywordPosition(Float width, Float relativeWidthRatio, Float height, Float relativeHeightRatio,
+                    Direction direction, Float offset, Float relativeOffsetRatio, String keyword, Float scale,
+                    String pages, Float xOffset, Float yOffset, Integer index, Boolean reverseIndex,
+                    String replaceTextAfterLocate, Boolean deleteTextAfterLocate) {
+                super();
+                this.width = width;
+                this.relativeWidthRatio = relativeWidthRatio;
+                this.height = height;
+                this.relativeHeightRatio = relativeHeightRatio;
+                this.direction = direction;
+                this.offset = offset;
+                this.relativeOffsetRatio = relativeOffsetRatio;
+                this.keyword = keyword;
+                this.scale = scale;
+                this.pages = pages;
+                this.xOffset = xOffset;
+                this.yOffset = yOffset;
+                this.index = index;
+                this.reverseIndex = reverseIndex;
+                this.replaceTextAfterLocate = replaceTextAfterLocate;
+                this.deleteTextAfterLocate = deleteTextAfterLocate;
+            }
+
             public static KeywordPositionBuilder builder() {
                 return new KeywordPositionBuilder();
             }
@@ -402,6 +435,7 @@ public class Signer {
                 private Float xOffset;
                 private Float yOffset;
                 private Integer index;
+                private Boolean reverseIndex;
                 private String replaceTextAfterLocate;
                 private Boolean deleteTextAfterLocate;
 
@@ -570,6 +604,18 @@ public class Signer {
                 }
 
                 /**
+                 *
+                 * @param reverseIndex
+                 *            是否逆向搜索关键字index，默认false
+                 * @return 利用关键字定位签名矩形框所在位置的数据对象建造器{@link KeywordPositionBuilder}
+                 * @since 2.0.0
+                 */
+                public KeywordPositionBuilder withReverseIndex(Boolean reverseIndex) {
+                    this.reverseIndex = reverseIndex;
+                    return this;
+                }
+
+                /**
                  * 
                  *
                  * @param replaceTextAfterLocate
@@ -603,7 +649,7 @@ public class Signer {
                  */
                 public KeywordPosition build() {
                     return new KeywordPosition(width, relativeWidthRatio, height, relativeHeightRatio, direction,
-                            offset, relativeOffsetRatio, keyword, scale, pages, xOffset, yOffset, index,
+                            offset, relativeOffsetRatio, keyword, scale, pages, xOffset, yOffset, index, reverseIndex,
                             replaceTextAfterLocate, deleteTextAfterLocate);
                 }
             }
