@@ -43,6 +43,8 @@ public class HttpClient {
     private Map<String, Serializable> postFields;
     private AbstractHttpRequest request;
     private Object object;
+    private int readTimeout;
+    private int connectTimeout;
 
     public HttpClient withAuth(Authentication auth) {
         this.auth = auth;
@@ -79,7 +81,17 @@ public class HttpClient {
         this.object = object;
         return this;
     }
-
+    
+    public HttpClient withReadTimeout(int readTimeout) {
+        this.readTimeout = readTimeout;
+        return this;
+    }
+    
+    public HttpClient withConnectTimeout(int connectTimeout) {
+        this.connectTimeout = connectTimeout;
+        return this;
+    }
+    
     public String getLastResponse() {
         if (request == null) {
             return null;
@@ -118,7 +130,7 @@ public class HttpClient {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T AsObject(Class<T> clazz) throws SignitException {
+    public <T> T asObject(Class<T> clazz) throws SignitException {
         String response = getLastResponse();
         Object o = null;
         try {
@@ -155,6 +167,12 @@ public class HttpClient {
 
     public HttpClient get(String url) throws SignitException {
         request = new HttpGetRequest(url, getParams, auth);
+        if (this.readTimeout > 0) {
+            HttpGetRequest.READ_TIMEOUT = this.readTimeout;
+        }
+        if (this.connectTimeout > 0) {
+            HttpGetRequest.CONNECT_TIMEOUT = this.connectTimeout;
+        }
         request.doRequest();
         return this;
     }
@@ -162,6 +180,12 @@ public class HttpClient {
     public HttpClient post(String url) throws SignitException {
         url += "?access_token=" + auth.getAccessToken();
         request = new HttpPostRequest(url, object, auth);
+        if (this.readTimeout > 0) {
+            HttpGetRequest.READ_TIMEOUT = this.readTimeout;
+        }
+        if (this.connectTimeout > 0) {
+            HttpGetRequest.CONNECT_TIMEOUT = this.connectTimeout;
+        }
         request.doRequest();
         return this;
     }
