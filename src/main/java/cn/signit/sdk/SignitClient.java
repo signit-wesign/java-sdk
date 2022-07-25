@@ -129,10 +129,29 @@ public class SignitClient {
      * @since 2.0.0
      */
     public SignitClient(String appId, String secretKey, String appUrl) {
+        this(appId, secretKey, appUrl, -1, -1);
+    }
+    
+    /**
+     * 应用客户端.
+     *
+     * @param appId
+     *            APP ID
+     * @param secretKey
+     *            APP Secret
+     * @param appUrl
+     *            应用请求路径
+     * @param connectTimeout
+     *            连接超时毫秒数
+     * @param readTimeout
+     *            传输超时毫秒数
+     * @since 2.7.4
+     */
+    public SignitClient(String appId, String secretKey, String appUrl, int connectTimeout, int readTimeout) {
         AUTH.set(new Authentication(appId, secretKey));
         BASE_URL.set(appUrl);
         OAUTH_TOKEN_URL.set(RequestParam.DEFAULT_ENVIRONMENT_URL + RequestParam.DEFAULT_OAUTH_TOKEN_URL);
-        HTTP_CLIENT.set(new HttpClient());
+        HTTP_CLIENT.set(new HttpClient().withConnectTimeout(connectTimeout).withReadTimeout(readTimeout));
     }
 
     private void setUrl(String environmentUrl) {
@@ -219,7 +238,7 @@ public class SignitClient {
             throw new SignitException("请核实开发者账户数据是否无误");
         }
         try {
-            return HTTP_CLIENT.get().withAuth(AUTH.get()).post(BASE_URL.get()).AsObject(SignatureResponse.class);
+            return HTTP_CLIENT.get().withAuth(AUTH.get()).post(BASE_URL.get()).asObject(SignatureResponse.class);
         } catch (SignitException e) {
             if ("invalid_token".equals(e.getMessage())) {
                 // 重新授权
@@ -306,7 +325,7 @@ public class SignitClient {
             throw new SignitException("请核实开发者账户数据是否无误");
         }
         try {
-            return HTTP_CLIENT.get().withAuth(AUTH.get()).post(BASE_URL.get()).AsObject(responseClass);
+            return HTTP_CLIENT.get().withAuth(AUTH.get()).post(BASE_URL.get()).asObject(responseClass);
         } catch (SignitException e) {
             if ("invalid_token".equals(e.getMessage())) {
                 // 重新授权
