@@ -37,6 +37,9 @@
 
 # 版本更新日志：
 
+#### V2.7.5 2023.01
+1. 新增对标准签细化的事件类型接收到的数据添加对应的处理对象类型，方便调用方根据对象进行操作
+
 #### V2.7.4 2022.07
 1. 新增分步骤-创建单个签署流程
 2. 修改 StartEnvelopeRequest.basicinfo 属性为过时，使用 StartEnvelopeRequest.basicInfo 替换
