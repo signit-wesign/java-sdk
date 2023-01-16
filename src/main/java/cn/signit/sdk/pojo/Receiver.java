@@ -113,6 +113,13 @@ public class Receiver {
     private boolean enableEmbeddedMode;
 
     /**
+     * 开启嵌入模式时的免登录时间设置，单位：秒，为0时不生成免登录标记，为空或小于0时，使用默认值，1800
+     *
+     * @since 2.7.6
+     */
+    private Long freeLoginSignTtl;
+
+    /**
      * 签署接收方用户在调用方系统的唯一标识.<br/>
      * enableEmbeddedMode为false时，非必填；当enableEmbeddedMode为true时，则必填。默认：null
      *
@@ -188,6 +195,14 @@ public class Receiver {
 
     public void setEnableEmbeddedMode(boolean enableEmbeddedMode) {
         this.enableEmbeddedMode = enableEmbeddedMode;
+    }
+
+    public Long getFreeLoginSignTtl() {
+        return freeLoginSignTtl;
+    }
+
+    public void setFreeLoginSignTtl(Long freeLoginSignTtl) {
+        this.freeLoginSignTtl = freeLoginSignTtl;
     }
 
     public String getClientId() {
@@ -410,6 +425,7 @@ public class Receiver {
         this.handleMode = builder.handleMode;
         this.selectedAuthTypes = builder.selectedAuthTypes;
         this.enableEmbeddedMode = builder.enableEmbeddedMode;
+        this.freeLoginSignTtl = builder.freeLoginSignTtl;
         this.clientId = builder.clientId;
         this.participantWsid = builder.participantWsid;
         this.isExternal = builder.isExternal;
@@ -452,6 +468,7 @@ public class Receiver {
         private ParticipantHandleMode handleMode;
         private List<AuthType> selectedAuthTypes;
         private boolean enableEmbeddedMode;
+        private Long freeLoginSignTtl;
         private String clientId;
         private String participantWsid;
         private boolean isExternal;
@@ -494,6 +511,7 @@ public class Receiver {
             this.handleMode = receiver.handleMode;
             this.selectedAuthTypes = receiver.selectedAuthTypes;
             this.enableEmbeddedMode = receiver.enableEmbeddedMode;
+            this.freeLoginSignTtl = receiver.freeLoginSignTtl;
             this.clientId = receiver.clientId;
             this.participantWsid = receiver.participantWsid;
             this.isExternal = receiver.isExternal;
@@ -742,6 +760,11 @@ public class Receiver {
          */
         public Builder enableEmbeddedMode(boolean enableEmbeddedMode) {
             this.enableEmbeddedMode = enableEmbeddedMode;
+            return this;
+        }
+
+        public Builder freeLoginSignTtl(Long freeLoginSignTtl){
+            this.freeLoginSignTtl = freeLoginSignTtl;
             return this;
         }
 

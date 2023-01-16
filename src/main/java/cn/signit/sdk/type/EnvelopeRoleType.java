@@ -14,5 +14,9 @@ public enum EnvelopeRoleType {
     /**
      * 企业成员
      */
-    ENTERPRISE_MEMBER;
+    ENTERPRISE_MEMBER,
+    /**
+     * 签署组
+     */
+    ENTERPRISE_SIGN_GROUP;
 }

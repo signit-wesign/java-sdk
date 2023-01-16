@@ -27,7 +27,7 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>2.7.4</version>
+        <version>2.7.6</version>
     </dependency>
 
 # 依赖版本
@@ -36,6 +36,10 @@
   - fastjson 1.2.83
 
 # 版本更新日志：
+
+#### V2.7.6 2023.01
+1. 新增标准签发起时接收方的角色类型：签署组。
+2. 新增标准签发起时可控制开启嵌入模式的接收方打开签署页面的免登录时间，可彻底关闭。
 
 #### V2.7.5 2023.01
 1. 新增对标准签细化的事件类型接收到的数据添加对应的处理对象类型，方便调用方根据对象进行操作
