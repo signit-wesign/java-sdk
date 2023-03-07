@@ -1,5 +1,5 @@
 /*
- * Copyright © 2022 signit.cn. All rights reserved.
+ * Copyright © 2023 signit.cn. All rights reserved.
  *
  *
  *
@@ -119,6 +119,134 @@ public class UserPersonRelativeInfo {
      * @since 1.0.0
      */
     private String invokeNo;
+
+    public String getUprWsid() {
+        return uprWsid;
+    }
+
+    public void setUprWsid(String uprWsid) {
+        this.uprWsid = uprWsid;
+    }
+
+    public String getUprOwnerWsid() {
+        return uprOwnerWsid;
+    }
+
+    public void setUprOwnerWsid(String uprOwnerWsid) {
+        this.uprOwnerWsid = uprOwnerWsid;
+    }
+
+    public String getUprStatus() {
+        return uprStatus;
+    }
+
+    public void setUprStatus(String uprStatus) {
+        this.uprStatus = uprStatus;
+    }
+
+    public String getUprStatusDescription() {
+        return uprStatusDescription;
+    }
+
+    public void setUprStatusDescription(String uprStatusDescription) {
+        this.uprStatusDescription = uprStatusDescription;
+    }
+
+    public String getUprThirdPartyUserId() {
+        return uprThirdPartyUserId;
+    }
+
+    public void setUprThirdPartyUserId(String uprThirdPartyUserId) {
+        this.uprThirdPartyUserId = uprThirdPartyUserId;
+    }
+
+    public String getUprName() {
+        return uprName;
+    }
+
+    public void setUprName(String uprName) {
+        this.uprName = uprName;
+    }
+
+    public String getUprIdType() {
+        return uprIdType;
+    }
+
+    public void setUprIdType(String uprIdType) {
+        this.uprIdType = uprIdType;
+    }
+
+    public String getUprIdCode() {
+        return uprIdCode;
+    }
+
+    public void setUprIdCode(String uprIdCode) {
+        this.uprIdCode = uprIdCode;
+    }
+
+    public String getUprPhone() {
+        return uprPhone;
+    }
+
+    public void setUprPhone(String uprPhone) {
+        this.uprPhone = uprPhone;
+    }
+
+    public String getUprEmail() {
+        return uprEmail;
+    }
+
+    public void setUprEmail(String uprEmail) {
+        this.uprEmail = uprEmail;
+    }
+
+    public String getUprSyncStatus() {
+        return uprSyncStatus;
+    }
+
+    public void setUprSyncStatus(String uprSyncStatus) {
+        this.uprSyncStatus = uprSyncStatus;
+    }
+
+    public String getUprSyncStatusDescription() {
+        return uprSyncStatusDescription;
+    }
+
+    public void setUprSyncStatusDescription(String uprSyncStatusDescription) {
+        this.uprSyncStatusDescription = uprSyncStatusDescription;
+    }
+
+    public String getUprSyncRule() {
+        return uprSyncRule;
+    }
+
+    public void setUprSyncRule(String uprSyncRule) {
+        this.uprSyncRule = uprSyncRule;
+    }
+
+    public String getUprSyncPersonWsid() {
+        return uprSyncPersonWsid;
+    }
+
+    public void setUprSyncPersonWsid(String uprSyncPersonWsid) {
+        this.uprSyncPersonWsid = uprSyncPersonWsid;
+    }
+
+    public String getCustomTag() {
+        return customTag;
+    }
+
+    public void setCustomTag(String customTag) {
+        this.customTag = customTag;
+    }
+
+    public String getInvokeNo() {
+        return invokeNo;
+    }
+
+    public void setInvokeNo(String invokeNo) {
+        this.invokeNo = invokeNo;
+    }
 
     public UserPersonRelativeInfo(){
 

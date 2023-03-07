@@ -1,5 +1,5 @@
 /*
- * Copyright © 2022 signit.cn. All rights reserved.
+ * Copyright © 2023 signit.cn. All rights reserved.
  *
  *
  *
@@ -164,7 +164,15 @@ public class UserEnterpriseRelativeResquest extends AbstractSignitRequest<UserEn
         this.appId = builder.appId;
     }
 
-    public class Builder implements cn.signit.sdk.pojo.Builder<UserEnterpriseRelativeResquest> {
+    public Builder newBuilder() {
+        return new Builder(this);
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder implements cn.signit.sdk.pojo.Builder<UserEnterpriseRelativeResquest> {
 
         private String uerThirdPartyUserId;
         private String uerName;

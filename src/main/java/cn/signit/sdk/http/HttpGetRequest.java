@@ -34,6 +34,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import cn.signit.sdk.SignitException;
+import cn.signit.sdk.util.RequestParam;
 
 public class HttpGetRequest extends AbstractHttpRequest {
 
@@ -69,7 +70,11 @@ public class HttpGetRequest extends AbstractHttpRequest {
     @Override
     protected HttpURLConnection getConnection() throws SignitException, IOException {
         if (parameters != null) {
-            url += "?";
+            if(url.contains("?")){
+                url += "&";
+            }else{
+                url += "?";
+            }
             Iterator<String> keys = parameters.keySet().iterator();
             while (keys.hasNext()) {
                 String key = keys.next();
@@ -92,6 +97,7 @@ public class HttpGetRequest extends AbstractHttpRequest {
         }
         connection.setRequestProperty("user-agent", USER_AGENT);
         connection.setRequestProperty("Accept-Charset", DEFAULT_ENCODING);
+        connection.setRequestProperty(RequestParam.APP_ID, auth.getAppId());
         if (auth != null) {
             auth.authenticate(connection, url);
         }

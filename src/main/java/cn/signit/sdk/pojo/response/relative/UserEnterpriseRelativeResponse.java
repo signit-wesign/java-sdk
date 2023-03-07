@@ -1,5 +1,5 @@
 /*
- * Copyright © 2022 signit.cn. All rights reserved.
+ * Copyright © 2023 signit.cn. All rights reserved.
  *
  *
  *
@@ -32,7 +32,7 @@ import cn.signit.sdk.pojo.response.AbstractSignitResponse;
 */
 public class UserEnterpriseRelativeResponse extends AbstractSignitResponse {
 
-    private UserEnterpriseRelativeInfo enterpriseRelativeInfo;
+    private UserEnterpriseRelativeInfo data;
 
 
     public UserEnterpriseRelativeResponse() {
@@ -40,20 +40,19 @@ public class UserEnterpriseRelativeResponse extends AbstractSignitResponse {
 
     public UserEnterpriseRelativeResponse(Builder builder) {
         super();
-        this.enterpriseRelativeInfo = builder.enterpriseRelativeInfo;
+        this.data = builder.enterpriseRelativeInfo;
     }
 
-
-    public UserEnterpriseRelativeInfo getEnterpriseRelativeInfo() {
-        return enterpriseRelativeInfo;
+    public UserEnterpriseRelativeInfo getData() {
+        return data;
     }
 
-    public void setEnterpriseRelativeInfo(UserEnterpriseRelativeInfo enterpriseRelativeInfo) {
-        this.enterpriseRelativeInfo = enterpriseRelativeInfo;
+    public void setData(UserEnterpriseRelativeInfo data) {
+        this.data = data;
     }
 
     public UserEnterpriseRelativeResponse(UserEnterpriseRelativeInfo enterpriseRelativeInfo) {
-        this.enterpriseRelativeInfo = enterpriseRelativeInfo;
+        this.data = enterpriseRelativeInfo;
     }
 
     public Builder newBuilder() {
@@ -78,7 +77,7 @@ public class UserEnterpriseRelativeResponse extends AbstractSignitResponse {
         }
 
         public Builder(UserEnterpriseRelativeResponse enterpriseRelativeInfo) {
-            this.enterpriseRelativeInfo = enterpriseRelativeInfo.enterpriseRelativeInfo;
+            this.enterpriseRelativeInfo = enterpriseRelativeInfo.data;
         }
 
         /**

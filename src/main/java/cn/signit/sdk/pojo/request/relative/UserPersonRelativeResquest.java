@@ -1,5 +1,5 @@
 /*
- * Copyright © 2022 signit.cn. All rights reserved.
+ * Copyright © 2023 signit.cn. All rights reserved.
  *
  *
  *
@@ -72,6 +72,61 @@ public class UserPersonRelativeResquest extends AbstractSignitRequest<UserPerson
      */
     private String uprEmail;
 
+    public String getUprWsid() {
+        return uprWsid;
+    }
+
+    public void setUprWsid(String uprWsid) {
+        this.uprWsid = uprWsid;
+    }
+
+    public String getUprThirdPartyUserId() {
+        return uprThirdPartyUserId;
+    }
+
+    public void setUprThirdPartyUserId(String uprThirdPartyUserId) {
+        this.uprThirdPartyUserId = uprThirdPartyUserId;
+    }
+
+    public String getUprName() {
+        return uprName;
+    }
+
+    public void setUprName(String uprName) {
+        this.uprName = uprName;
+    }
+
+    public String getUprIdType() {
+        return uprIdType;
+    }
+
+    public void setUprIdType(String uprIdType) {
+        this.uprIdType = uprIdType;
+    }
+
+    public String getUprIdCode() {
+        return uprIdCode;
+    }
+
+    public void setUprIdCode(String uprIdCode) {
+        this.uprIdCode = uprIdCode;
+    }
+
+    public String getUprPhone() {
+        return uprPhone;
+    }
+
+    public void setUprPhone(String uprPhone) {
+        this.uprPhone = uprPhone;
+    }
+
+    public String getUprEmail() {
+        return uprEmail;
+    }
+
+    public void setUprEmail(String uprEmail) {
+        this.uprEmail = uprEmail;
+    }
 
     public UserPersonRelativeResquest(){
 
@@ -85,9 +140,18 @@ public class UserPersonRelativeResquest extends AbstractSignitRequest<UserPerson
         this.uprIdCode = builder.uprIdCode;
         this.uprPhone = builder.uprPhone;
         this.uprEmail = builder.uprEmail;
+        this.customTag = builder.customTag;
     }
 
-    public class Builder implements cn.signit.sdk.pojo.Builder<UserPersonRelativeResquest> {
+    public Builder newBuilder() {
+        return new Builder(this);
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder implements cn.signit.sdk.pojo.Builder<UserPersonRelativeResquest> {
 
         private String uprWsid;
         private String uprThirdPartyUserId;
@@ -96,6 +160,7 @@ public class UserPersonRelativeResquest extends AbstractSignitRequest<UserPerson
         private String uprIdCode;
         private String uprPhone;
         private String uprEmail;
+        private String customTag;
 
         public Builder(){
 
@@ -109,6 +174,7 @@ public class UserPersonRelativeResquest extends AbstractSignitRequest<UserPerson
             this.uprIdCode = info.uprIdCode;
             this.uprPhone = info.uprPhone;
             this.uprEmail = info.uprEmail;
+            this.customTag = info.customTag;
         }
 
 
@@ -193,6 +259,18 @@ public class UserPersonRelativeResquest extends AbstractSignitRequest<UserPerson
          */
         public Builder uprEmail(String uprEmail){
             this.uprEmail = uprEmail;
+            return this;
+        }
+
+        /**
+         *
+         * @param customTag
+         *            调用方自定义标识，易企签会原封不动返回
+         * @return 相对方个人信息对象建造器
+         * @since 2.0.0
+         */
+        public Builder customTag(String customTag) {
+            this.customTag = customTag;
             return this;
         }
 
