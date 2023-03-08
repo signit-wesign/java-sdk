@@ -24,6 +24,11 @@ package cn.signit.sdk.http;
  * SOFTWARE.
  */
 
+import cn.signit.sdk.SignitException;
+import cn.signit.sdk.util.FastjsonEncoder;
+import cn.signit.sdk.util.RequestParam;
+
+import javax.net.ssl.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -35,20 +40,9 @@ import java.security.cert.X509Certificate;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+public class HttpPutRequest extends AbstractHttpRequest {
 
-import cn.signit.sdk.SignitException;
-import cn.signit.sdk.util.FastjsonEncoder;
-import cn.signit.sdk.util.RequestParam;
-
-public class HttpPostRequest extends AbstractHttpRequest {
+    private Map<String, String> parameters = null;
 
     private static SSLContext ctx = null;
 
@@ -59,9 +53,7 @@ public class HttpPostRequest extends AbstractHttpRequest {
     private final String boundary;
     private static final String LINE_FEED = "\r\n";
 
-    private Map<String, String> parameters = null;
-
-    protected String method = "POST";
+    protected String method = "PUT";
 
     private HttpURLConnection httpConn;
     private OutputStream outputStream;
@@ -104,19 +96,25 @@ public class HttpPostRequest extends AbstractHttpRequest {
         }
     }
 
-    public HttpPostRequest(String url) throws SignitException {
-        this(url, null, null);
+    public HttpPutRequest(String url) throws SignitException {
+        this(url, null, null,null);
     }
 
-    public HttpPostRequest(String url, Authentication auth) throws SignitException {
-        this(url, null, auth);
+    public HttpPutRequest(String url, Authentication auth) throws SignitException {
+        this(url, null, auth,null);
     }
 
-    public HttpPostRequest(String url, Map<String, Serializable> fields) throws SignitException {
-        this(url, fields, null);
+    public HttpPutRequest(String url, Map<String, Serializable> fields) throws SignitException {
+        this(url, fields, null,null);
     }
 
-    public HttpPostRequest(String url, Map<String, Serializable> fields, Authentication auth) throws SignitException {
+    public HttpPutRequest(String url, Map<String, Serializable> fields,
+            Map<String, String> parameters) throws SignitException {
+        this(url, fields, null,parameters);
+    }
+
+    public HttpPutRequest(String url, Map<String, Serializable> fields, Authentication auth,
+            Map<String, String> parameters) throws SignitException {
         if (url == null || "".equals(url)) {
             throw new SignitException("URL cannot be null or empty");
         }
@@ -127,11 +125,14 @@ public class HttpPostRequest extends AbstractHttpRequest {
         if (auth != null) {
             this.auth = new Authentication(auth);
         }
+        if(parameters != null){
+            this.parameters = parameters;
+        }
         // creates a unique boundary based on time stamp
         boundary = "===" + Long.toHexString(System.currentTimeMillis()) + "===";
     }
 
-    public HttpPostRequest(String url, Object object, Authentication auth) throws SignitException {
+    public HttpPutRequest(String url, Object object, Authentication auth,Map<String, String> parameters) throws SignitException {
         if (url == null || "".equals(url)) {
             throw new SignitException("URL cannot be null or empty");
         }
@@ -142,23 +143,8 @@ public class HttpPostRequest extends AbstractHttpRequest {
         if (auth != null) {
             this.auth = new Authentication(auth);
         }
-        // creates a unique boundary based on time stamp
-        boundary = "===" + Long.toHexString(System.currentTimeMillis()) + "===";
-    }
-
-    public HttpPostRequest(String url, Object object, Authentication auth,Map<String,String> params) throws SignitException {
-        if (url == null || "".equals(url)) {
-            throw new SignitException("URL cannot be null or empty");
-        }
-        this.url = url;
-        if (object != null) {
-            this.object = object;
-        }
-        if (auth != null) {
-            this.auth = new Authentication(auth);
-        }
-        if(params != null){
-            this.parameters = params;
+        if(parameters != null){
+            this.parameters = parameters;
         }
         // creates a unique boundary based on time stamp
         boundary = "===" + Long.toHexString(System.currentTimeMillis()) + "===";
@@ -196,7 +182,7 @@ public class HttpPostRequest extends AbstractHttpRequest {
         } else {
             conn = (HttpURLConnection) url.openConnection();
         }
-        conn.setRequestMethod("POST");
+        conn.setRequestMethod("PUT");
         conn.setDoOutput(true);
         conn.setRequestProperty("user-agent", USER_AGENT);
         conn.setRequestProperty("accept-encoding", DEFAULT_ENCODING);
