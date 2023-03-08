@@ -179,7 +179,19 @@ public class HttpClient {
 
     public HttpClient post(String url) throws SignitException {
         url += "?access_token=" + auth.getAccessToken();
-        request = new HttpPostRequest(url, object, auth);
+        request = new HttpPostRequest(url, object, auth, getParams);
+        if (this.readTimeout > 0) {
+            HttpGetRequest.READ_TIMEOUT = this.readTimeout;
+        }
+        if (this.connectTimeout > 0) {
+            HttpGetRequest.CONNECT_TIMEOUT = this.connectTimeout;
+        }
+        request.doRequest();
+        return this;
+    }
+
+    public HttpClient put(String url) throws SignitException {
+        request = new HttpPutRequest(url, object, auth,getParams);
         if (this.readTimeout > 0) {
             HttpGetRequest.READ_TIMEOUT = this.readTimeout;
         }

@@ -25,19 +25,17 @@ package cn.signit.sdk;
  */
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
+import cn.signit.sdk.pojo.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.signit.sdk.http.Authentication;
 import cn.signit.sdk.http.HttpClient;
-import cn.signit.sdk.pojo.OauthData;
-import cn.signit.sdk.pojo.SignatureRequest;
-import cn.signit.sdk.pojo.SignatureResponse;
-import cn.signit.sdk.pojo.WebhookData;
 import cn.signit.sdk.pojo.request.AbstractSignitRequest;
 import cn.signit.sdk.pojo.response.AbstractSignitResponse;
 import cn.signit.sdk.pojo.webhook.response.WebhookResponse;
@@ -306,6 +304,47 @@ public class SignitClient {
         return FastjsonDecoder.decodeAsBean(webhook, WebhookResponse.class);
     }
 
+
+    // 可用单独授权，或者可单独调用只获取token
+    public <T extends AbstractSignitResponse> T getData(Class<T> responseClass, Map<String,String> params)
+            throws SignitException {
+        if (!AUTH.get().hasAccessTokenType() || !AUTH.get().hasAppId() || !AUTH.get().hasSecretKey()) {
+            throw new SignitException("请完善开发者信息");
+        }
+
+        if (!AUTH.get().hasAccessToken()) {
+            getOauthData(AUTH.get().getAppId(), AUTH.get().getSecretKey(), AUTH.get().getAccessTokenType(), true);
+        }
+        return sendGetRequest(responseClass,params,1);
+    }
+
+    //get
+    private <T> T sendGetRequest(Class<T> responseClass, Map<String,String> params, int tryStartCount) throws SignitException {
+        if (tryStartCount > MAX_COUNT) {
+            throw new SignitException("请核实开发者账户数据是否无误");
+        }
+        try {
+            params.put("access_token",AUTH.get().getAccessToken());
+            return HTTP_CLIENT.get().withAuth(AUTH.get()).withGetParams(params).get(BASE_URL.get()).asObject(responseClass);
+        } catch (SignitException e) {
+            if ("invalid_token".equals(e.getMessage())) {
+                // 重新授权
+                getOauthData(AUTH.get().getAppId(), AUTH.get().getSecretKey(), AUTH.get().getAccessTokenType(), true);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    return sendGetRequest(responseClass,params, ++tryStartCount);
+                }
+                return sendGetRequest(responseClass,params, ++tryStartCount);
+            } else {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw new SignitException(e);
+        }
+    }
+
+    //post（无params）
     public <T extends AbstractSignitResponse> T execute(AbstractSignitRequest<T> request) throws SignitException {
         if (request == null) {
             return null;
@@ -336,6 +375,85 @@ public class SignitClient {
                     return retrySendRequest(responseClass, ++tryStartCount);
                 }
                 return retrySendRequest(responseClass, ++tryStartCount);
+            } else {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw new SignitException(e);
+        }
+    }
+
+    //post（有params）
+    public <T extends AbstractSignitResponse> T executePost(AbstractSignitRequest<T> request,Map<String,String> params) throws SignitException {
+        if (request == null) {
+            return null;
+        }
+        if (!AUTH.get().hasAccessTokenType() || !AUTH.get().hasAppId() || !AUTH.get().hasSecretKey()) {
+            throw new SignitException("请完善开发者信息");
+        }
+        HTTP_CLIENT.get().withAuth(AUTH.get()).withPostObject(request);
+        if (!AUTH.get().hasAccessToken()) {
+            getOauthData(AUTH.get().getAppId(), AUTH.get().getSecretKey(), AUTH.get().getAccessTokenType(), true);
+        }
+        return retrySendPostRequest(request.getResponseClass(), 1,params);
+    }
+
+    private <T> T retrySendPostRequest(Class<T> responseClass, int tryStartCount,Map<String,String> params) throws SignitException {
+        if (tryStartCount > MAX_COUNT) {
+            throw new SignitException("请核实开发者账户数据是否无误");
+        }
+        try {
+            return HTTP_CLIENT.get().withAuth(AUTH.get()).withGetParams(params).post(BASE_URL.get()).asObject(responseClass);
+        } catch (SignitException e) {
+            if ("invalid_token".equals(e.getMessage())) {
+                // 重新授权
+                getOauthData(AUTH.get().getAppId(), AUTH.get().getSecretKey(), AUTH.get().getAccessTokenType(), true);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    return retrySendPostRequest(responseClass, ++tryStartCount,params);
+                }
+                return retrySendPostRequest(responseClass, ++tryStartCount,params);
+            } else {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw new SignitException(e);
+        }
+    }
+
+    //put
+    public <T extends AbstractSignitResponse> T executePut(AbstractSignitRequest<T> request,Map<String,String> params) throws SignitException {
+        if (request == null) {
+            return null;
+        }
+        if (!AUTH.get().hasAccessTokenType() || !AUTH.get().hasAppId() || !AUTH.get().hasSecretKey()) {
+            throw new SignitException("请完善开发者信息");
+        }
+        HTTP_CLIENT.get().withAuth(AUTH.get()).withPostObject(request);
+        if (!AUTH.get().hasAccessToken()) {
+            getOauthData(AUTH.get().getAppId(), AUTH.get().getSecretKey(), AUTH.get().getAccessTokenType(), true);
+        }
+        return retrySendPutRequest(request.getResponseClass(), 1,params);
+    }
+
+    private <T> T retrySendPutRequest(Class<T> responseClass, int tryStartCount,Map<String,String> params) throws SignitException {
+        if (tryStartCount > MAX_COUNT) {
+            throw new SignitException("请核实开发者账户数据是否无误");
+        }
+        try {
+            params.put("access_token",AUTH.get().getAccessToken());
+            return HTTP_CLIENT.get().withAuth(AUTH.get()).withGetParams(params).put(BASE_URL.get()).asObject(responseClass);
+        } catch (SignitException e) {
+            if ("invalid_token".equals(e.getMessage())) {
+                // 重新授权
+                getOauthData(AUTH.get().getAppId(), AUTH.get().getSecretKey(), AUTH.get().getAccessTokenType(), true);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    return retrySendPutRequest(responseClass, ++tryStartCount,params);
+                }
+                return retrySendPutRequest(responseClass, ++tryStartCount,params);
             } else {
                 throw e;
             }
