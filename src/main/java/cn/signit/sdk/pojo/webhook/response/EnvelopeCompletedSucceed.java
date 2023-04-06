@@ -8,8 +8,14 @@ import java.util.List;
  * @since 2.7.5
  */
 public class EnvelopeCompletedSucceed extends EnvelopeCompleted {
+
     private ThirdPartFieldsMetadata thirdPartFieldsMetadata;
 
+    /**
+     * 信封成功完成事件回传第三方数据数据.
+     *
+     * @since 2.7.8
+     */
     public static class ThirdPartFieldsMetadata {
         private List<ThirdPartField> thirdPartFields ;
 
@@ -21,7 +27,11 @@ public class EnvelopeCompletedSucceed extends EnvelopeCompleted {
             this.thirdPartFields = thirdPartFields;
         }
 
-        //预存第三方属性字段
+        /**
+         * 信封完成事件回传第三方预填数据数据.
+         *
+         * @since 2.7.8
+         */
         public static class ThirdPartField{
             //第三方数据的标识，用来与formid关联
             private String tpfCode;
