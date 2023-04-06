@@ -21,6 +21,7 @@ public class EnvelopeCompletedSucceed extends EnvelopeCompleted {
             this.thirdPartFields = thirdPartFields;
         }
 
+        //预存第三方属性字段
         public static class ThirdPartField{
             //第三方数据的标识，用来与formid关联
             private String tpfCode;
