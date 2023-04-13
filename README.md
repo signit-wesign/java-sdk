@@ -31,7 +31,7 @@
     <dependency>
         <groupId>cn.signit.sdk</groupId>
         <artifactId>signit-java-sdk</artifactId>
-        <version>2.7.7</version>
+        <version>2.7.8</version>
     </dependency>
 
 # 依赖版本
