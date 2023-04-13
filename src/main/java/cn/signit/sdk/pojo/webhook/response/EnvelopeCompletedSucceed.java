@@ -39,6 +39,8 @@ public class EnvelopeCompletedSucceed extends EnvelopeCompleted {
             private String tpfName;
             //第三方数据值
             private Object tpfValue;
+            //第三方数据描述
+            private String tpfDescription;
             //第三方数据值
             private Integer tpfSequence;
 
@@ -64,6 +66,14 @@ public class EnvelopeCompletedSucceed extends EnvelopeCompleted {
 
             public void setTpfValue(Object tpfValue) {
                 this.tpfValue = tpfValue;
+            }
+
+            public String getTpfDescription() {
+                return tpfDescription;
+            }
+
+            public void setTpfDescription(String tpfDescription) {
+                this.tpfDescription = tpfDescription;
             }
 
             public Integer getTpfSequence() {
